@@ -1,0 +1,217 @@
+@import "_mixins.scss";
+@import "_variables.scss";
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    font-weight: 300;
+    overflow-x: hidden;
+    background: $white-color;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+button {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus {
+  outline: none;
+}
+
+.mobile {
+  display: none;
+}
+
+.web {
+  display: block;
+}
+
+.container {
+    max-width: 1190px;
+    margin: auto;
+    position: relative;
+
+    @media screen and (min-width:1600px) and (max-width:1920px) {
+        max-width: 1500px;
+    }
+
+    @media screen and (max-width:$media-phone-max) {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+}
+
+.form-popup {
+    width: 465px;
+    height: 500px;
+    background-color: $second-color;
+    padding: 50px;
+    position: absolute;
+    left: 70px;
+    top: 100px;
+    display:none;
+    z-index:99;
+
+    .form-title {
+        font-weight: 300;
+        color: $white-color;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    form {
+        text-align: right;
+    }
+
+    .form-element {
+        padding: 10px 0;
+    }
+
+    label {
+        font-size: 22px;
+        font-weight: 300;
+        color: $white-color;
+        margin-bottom: 10px;
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+    }
+
+    input {
+        background-color: transparent;
+        background: transparent;
+        border: 2px solid $white-color;
+        color: $white-color;
+        font-size: 18px;
+    }
+
+    button {
+        background-color: transparent;
+        border: 2px solid $white-color;
+        padding: 12px 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $white-color;
+        font-size: 26px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+    }
+}
+.nft-sol-wrap {
+    .form-popup {
+        background-color: rgba(50,58,48,0.7);
+        left: -465px;
+        top: 65px;
+    }
+}
+
+.form-control {
+    width: 100%;
+}
+
+textarea {
+
+  ::placeholder,
+  :-webkit-input-placeholder,
+  :-webkit-input-placeholder,
+  :-moz-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholde {
+    //color: $darkgrey-color !important;
+    font-size: 12px !important;
+    padding: 10px !important;
+    //font-family: $regular_font-family !important;
+  }
+}
+
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  appearance: none;
+  position: relative;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+input {
+  border: none;
+  background-color: $white-color;
+  padding: 10px;
+  width: 100%;
+
+  &::placeholder {
+    //color: $darkgrey-color;
+    font-size: 12px;
+  }
+
+}
+
+input[type="search"] {
+  //color: $darkgrey-color;
+  font-size: 12px;
+
+  &:-webkit-search-decoration,
+  &:-webkit-search-cancel-button,
+  &:-webkit-search-results-button,
+  &:-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+

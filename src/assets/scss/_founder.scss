@@ -1,0 +1,114 @@
+﻿@import "_mixins.scss";
+@import "_variables.scss";
+
+.nft-founder-wrap {
+    background-color: $black-color;
+    padding-top: 250px;
+    padding-bottom: 60px;
+
+    .title {
+        font-weight: 500;
+        color: $white-color;
+        font-size: 46px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        padding-bottom: 50px;
+
+        p {
+            font-weight: 300;
+            color: $white-color;
+            font-size: 18px;
+        }
+    }
+
+    .content-popup {
+        display: none;
+        width: 531px;
+        height: 455px;
+        background-color: rgb(255, 255, 255,0.8);
+        font-weight: 300;
+        color: $black-color;
+        font-size: 15px;
+        padding: 40px;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        z-index: 99;
+
+        .title {
+            font-weight: 300;
+            color: $black-color;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        li {
+            font-weight: 300;
+            color: $black-color;
+            font-size: 15px;
+            margin-bottom: 10px;
+
+            &:before {
+                content: "\003E";
+                margin-right: 5px;
+                font-size: 16px;
+            }
+        }
+
+        .linkedin-text {
+            font-weight: 300;
+            color: $black-color;
+            font-size: 15px;
+            position: absolute;
+            bottom: 45px;
+        }
+    }
+
+    .img-box {
+        width: 557px;
+        height: 416px;
+        background-color: #939598;
+        position: relative;
+
+        &:hover {
+            .content-popup {
+                display: block;
+            }
+        }
+    }
+
+    .meta {
+        font-weight: 300;
+        color: $white-color;
+        font-size: 15px;
+        text-align: right;
+        margin-top: 15px;
+
+        .position {
+            padding-left: 10px;
+            margin-left: 10px;
+            border-left: 1px solid $white-color;
+        }
+    }
+
+    .founder-row {
+        @include flexbox();
+        @include justify-content(space-between);
+    }
+
+    .founder-wrap {
+        padding-top: 160px;
+    }
+
+    .founder-col {
+        flex-basis: 47%;
+        @media screen and (min-width:1600px){
+            flex-basis:unset;
+            width:557px;
+        }
+    }
+}
+
