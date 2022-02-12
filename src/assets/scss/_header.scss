@@ -29,9 +29,8 @@
         @include transition(.4s all ease-in-out);
     }
 
-    &.nav-active {
-        background-color: $first-color;
-        border-bottom: 1px solid rgb(255, 255, 255,0.7);
+  &.nav-active {
+    background-color: transparent;
 
         .header-menu {
             height: 80px;
@@ -59,45 +58,45 @@
             }
         }
 
-        &.active {
-            right: 0;
-            z-index:-1;
-        }
+    &.active {
+      right: 0;
+      z-index: -1;
+    }
+  }
+
+  .menu-toggle {
+    .line {
+      display: block;
+      width: 30px;
+      height: 3px;
+      margin-bottom: 4px;
+      background-color: $white-color;
+      @include transition(0.2s all ease-in-out);
+      transition-delay: -0.5s;
+      -webkit-transition-delay: -0.5s;
+      opacity: 0.7;
     }
 
-    .menu-toggle {
-        .line {
-            display: block;
-            width: 30px;
-            height: 3px;
-            margin-bottom: 4px;
-            background-color: $white-color;
-            @include transition(.2s all ease-in-out);
-            transition-delay: -0.5s;
-            -webkit-transition-delay: -0.5s;
-            opacity: 0.7;
-        }
+    &.active {
+      z-index: 99;
 
-        &.active {
-            z-index: 99;
+      .line {
+        background-color: $white-color;
+      }
 
-            .line {
-                background-color: $white-color;
-            }
+      .line-1 {
+        @include transform(rotate(45deg) translate(0px, 0px));
+        top: 7px;
+        position: relative;
+      }
 
-            .line-1 {
-                @include transform(rotate(45deg) translate(0px, 0px));
-                top: 7px;
-                position: relative;
-            }
+      .line-2 {
+        display: none;
+      }
 
-            .line-2 {
-                display: none;
-            }
-
-            .line-3 {
-                @include transform(rotate(-45deg) translate(0px, 0px));
-            }
-        }
+      .line-3 {
+        @include transform(rotate(-45deg) translate(0px, 0px));
+      }
     }
+  }
 }

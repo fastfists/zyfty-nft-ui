@@ -58,24 +58,7 @@
             </div>
         </div>
         <div class="btn-wrap">
-            <button class="request-btn">REQUEST WHITEPAPER</button>
-            <div class="form-popup">
-                <h2 class="form-title">
-                    To receive a copy of the Zyfty whitepaper
-                    please provide your name and email.
-                </h2>
-                <form>
-                    <div class="form-element">
-                        <label>Name:</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-element">
-                        <label>Email:</label>
-                        <input type="text" />
-                    </div>
-                    <button>SUBMIT</button>
-                </form>
-            </div>
+            <a href="mailto:info@zyfty.io"><button class="request-btn">REQUEST WHITEPAPER</button></a>
         </div>
     </div>
 </div>
@@ -118,7 +101,7 @@
                 <h2 class="title">
                     FAQs
                 </h2>
-                <a href="#" [routerLink]="['/faqs']" class="more-faqs">MORE FAQS</a>
+                <a href="javascript:void(0)" [routerLink]="['/faqs']" class="more-faqs">MORE FAQS</a>
 
             </div>
             <div class="card-item">
@@ -139,7 +122,7 @@
                             with Zyfty. This will cause the NFT to be
                             destroyed...
                         </span>
-                        <a href="#" class="read-more">READ MORE &#62;</a>
+                        <a href="javascript:void(0)" [routerLink]="['/faqs']" class="read-more">READ MORE &#62;</a>
                     </div>
                 </div>
                 <div class="faq-wrap">
@@ -159,7 +142,7 @@
                             which viewings will be offered is up to the
                             seller of the NFT...
                         </span>
-                        <a href="#" class="read-more">READ MORE &#62;</a>
+                        <a href="javascript:void(0)" [routerLink]="['/faqs']" class="read-more">READ MORE &#62;</a>
                     </div>
                 </div>
                 <div class="faq-wrap">
@@ -177,7 +160,7 @@
                             similar to the current marketplace. Upon
                             an offer, or bid...
                         </span>
-                        <a href="#" class="read-more">READ MORE &#62;</a>
+                        <a href="javascript:void(0)" [routerLink]="['/faqs']" class="read-more">READ MORE &#62;</a>
                     </div>
                 </div>
             </div>
@@ -219,15 +202,15 @@
             <div class="card-item">
                 <ul>
                     <li>
-                        <a href="#" class="item-1">
+                        <a href="javascript:void(0)" class="item-1">
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="item-2">
+                        <a href="javascript:void(0)" class="item-2">
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="item-3">
+                        <a href="javascript:void(0)" class="item-3">
                         </a>
                     </li>
                 </ul>
@@ -255,21 +238,21 @@
 </div>
 
 <!-- nft form -->
-<div class="nft-form-wrap">
+<div class="nft-form-wrap" id="nftForm">
     <div class="container">
         <div class="form-wrapper">
             <h3 class="title">
                 Zyfty NFTs are<br />
                 happening now.
             </h3>
-            <form>
+            <form #formDirective="ngForm" [formGroup]="emailForm">
                 <h3 class="form-title">
                     To enquire about creating, buying or selling an NFT,
                     please provide some information.
                 </h3>
                 <div class="checkbox-wrap">
                     <div class="checkbox-item">
-                        <input type="checkbox" />
+                        <input type="checkbox" formControlName="nftForHome" />
                         <label>
                             <span>
                                 I would like Zyfty to
@@ -280,7 +263,7 @@
                         </label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" />
+                        <input type="checkbox" formControlName="homeAsNft" />
                         <label>
                             <span>
                                 I am interested
@@ -292,13 +275,25 @@
                 </div>
                 <div class="form-element">
                     <label>Name:</label>
-                    <input type="text" />
+                    <input type="text" formControlName="name" required />
+                    <div *ngIf="submitted && emailForm?.get('name')?.hasError('required')" class="text-danger">Name is
+                        required
+                    </div>
+                    <div class="text-danger" *ngIf="emailForm?.get('name')?.hasError('pattern')">
+                        Enter valid name
+                    </div>
                 </div>
                 <div class="form-element">
                     <label>Email:</label>
-                    <input type="text" />
+                    <input type="text" formControlName="email" required />
+                    <div *ngIf="submitted && emailForm?.get('email')?.hasError('required')" class="text-danger">Email is
+                        required
+                    </div>
+                    <div class="text-danger" *ngIf="emailForm?.get('email')?.hasError('pattern')">
+                        Enter valid email
+                    </div>
                 </div>
-                <button>SUBMIT</button>
+                <button (click)="saveForm()">SUBMIT</button>
             </form>
         </div>
     </div>
