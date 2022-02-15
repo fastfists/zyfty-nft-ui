@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   saveForm() {
     this.submitted = true;
     if (this.emailForm.valid) {
+      
       window.scroll(0, 0);
       this.submitted = false;
       this.emailForm.reset();
