@@ -10,8 +10,13 @@ $(document).ready(function(){
     $('.menu-toggle').on('click', function (e) {
         $('.site-nav').toggleClass("active");
         $(this).toggleClass("active");
-
     });
+
+    $('.list-items').on('click', function (e) {
+        $('.site-nav').toggleClass("active");
+        $('.menu-toggle').toggleClass("active");
+    });
+
     $(".request-btn").click(function (e) {
         $(".form-popup").show();
         e.stopPropagation();
@@ -20,8 +25,12 @@ $(document).ready(function(){
         e.stopPropagation();
     });
 
-    $(document).click(function () {
+    $(document).click(function (event) {
         $(".form-popup").hide();
+        if(!$(event.target).closest(".primary-nav").length) {
+            $('.site-nav').removeClass("active");
+            $('.menu-toggle').removeClass("active");
+        }
     });
    
 });
