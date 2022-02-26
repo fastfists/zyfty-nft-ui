@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HomeService } from './home.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-home',
@@ -15,7 +18,9 @@ export class HomeComponent implements OnInit {
   submitted: boolean = false;
   emailForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,
+    private homeService : HomeService,
+    private toastr : ToastrService) {}
 
   ngOnInit(): void {
     this.emailForm = this.formBuilder.group({
@@ -27,15 +32,22 @@ export class HomeComponent implements OnInit {
         '',
         Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
       ),
-      nftForHome: new FormControl(),
-      homeAsNft: new FormControl(),
+      hasPermission: new FormControl(),
+      isInterested: new FormControl(),
     });
   }
 
   saveForm() {
     this.submitted = true;
     if (this.emailForm.valid) {
-      
+      this.homeService.saveNft(this.emailForm.value).subscribe(
+        (data: any) => {
+          this.toastr.success('Zyfty NFTs request has been submited sucessfully!');
+        },
+        () => {
+          this.toastr.error('Something went wrong please try after sometime!');
+        }
+      );
       window.scroll(0, 0);
       this.submitted = false;
       this.emailForm.reset();

@@ -12,6 +12,9 @@ import { AboutComponent } from './views/about/about.component';
 import { HeaderComponent } from './views/common/header/header.component';
 import { FooterComponent } from './views/common/footer/footer.component';
 import { CominsoonComponent } from './views/common/cominsoon/cominsoon.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { CominsoonComponent } from './views/common/cominsoon/cominsoon.component
     FooterComponent,
     CominsoonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule,ToastrModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
 })
