@@ -16,7 +16,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeComponent implements OnInit {
   submitted: boolean = false;
+  reqSubmitted: boolean = false;
   emailForm!: FormGroup;
+  requestFormModel!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
     private homeService : HomeService,
@@ -35,6 +37,17 @@ export class HomeComponent implements OnInit {
       hasPermission: new FormControl(),
       isInterested: new FormControl(),
     });
+
+    this.requestFormModel = this.formBuilder.group({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[A-Za-z ]+'),
+      ]),
+      email: new FormControl(
+        '',
+        Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+      )
+    });
   }
 
   saveForm() {
@@ -51,6 +64,22 @@ export class HomeComponent implements OnInit {
       window.scroll(0, 0);
       this.submitted = false;
       this.emailForm.reset();
+    }
+
+  }
+
+  onRequestSubmit() {
+    this.reqSubmitted = true;
+    if (this.requestFormModel.valid) {
+      this.homeService.saveWhp(this.requestFormModel.value).subscribe(
+        (data: any) => {
+          this.toastr.success('White paper request has been submitted successfully!');
+        },
+        () => {
+          this.toastr.error('Something went wrong please try after sometime!');
+        }
+      );
+      this.reqSubmitted = false;
     }
   }
 }

@@ -14,4 +14,11 @@ export class HomeService {
       formData
     );
    }
+
+  saveWhp(formData: any) {
+    return this.http.post(
+      environment.apiUrl + 'whitepaperRequest/save',
+      formData
+    );
+  }
 }

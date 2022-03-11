@@ -58,9 +58,46 @@
                 </p>
             </div>
         </div>
-        <div class="btn-wrap">
-            <a href="mailto:info@zyfty.io?subject=Whitepaper Request" target="_blank"><button class="request-btn">REQUEST WHITEPAPER</button></a>
+      <div class="btn-wrap">
+        <button class="request-btn">REQUEST WHITEPAPER</button>
+        <div class="form-popup">
+          <h2 class="form-title">
+            To receive a copy of the Zyfty whitepaper please provide your name and
+            email.
+          </h2>
+          <form [formGroup]="requestFormModel" (ngSubmit)="onRequestSubmit()">
+            <div class="form-element">
+              <label>Name:</label>
+              <input type="text" formControlName="name" />
+              <div *ngIf="reqSubmitted && requestFormModel.get('name')?.hasError('required')"
+                   class="text-danger">
+                Name is required
+              </div>
+              <div class="text-danger"
+                   *ngIf="requestFormModel?.get('name')?.hasError('pattern')">
+                Enter valid name
+              </div>
+            </div>
+            <div class="form-element">
+              <label>Email:</label>
+              <input type="text" formControlName="email" required/>
+              <div
+                *ngIf="reqSubmitted && requestFormModel?.get('email')?.hasError('required')"
+                class="text-danger"
+              >
+                Email is required
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="requestFormModel?.get('email')?.hasError('pattern')"
+              >
+                Enter valid email
+              </div>
+            </div>
+            <button type="submit">SUBMIT</button>
+          </form>
         </div>
+      </div>
     </div>
 </div>
 
@@ -112,7 +149,7 @@
                     <div class="ans">
                         <span class="text1">A</span>
                         <span class="text2">
-                          An NFT owner can elect to redeem their 
+                          An NFT owner can elect to redeem their
                           NFT at any point with Zyfty.  This will
                           cause the NFT to be destroyed.  See
                           white paper and for details.
@@ -124,8 +161,8 @@
                     <div class="ques">
                         <span class="text1">Q</span>
                         <span class="text2">
-                          Can I look at the NFT home 
-                          before I enter into the 
+                          Can I look at the NFT home
+                          before I enter into the
                           purchase process (before I bid)?
 
                         </span>
