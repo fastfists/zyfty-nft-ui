@@ -59,8 +59,8 @@
             </div>
         </div>
       <div class="btn-wrap">
-        <button class="request-btn">REQUEST WHITEPAPER</button>
-        <div class="form-popup">
+        <button class="request-btn" (click)="requestWhitePaperModal($event)">REQUEST WHITEPAPER</button>
+        <div class="form-popup"  (click) = "stopPropagation($event)">
           <h2 class="form-title">
             To receive a copy of the Zyfty whitepaper please provide your name and
             email.

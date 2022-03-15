@@ -19,24 +19,44 @@
                     SOLUTION
                 </h2>
                 <div class="btn-wrap">
-                    <a href="mailto:info@zyfty.io?subject=Whitepaper Request" target="_blank"><button class="request-btn">REQUEST WHITEPAPER</button></a>
-                    <div class="form-popup">
-                        <h2 class="form-title">
-                            To receive a copy of the Zyfty whitepaper
-                            please provide your name and email.
-                        </h2>
-                        <form>
-                            <div class="form-element">
-                                <label>Name:</label>
-                                <input type="text" />
-                            </div>
-                            <div class="form-element">
-                                <label>Email:</label>
-                                <input type="text" />
-                            </div>
-                            <button>SUBMIT</button>
-                        </form>
-                    </div>
+                  <button class="request-btn" (click)="requestWhitePaperModal($event)">REQUEST WHITEPAPER</button>
+                  <div class="form-popup"  (click) = "stopPropagation($event)">
+                    <h2 class="form-title">
+                      To receive a copy of the Zyfty whitepaper please provide your name and
+                      email.
+                    </h2>
+                    <form [formGroup]="requestFormModel" (ngSubmit)="onRequestSubmit()">
+                      <div class="form-element">
+                        <label>Name:</label>
+                        <input type="text" formControlName="name" />
+                        <div *ngIf="reqSubmitted && requestFormModel.get('name')?.hasError('required')"
+                             class="text-danger">
+                          Name is required
+                        </div>
+                        <div class="text-danger"
+                             *ngIf="requestFormModel?.get('name')?.hasError('pattern')">
+                          Enter valid name
+                        </div>
+                      </div>
+                      <div class="form-element">
+                        <label>Email:</label>
+                        <input type="text" formControlName="email" required/>
+                        <div
+                          *ngIf="reqSubmitted && requestFormModel?.get('email')?.hasError('required')"
+                          class="text-danger"
+                        >
+                          Email is required
+                        </div>
+                        <div
+                          class="text-danger"
+                          *ngIf="requestFormModel?.get('email')?.hasError('pattern')"
+                        >
+                          Enter valid email
+                        </div>
+                      </div>
+                      <button type="submit">SUBMIT</button>
+                    </form>
+                  </div>
                 </div>
             </div>
             <div class="sol-col">
@@ -52,8 +72,8 @@
                 <div class="sol-wrap">
                     <h3 class="content-title">Process</h3>
                     <p>
-                        Zyfty acquires residential properties and then creates NFTs representing long term leases of up to 99 years. These NFTs 
-                        may be held by the NFT owner, sold on Zyfty or any compatible NFT marketplace, or transferred via a direct person to person transaction. 
+                        Zyfty acquires residential properties and then creates NFTs representing long term leases of up to 99 years. These NFTs
+                        may be held by the NFT owner, sold on Zyfty or any compatible NFT marketplace, or transferred via a direct person to person transaction.
                     </p>
                 </div>
                 <div class="sol-wrap">

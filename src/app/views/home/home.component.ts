@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 import {
   FormBuilder,
   FormControl,
@@ -79,7 +80,18 @@ export class HomeComponent implements OnInit {
           this.toastr.error('Something went wrong please try after sometime!');
         }
       );
+      window.scroll(0, 0);
       this.reqSubmitted = false;
+      this.requestFormModel.reset();
     }
+  }
+
+  requestWhitePaperModal(event: any) {
+    $(".form-popup").show();
+    event.stopPropagation();
+  }
+
+  stopPropagation(event: any) {
+    event.stopPropagation();
   }
 }
