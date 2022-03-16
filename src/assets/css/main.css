@@ -433,7 +433,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   padding: 80px 0;
 }
 .nft-sol-wrap .right-section {
-  background-color: #323a30;
+  background-color: #210420;
   width: 65%;
   position: absolute;
   right: 0;
@@ -619,7 +619,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   margin-bottom: 25px;
 }
 .nft-benefits .content {
-  background-color: rgba(50, 58, 48, 0.7);
+  background-color:rgba(33, 4, 32, 0.7);
   padding: 40px 105px 20px 40px;
 }
 @media screen and (max-width: 767px) {
@@ -680,7 +680,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   margin-bottom: 25px;
 }
 .nft-foundation .content {
-  background-color: rgba(50, 58, 48, 0.7);
+  background-color:rgba(33, 4, 32, 0.7);
   padding: 40px 40px 20px 105px;
 }
 @media screen and (max-width: 767px) {
@@ -930,7 +930,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
 }
 
 .nft-faqs {
-  background-color: #323a30;
+  background-color: #210420;
   padding: 100px 50px;
 }
 @media screen and (max-width: 767px) {
@@ -1072,7 +1072,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
 
 /*_Color Variables_*/
 .nft-founder-wrap {
-  background-color: #000000;
+  background-color: #210420;
   padding-top: 250px;
   padding-bottom: 60px;
 }
@@ -1364,7 +1364,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
 
 /*_Color Variables_*/
 .nft-faqs-wrap {
-  background-color: #323a30;
+  background-color: #210420;
   padding-top: 250px;
   padding-bottom: 60px;
 }
