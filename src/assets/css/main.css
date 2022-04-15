@@ -44,7 +44,7 @@ ul li {
 a {
   color: inherit;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 a:hover {
   color: inherit;
@@ -84,17 +84,17 @@ button {
 }
 @media screen and (min-width: 1600px) and (max-width: 1920px) {
   .container {
-    max-width: 1500px;
+    max-width: 1500px !important;
   }
 }
 @media screen and (min-width: 1921px) and (max-width: 3840px) {
   .container {
-    max-width: 2000px;
+    max-width: 2000px !important;
   }
 }
 @media screen and (max-width: 767px) {
   .container {
-    max-width: 100%;
+    max-width: 100% !important;
   }
 }
 
@@ -221,7 +221,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
 /*_Color Variables_*/
 .site-header {
   position: fixed;
-  z-index: 9999;
+  z-index: 9;
   top: 0;
   width: 100%;
   left: 0;
@@ -238,6 +238,9 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   background-repeat: no-repeat;
   position: relative;
   flex-basis: 13%;
+  margin: 0;
+  line-height: normal;
+  font-weight: normal;
 }
 @media screen and (max-width: 767px) {
   .site-header .logo {
@@ -392,6 +395,41 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   height: 150px;
   margin: auto 0 30px auto;
 }
+
+.site-footer .social-content ul {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: left !important;
+}
+.site-footer .social-content ul li { margin-bottom: 0; }
+.site-footer .social-content ul a {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin: 15px 15px 0;
+  position: relative;
+}
+.site-footer .social-content ul a:before {
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.site-footer .social-content ul a.item-1:before {
+  background-image: url(../images/social-1.svg);
+}
+.site-footer .social-content ul a.item-2:before {
+  background-image: url(../images/discord.svg);
+}
+.site-footer .social-content ul a.item-3:before {
+  background-image: url(../images/twitter.svg);
+}
+
 @media screen and (max-width: 767px) {
   .site-footer .logo-wrap {
     margin: auto 0 30px 0;
@@ -714,117 +752,6 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   .nft-foundation .content {
     padding: 30px;
   }
-}
-
-.social-content {
-  background-color: #19322f;
-  padding: 100px 0 50px;
-}
-@media screen and (max-width: 767px) {
-  .social-content {
-    padding: 60px 0;
-  }
-}
-.social-content .card-list {
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -moz-align-items: flex-end;
-  -ms-align-items: flex-end;
-  align-items: flex-end;
-}
-@media screen and (max-width: 767px) {
-  .social-content .card-list {
-    flex-wrap: wrap;
-    -webkit-flex-direction: column-reverse;
-    -moz-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-.social-content .card-item {
-  flex-basis: 50%;
-}
-@media screen and (max-width: 767px) {
-  .social-content .card-item {
-    flex-basis: 100%;
-  }
-}
-.social-content ul {
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
-.social-content ul a {
-  display: inline-block;
-  height: 100px;
-  width: 100px;
-  margin-right: 40px;
-}
-.social-content ul a:before {
-  content: "";
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  height: 100px;
-  width: 100px;
-  position: absolute;
-}
-@media screen and (max-width: 767px) {
-  .social-content ul a {
-    height: 65px;
-    width: 65px;
-  }
-  .social-content ul a:before {
-    width: 65px;
-    height: 65px;
-  }
-}
-.social-content ul a.item-1 {
-  margin-right: 95px;
-}
-.social-content ul a.item-1:before {
-  background-image: url(../images/social-1.svg);
-  height: 155px;
-  width: 155px;
-  background-position: top;
-}
-@media screen and (max-width: 767px) {
-  .social-content ul a.item-1:before {
-    height: 120px;
-    width: 120px;
-  }
-}
-.social-content ul a.item-2:before {
-  background-image: url(../images/discord.svg);
-}
-.social-content ul a.item-3:before {
-  background-image: url(../images/twitter.svg);
-}
-@media screen and (max-width: 767px) {
-  .social-content ul a.item-3 {
-    margin-right: 0;
-  }
-}
-.social-content .card-title {
-  font-size: 46px;
-  font-weight: 500;
-  color: #ffffff;
-  text-transform: uppercase;
-  text-align: right;
-  margin-bottom: 45px;
-  letter-spacing: 1px;
-  line-height: 62px;
-}
-.social-content .description p {
-  font-size: 18px;
-  font-weight: 300;
-  color: #ffffff;
-  margin-bottom: 30px;
-  text-align: right;
 }
 
 .nft-form-wrap {
