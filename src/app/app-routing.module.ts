@@ -7,6 +7,7 @@ import { SolutionComponent } from './views/solution/solution.component';
 import { AboutComponent } from './views/about/about.component';
 import { CominsoonComponent } from './views/common/cominsoon/cominsoon.component';
 import {MarketplaceComponent} from "./views/marketplace/marketplace.component";
+import {DetailsComponent} from "./views/marketplace/details/details.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,8 +15,20 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'founders', component: FoundersComponent },
   { path: 'solution', component: SolutionComponent },
-  { path: 'marketplace', component: MarketplaceComponent },
   { path: 'coming-soon', component: CominsoonComponent },
+  {
+    path: 'marketplace',
+    children: [
+      {
+        path: '',
+        component: MarketplaceComponent,
+      },
+      {
+        path: 'details/:id',
+        component: DetailsComponent,
+      }
+    ],
+  }
 ];
 
 @NgModule({

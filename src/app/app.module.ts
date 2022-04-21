@@ -20,6 +20,8 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { MarketplaceComponent } from './views/marketplace/marketplace.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LightboxModule } from 'ngx-lightbox';
+import { DetailsComponent } from './views/marketplace/details/details.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     CominsoonComponent,
-    MarketplaceComponent
+    MarketplaceComponent,
+    DetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, ToastrModule.forRoot(), NgbModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
