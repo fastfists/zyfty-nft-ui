@@ -4,7 +4,7 @@
         <h2>nft marketplace</h2>
     </div>
     <div class="nft-mp-items">
-         <div class="mp-item" *ngFor="let mpItem of mpItmes" (click)="fnDetails(mpItem)">
+         <div class="mp-item" *ngFor="let mpItem of mpItmes" (click)="fnDetails(mpItem.id)">
            <div class="item-figure">
              <img src="{{ mpItem.img }}" alt="" width="100%">
            </div>

@@ -43,13 +43,13 @@
       </div>
       <div class="media-body">
         <div class="end-date">
-          <i class="fa fa-clock"></i> sale ends july 3, 2022 at 7:12pm PST
+          <i class="fa fa-clock"></i> sale ends {{moment(nftData.saleEndsDate).format('LLL')}}
         </div>
         <div class="more-detail">
           <ul>
-            <li>Auction Date: TDB</li>
-            <li>Minimum Offer: TDB</li>
-            <li>Currency: USDC</li>
+            <li>Auction Date: {{moment(nftData.auctionDate).format('LLL')}}</li>
+            <li>Minimum Offer: {{nftData.minimumOffer}}</li>
+            <li>Currency: {{nftData.currency}}</li>
           </ul>
         </div>
         <div class="action-block">
@@ -60,33 +60,34 @@
     </div>
 
     <div class="nft-mp-item-detail">
-      <div class="title">1917 Felpar St., Unit 5, San Diego, CA 92109</div>
+      <div class="title">{{nftData.address}},{{nftData.city}},{{nftData.state}} {{nftData.zip}}</div>
       <div class="sub-detail">
-        <span>condo</span>
-        <span>3 beds</span>
-        <span>2.5 baths</span>
-        <span>1624 Sq Ft</span>
+        <span>{{nftData.propertyType}}</span>
+        <span>{{nftData.bedRooms}} bedrooms</span>
+        <span>{{nftData.bathRooms}} bathrooms</span>
+        <span>{{nftData.livingArea}} Sq Ft</span>
         <a href="#">see all Details</a>
       </div>
       <div class="all-details-list">
         <ul>
-          <li>Living Area <span>1,624 Sq.Ft</span></li>
-          <li>Lot Size <span>7,793 Sq.Ft</span></li>
-          <li>Total Rooms <span>--</span></li>
-          <li>Bedrooms <span>3</span></li>
-          <li>Bathrooms <span>2.5</span></li>
-          <li>Stories <span>--</span></li>
-          <li>Year Built <span>2015</span></li>
-          <li>Property Type <span>condo</span></li>
+          <li>Living Area: <span>{{nftData.livingArea}} Sq Ft  </span></li>
+          <li>Lot Size: <span>  {{nftData.lotSize}} Sq Ft</span></li>
+          <li>Total Rooms:  <span>  {{nftData.totalRooms}}</span></li>
+          <li>Bedrooms:  <span> {{nftData.bedRooms}}</span></li>
+          <li>Bathrooms:  <span>  {{nftData.bathRooms}} </span></li>
+          <li>Stories:  <span>  {{nftData.stories}}</span></li>
+          <li>Year Built:  <span> {{nftData.yearBuilt}}</span></li>
+
+          <li>Property Type:  <span>{{nftData.propertyType}}</span></li>
         </ul>
         <ul>
-          <li>Zoning <span>R-1:SINGLE FAM_RES</span></li>
-          <li>HOA Name <span>--</span></li>
-          <li>HOA Fee <span>--</span></li>
-          <li>HOA Inculdes <span>--</span></li>
-          <li>Tax Year <span>2021</span></li>
-          <li>Tax Amount <span>$10,432</span></li>
-          <li>Property in Flood Zone <span>No</span></li>
+          <li>Zoning: <span> {{nftData.zoning}} </span></li>
+          <li>HOA Name: <span> {{nftData.hoaName}} </span></li>
+          <li>HOA Fee: <span> {{nftData.hoaFee}}</span></li>
+          <li>HOA Inculdes: <span> {{nftData.hoaInculdes}}</span></li>
+          <li>Tax Year:  <span>{{nftData.taxYear}} </span></li>
+          <li>Tax Amount: <span> $ {{nftData.taxAmount}}</span></li>
+          <li>Property in Flood Zone:  <span>{{nftData.propertyInFloodZone}} </span></li>
         </ul>
       </div>
     </div>

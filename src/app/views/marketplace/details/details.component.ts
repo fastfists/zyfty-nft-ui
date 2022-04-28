@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Lightbox} from "ngx-lightbox";
-
+import { DetailsService } from './details.service';
+import * as moment from 'moment';
+interface nft {
+  auctionDate: String
+}
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -10,7 +14,13 @@ export class DetailsComponent implements OnInit {
 
   public _albums: Array<any> = [];
 
-  constructor(private _lightbox: Lightbox) {
+  nftData: any = {}
+  moment= moment
+
+  constructor(
+    private _lightbox: Lightbox, 
+    private _detailsService: DetailsService
+    ) {
 
     for (let i = 1; i <= 4; i++) {
       const src = 'assets/images/marketplace/nft-mp-' + i + '.png';
@@ -23,6 +33,22 @@ export class DetailsComponent implements OnInit {
       this._albums.push(_albums);
     }
     console.log("this._albums:::", this._albums);
+  }
+
+  ngOnInit(): void {
+    this.getNftData(1)
+  }
+
+  getNftData(id: any) {
+    this._detailsService.nftData(id).subscribe(
+      (data) => {
+        console.log('NFT Success :: ', data)
+        this.nftData = data
+      },
+      (err) => {
+        console.log('NFT Success', err)
+      }
+    );
   }
 
   open(index: number): void {
@@ -62,9 +88,6 @@ export class DetailsComponent implements OnInit {
 
   beforeChange(e :  any) {
     console.log('beforeChange');
-  }
-
-  ngOnInit(): void {
   }
 
 }

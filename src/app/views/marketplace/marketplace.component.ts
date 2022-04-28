@@ -16,13 +16,13 @@ export class MarketplaceComponent implements OnInit {
   }
 
   mpItmes = [
-    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109" },
-    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109" },
-    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109" },
+    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109", id: 1},
+    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109", id: 2},
+    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109", id: 3},
   ];
 
   fnDetails(fnDetails : any){
-    this.router.navigate(['/marketplace/details/'+ '12'],
+    this.router.navigate(['/marketplace/details/'+ fnDetails],
       {});
   }
 
