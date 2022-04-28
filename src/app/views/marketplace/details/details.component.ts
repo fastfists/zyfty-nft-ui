@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Lightbox} from "ngx-lightbox";
+import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+
 import { DetailsService } from './details.service';
 import * as moment from 'moment';
 interface nft {
@@ -12,16 +14,19 @@ interface nft {
 })
 export class DetailsComponent implements OnInit {
 
+  modalOptions:NgbModalOptions;
   public _albums: Array<any> = [];
 
   nftData: any = {}
   moment= moment
+  constructor(private _lightbox: Lightbox,
+              private _detailsService: DetailsService,
+              private modalService: NgbModal) {
 
-  constructor(
-    private _lightbox: Lightbox, 
-    private _detailsService: DetailsService
-    ) {
-
+    this.modalOptions = {
+      backdrop:'static',
+      backdropClass:'customBackdrop'
+    };
     for (let i = 1; i <= 4; i++) {
       const src = 'assets/images/marketplace/nft-mp-' + i + '.png';
       const thumb = 'assets/images/marketplace/nft-mp-' + i + '-thumb.png';
@@ -33,6 +38,12 @@ export class DetailsComponent implements OnInit {
       this._albums.push(_albums);
     }
     console.log("this._albums:::", this._albums);
+  }
+
+  openModel(modelData: any) {
+    const modalRef = this.modalService.open(modelData);
+    // modalRef.componentInstance.my_modal_title = 'I your title';
+    // modalRef.componentInstance.my_modal_content = 'I am your content';
   }
 
   ngOnInit(): void {
@@ -51,7 +62,7 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-  open(index: number): void {
+    openImage(index: number): void {
     // open lightbox
     this._lightbox.open(this._albums, index, {
       wrapAround: true,
