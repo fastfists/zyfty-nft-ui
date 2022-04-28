@@ -14,7 +14,8 @@
   letter-spacing: 8px;
 }
 .nft-mp-items {
-  display: flex;
+  overflow-y: scroll;
+  height: 70vh;
 }
 .nft-marketplace .nft-mp-items .mp-item {
   padding: 10px 15px;

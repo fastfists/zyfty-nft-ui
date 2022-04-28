@@ -37,6 +37,7 @@ const routes: Routes = [
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
     }),
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule],
 })

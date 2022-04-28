@@ -4,6 +4,10 @@
   padding-bottom: 80px;
   color: #fff
 }
+.nft-mp-item-model ul, .modal-content ul {
+  margin: 0;
+  padding: 0;
+}
 .title-area h2 {
   text-align: center;
   font-size: 46px;
@@ -40,8 +44,8 @@
   margin-top: 40px;
 }
 .end-date {
-  padding: 15px 25px;
   text-align: left;
+  padding: 10px 25px;
   border-bottom: 1px solid rgba(255,255,255,.2);
 }
 .more-detail {
@@ -54,7 +58,6 @@
 }
 .more-detail ul li {
   padding: 5px 0;
-  color: rgba(255,255,255,.82);
 }
 .action-block {
   padding: 0 20px 30px;
@@ -95,6 +98,9 @@
   font-weight: bold;
   margin-bottom: 5px;
 }
+.nft-mp-item-detail .sub-detail a{
+  color: #2082e2;
+}
 .nft-mp-item-detail .sub-detail span {
   font-size: 14px;
   margin-right: 20px;
@@ -102,7 +108,7 @@
   text-transform: capitalize;
   position: relative;
 }
-.nft-mp-item-detail .sub-detail span:after {
+.nft-mp-item-detail .sub-detail > span:after {
   position: absolute;
   content: "";
   height: 100%;
@@ -140,4 +146,45 @@
   border-bottom: 0;
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+.modal-header {
+  background-color: #19322f;
+  margin: 5px;
+}
+::ng-deep .modal-header .modal-title {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  justify-content: space-between;
+}
+::ng-deep .modal-content {
+  padding: 10px;
+}
+.media-body {
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  margin-top: 40px;
+}
+::ng-deep .modal-content .close {
+  font-size: 26px;
+  line-height: 0;
+  display: block;
+  color: #fff;
+  background-color: transparent;
+}
+.info-icon {
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-image: url(../../../../assets/images/icon-info.svg);
+  mask-image: url(../../../../assets/images/icon-info.svg);
+  background-color: #2082e2;
+  color: #2082e2;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
 }
