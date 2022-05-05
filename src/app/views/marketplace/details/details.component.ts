@@ -4,9 +4,8 @@ import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-b
 
 import { DetailsService } from './details.service';
 import * as moment from 'moment';
-interface nft {
-  auctionDate: String
-}
+import {ActivatedRoute} from "@angular/router";
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -19,9 +18,17 @@ export class DetailsComponent implements OnInit {
 
   nftData: any = {}
   moment= moment
+
+  // get numImages(): number {
+  //   return this.element.nativeElement.querySelectorAll('img').length;
+  // }
+
+  numArr = Array.from(Array(100), (_,x) => x);
+
   constructor(private _lightbox: Lightbox,
               private _detailsService: DetailsService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private activeRoute: ActivatedRoute) {
 
     this.modalOptions = {
       backdrop:'static',
@@ -40,14 +47,14 @@ export class DetailsComponent implements OnInit {
     console.log("this._albums:::", this._albums);
   }
 
-  openModel(modelData: any) {
-    const modalRef = this.modalService.open(modelData);
-    // modalRef.componentInstance.my_modal_title = 'I your title';
-    // modalRef.componentInstance.my_modal_content = 'I am your content';
-  }
 
   ngOnInit(): void {
-    this.getNftData(1)
+    this.activeRoute.paramMap.subscribe((params) => {
+      let id = params.get('id');
+      this.getNftData(id);
+    });
+
+
   }
 
   getNftData(id: any) {
@@ -75,13 +82,6 @@ export class DetailsComponent implements OnInit {
   close(): void {
     this._lightbox.close();
   }
-
-  slides = [
-    {img: "assets/images/marketplace/nft-mp-1.png"},
-    {img: "assets/images/marketplace/nft-mp-2.png"},
-    {img: "assets/images/marketplace/nft-mp-3.png"},
-    {img: "assets/images/marketplace/nft-mp-4.png"}
-  ];
 
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 1, "infinite": false, "autoplay": false , "autoplaySpeed": 10, speed: 2000};
 

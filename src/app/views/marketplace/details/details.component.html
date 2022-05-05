@@ -16,13 +16,13 @@
       >
         <div
           ngxSlickItem
-          *ngFor="let slide of slides; let i = index"
+          *ngFor="let slide of nftData.imageList; let i = index"
           class="slide"
         >
           <div class="slide-body">
             <div class="slide-item">
               <img
-                src="{{ slide.img }}"
+                src="{{ slide.nftImage }}"
                 alt=""
                 width="100%"
                 (click)="openImage(i)"
@@ -64,7 +64,7 @@
         <span>{{nftData.bedRooms}} bedrooms</span>
         <span>{{nftData.bathRooms}} bathrooms</span>
         <span>{{nftData.livingArea}} Sq Ft</span>
-        <a href="#">see all Details</a>
+        <a href="">see all Details</a>
       </div>
       <div class="all-details-list">
         <ul>

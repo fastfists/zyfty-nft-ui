@@ -11,6 +11,6 @@ export class DetailsService {
   constructor(private http: HttpClient) { }
 
   nftData(id: any) {
-    return this.http.get(environment.apiUrl + `/nft/${id}` );
+    return this.http.get(environment.apiUrl + `nft/${id}` );
   }
 }

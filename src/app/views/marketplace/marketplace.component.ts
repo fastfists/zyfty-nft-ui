@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { LightboxConfig, Lightbox } from 'ngx-lightbox';
 import {Router} from "@angular/router";
+import {marketplaceService} from "./marketplace.service";
 
 @Component({
   selector: 'app-marketplace',
@@ -9,21 +9,28 @@ import {Router} from "@angular/router";
 })
 export class MarketplaceComponent implements OnInit {
 
-  constructor(private router: Router) {
+  mpItmes: any = {}
+
+  constructor(private router: Router, private marketplaceService: marketplaceService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getMpItem(1)
   }
 
-  mpItmes = [
-    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109", id: 1},
-    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109", id: 2},
-    {img: "assets/images/marketplace/nft-mp-1.png", name:"San Diego, 92109", id: 3},
-  ];
+  getMpItem(id: any) {
+    this.marketplaceService.mpItem().subscribe(
+      (data) => {
+        this.mpItmes = data
+      },
+      (err) => {
+        console.log('Success', err)
+      }
+    );
+  }
 
   fnDetails(fnDetails : any){
     this.router.navigate(['/marketplace/details/'+ fnDetails],
       {});
   }
-
 }
