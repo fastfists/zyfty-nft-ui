@@ -198,14 +198,9 @@
   background-color: transparent;
 }
 .info-icon {
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  background: url(../../../../assets/images/icon-info.svg) 100% 100%;
-  background-size: cover;
-  filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
-  width: 20px;
-  height: 20px;
   display: inline-block;
-  vertical-align: middle;
-  margin-left: 4px;
+  padding-left: 5px;
+}
+.info-icon img {
+  filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
 }
