@@ -200,10 +200,9 @@
 .info-icon {
   -webkit-mask-size: cover;
   mask-size: cover;
-  -webkit-mask-image: url(../../../../assets/images/icon-info.svg);
-  mask-image: url(../../../../assets/images/icon-info.svg);
-  background-color: #2082e2;
-  color: #2082e2;
+  background: url(../../../../assets/images/icon-info.svg) 100% 100%;
+  background-size: cover;
+  filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
   width: 20px;
   height: 20px;
   display: inline-block;
