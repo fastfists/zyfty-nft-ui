@@ -1,5 +1,8 @@
 <div class="nft-mp-item-model">
   <div class="container">
+    <div class="back-button-wrapper">
+      <a href="javascript:void(0)" [routerLink]="['/marketplace']">back to marketplace</a>
+    </div>
     <div class="title-area">
       <h2>nft marketplace</h2>
     </div>
@@ -64,8 +67,28 @@
         <span>{{nftData.bedRooms}} bedrooms</span>
         <span>{{nftData.bathRooms}} bathrooms</span>
         <span>{{nftData.livingArea}} Sq Ft</span>
-        <a href="">see all Details</a>
+
+        <a (click)="openPurchaseManifest(modalData)">Purchase Manifest<span class="info-icon"></span></a>
+
+
       </div>
+      <ng-template #modalData let-modal>
+        <div class="modal-header">
+          <div class="modal-title">Sale Ends July 4, 2022 at 7:00 pm PDT</div>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Address: <span>{{nftData.address}}</span></li>
+            <li>Title report <span>{{nftData.address}}</span></li>
+            <li>Home inspection report <span>{{nftData.address}}</span></li>
+            <li>CCR’s/community documents <span>{{nftData.address}}</span></li>
+            <li>HOA documents <span>{{nftData.address}}</span></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+        </div>
+      </ng-template>
       <div class="all-details-list">
         <ul>
           <li>Living Area: <span>{{nftData.livingArea}} Sq Ft  </span></li>

@@ -4,6 +4,25 @@
   padding-bottom: 80px;
   color: #fff
 }
+.nft-mp-item-model .back-button-wrapper {
+  margin-bottom: 30px;
+  text-align: right;
+}
+.nft-mp-item-model .back-button-wrapper a {
+  text-transform: capitalize;
+  font-weight: 600;
+  padding: 8px 20px;
+  display: inline-block;
+  color: #fff;
+  border: 1px solid #545454;
+  text-align: center;
+  transition: .25s;
+  box-shadow: 0 4px 7px 2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+}
+.nft-mp-item-model .back-button-wrapper a:hover {
+  box-shadow: 0 0.5em 0.5em -0.1em #fff3;
+  transform: translateY(-0.25em);
+}
 .nft-mp-item-model ul, .modal-content ul {
   margin: 0;
   padding: 0;
@@ -152,6 +171,9 @@
   background-color: #19322f;
   margin: 5px;
 }
+.modal-body ul { padding-left: 0; }
+.modal-body ul li { font-weight: 500; padding: 4px 0;}
+.modal-body ul li span { font-weight: normal; font-size: 14px;}
 ::ng-deep .modal-header .modal-title {
   margin-bottom: 0;
   display: flex;

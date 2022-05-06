@@ -6,10 +6,10 @@
     <div class="nft-mp-items row">
          <div class="mp-item col-sm-4" *ngFor="let mpItem of mpItmes" (click)="fnDetails(mpItem.id)">
            <div class="item-figure">
-             <img src="{{ mpItem != null && mpItem.imageList[0] != null ? mpItem.imageList[0].nftImage : 'assets/images/marketplace/nft-mp-1.png'}}" alt="" width="100%">
+             <img src="{{ mpItem.nftImage != null ? mpItem.nftImage : 'assets/images/marketplace/nft-mp-1.png'}}" alt="" width="100%">
            </div>
            <div class="item-info">
-             <h3>{{ mpItem.address }}, {{ mpItem.state }}, {{ mpItem.zip }}</h3>
+             <h3>{{ mpItem.city }}, {{ mpItem.state }}, {{ mpItem.zip }}</h3>
            </div>
          </div>
     </div>

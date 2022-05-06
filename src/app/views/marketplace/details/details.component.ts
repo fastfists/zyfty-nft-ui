@@ -19,12 +19,6 @@ export class DetailsComponent implements OnInit {
   nftData: any = {}
   moment= moment
 
-  // get numImages(): number {
-  //   return this.element.nativeElement.querySelectorAll('img').length;
-  // }
-
-  numArr = Array.from(Array(100), (_,x) => x);
-
   constructor(private _lightbox: Lightbox,
               private _detailsService: DetailsService,
               private modalService: NgbModal,
@@ -47,6 +41,9 @@ export class DetailsComponent implements OnInit {
     console.log("this._albums:::", this._albums);
   }
 
+  openPurchaseManifest(modalData: any) {
+    this.modalService.open(modalData);
+  }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe((params) => {
