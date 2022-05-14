@@ -1,0 +1,39 @@
+<div class="signin-page">
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="form-title-area">
+        <h3>Login</h3>
+        <p>Purchase an NFT, sell and NFT, inquire about NFT opportunities and to make other purchases.</p>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email is invalid</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <div class="form-group text-end">
+          <a routerLink="../forgot-password" class="fpwd-link">Forgot Password?</a>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+          </button>
+        </div>
+        <div class="form-group">
+          <span>Don't Have An Account? <a href="javascript:void(0)" [routerLink]="['/registration']" class="res-link">Register Now</a></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

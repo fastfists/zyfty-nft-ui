@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'zyfty';
+  headerFooter: any;
+
+  constructor(
+    private router: Router,
+  ) { }
+
+  ngOnInit() {
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.headerFooter = (event.url !== '/signin') && (event.url !== '/registration')
+        }
+      });
+  }
 }
