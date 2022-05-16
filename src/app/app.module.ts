@@ -24,6 +24,7 @@ import { LightboxModule } from 'ngx-lightbox';
 import { DetailsComponent } from './views/marketplace/details/details.component';
 import { SigninComponent } from './views/signin/signin.component';
 import { RegistrationComponent } from './views/registration/registration.component';
+import { PersonalInformationComponent } from './views/registration/personal-information/personal-information.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RegistrationComponent } from './views/registration/registration.compone
     MarketplaceComponent,
     DetailsComponent,
     SigninComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PersonalInformationComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

@@ -10,6 +10,7 @@ import { MarketplaceComponent } from "./views/marketplace/marketplace.component"
 import { DetailsComponent } from "./views/marketplace/details/details.component";
 import { SigninComponent } from "./views/signin/signin.component";
 import { RegistrationComponent } from "./views/registration/registration.component";
+import { PersonalInformationComponent } from './views/registration/personal-information/personal-information.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
     ],
   },
   { path: 'signin', component: SigninComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'personal-information', component: PersonalInformationComponent }
 ];
 
 @NgModule({
@@ -45,4 +47,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

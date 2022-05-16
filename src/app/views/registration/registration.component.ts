@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router, ActivatedRoute} from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
 import { registrationService } from "./registration.service";
 import { first } from 'rxjs/operators';
 
@@ -16,10 +16,10 @@ export class RegistrationComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
-              private registrationService: registrationService,
-              private route: ActivatedRoute,
-              private router: Router
-  ) {}
+    private registrationService: registrationService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -41,15 +41,17 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     this.loading = true;
+    // this.router.navigate(['/signin'])
+    this.router.navigate(['/personal-information'])
     // @ts-ignore
-    this.registrationService.registration(this.registrationForm.value)
-      .subscribe(
-        res => {
-          return res;
-        },
-        (err) => {
-          console.log('Success', err)
-        });
+    // this.registrationService.registration(this.registrationForm.value)
+    //   .subscribe(
+    //     res => {
+    //       return res;
+    //     },
+    //     (err) => {
+    //       console.log('Success', err)
+    //     });
   }
 
 }
