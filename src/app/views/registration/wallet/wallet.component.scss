@@ -1,15 +1,5 @@
-.submit-btn {
-    background-color: #19322f;
-}
-
-.invalid-feedback {
-    height: 50px;
-    margin-top: 1px;
-    position: absolute;
-}
-
 .card-outline-secondary {
-    max-width: 893px;
+    max-width: 950px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.97);
     box-shadow: 0px 1px 15px rgb(0 0 0 / 20%);
@@ -17,15 +7,16 @@
     border: 0;
 }
 
+.btn-primary {
+    background-color: #19322f;
+    border-color: #19322f;
+}
+
 .hadding {
     font-size: 30px;
     line-height: 1;
     margin-bottom: 10px;
     font-weight: 700;
-}
-
-.btn-link {
-    padding-left: 0px;
 }
 
 .form-wrapper .form-title {

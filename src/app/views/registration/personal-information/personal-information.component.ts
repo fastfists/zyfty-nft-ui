@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PersonalInformationService } from '../personal-information.service';
+import { PersonalInformationService } from './personal-information.service';
 
 @Component({
   selector: 'app-personal-information',

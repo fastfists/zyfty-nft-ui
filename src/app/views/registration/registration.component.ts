@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
   loading = false;
   submitted = false;
+  isSignup = false;
 
   constructor(private formBuilder: FormBuilder,
     private registrationService: registrationService,
@@ -41,17 +42,17 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     this.loading = true;
-    // this.router.navigate(['/signin'])
-    this.router.navigate(['/personal-information'])
+    this.router.navigate(['/signin'])
+    // this.router.navigate(['/registration-details'])
     // @ts-ignore
-    // this.registrationService.registration(this.registrationForm.value)
-    //   .subscribe(
-    //     res => {
-    //       return res;
-    //     },
-    //     (err) => {
-    //       console.log('Success', err)
-    //     });
+    this.registrationService.registration(this.registrationForm.value)
+      .subscribe(
+        res => {
+          return res;
+        },
+        (err) => {
+          console.log('Success', err)
+        });
   }
 
 }

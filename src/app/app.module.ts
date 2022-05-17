@@ -25,6 +25,9 @@ import { DetailsComponent } from './views/marketplace/details/details.component'
 import { SigninComponent } from './views/signin/signin.component';
 import { RegistrationComponent } from './views/registration/registration.component';
 import { PersonalInformationComponent } from './views/registration/personal-information/personal-information.component';
+import { WalletComponent } from './views/registration/wallet/wallet.component';
+import { ContainerComponent } from './views/registration/container/container.component';
+import { KycComponent } from './views/registration/kyc/kyc.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,14 @@ import { PersonalInformationComponent } from './views/registration/personal-info
     DetailsComponent,
     SigninComponent,
     RegistrationComponent,
-    PersonalInformationComponent
+    PersonalInformationComponent,
+    WalletComponent,
+    ContainerComponent,
+    KycComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute } from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
 import { first } from 'rxjs/operators';
 
@@ -16,13 +16,12 @@ export class SigninComponent implements OnInit {
   submitted = false;
   returnUrl!: string;
   private error: any;
+  isLogin = false;
 
   constructor(private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
-              private signinService: signinService,
-              private router: Router)
-
-  {
+    private route: ActivatedRoute,
+    private signinService: signinService,
+    private router: Router) {
     // redirect to home if already logged in
     if (this.signinService.userValue) {
       this.router.navigate(['/']);
@@ -42,18 +41,26 @@ export class SigninComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  verify() {
+    this.isLogin = true;
+    this.loading = false;
+  }
 
   onSubmit() {
     this.submitted = true;
 
+    this.loading = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
-    this.signinService.login(this.f.email.value, this.f.password.value)
+    // this.signinService.login(this.f.email.value, this.f.password.value)
+    if (this.isLogin) {
+      this.router.navigate(['/registration-details'])
+      this.loading = false;
+    }
   }
 
 

@@ -18,7 +18,7 @@ export class AppComponent {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          this.headerFooter = (event.url !== '/signin') && (event.url !== '/registration')
+          this.headerFooter = (event.url !== '/signin') && (event.url !== '/registration') && (event.url !== '/registration-details')
         }
       });
   }
