@@ -26,12 +26,12 @@
                             storage.</p>
                     </div>
                 </div>
-
+                <div class="vertical-line"></div>
                 <div class="col-12 col-lg-6 right-section">
                     <form [formGroup]="personalInfo" (ngSubmit)="onSubmit()" class="registration-form">
                         <div class="form-group">
                             <div class="row mt-4">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 input-container">
                                     <label>First Name</label>
                                     <input class="form-control" type="text" formControlName="firstName"
                                         [ngClass]="{ 'is-invalid': submitted && personalInfo.get('firstName')?.errors }">
@@ -44,7 +44,7 @@
                                         Enter only character
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 input-container input-box">
                                     <label>Last Name</label>
                                     <input class="form-control" type="text" formControlName="lastName"
                                         [ngClass]="{ 'is-invalid': submitted && personalInfo.get('lastName')?.errors }">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-8 mt-4">
+                        <div class="form-group col-sm-8 input-container mt-2">
                             <label>Email Address</label>
                             <input class="form-control" type="text" formControlName="email"
                                 [ngClass]="{ 'is-invalid': submitted && personalInfo.get('email')?.errors }">
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6 mt-4">
+                        <div class="form-group col-sm-6 input-container mt-2">
                             <label>Country / Region</label>
                             <select class="form-select custom-select classic" formControlName="country"
                                 [ngClass]="{ 'is-invalid': submitted && personalInfo.get('country')?.errors }">
@@ -86,7 +86,7 @@
                                 class="invalid-feedback">Country is required
                             </div>
                         </div>
-                        <div class="form-group mt-4">
+                        <div class="form-group mt-2 input-container">
                             <label>Street Address</label>
                             <input class="form-control" type="text" formControlName="street"
                                 [ngClass]="{ 'is-invalid': submitted && personalInfo.get('street')?.errors }">
@@ -95,8 +95,8 @@
                                 Street Address is required
                             </div>
                         </div>
-                        <div class="form-group row mt-4">
-                            <div class="col-md-4">
+                        <div class="form-group row mt-2">
+                            <div class="col-md-4 input-container">
                                 <label>City</label>
                                 <input class="form-control" type="text" formControlName="city"
                                     [ngClass]="{ 'is-invalid': submitted && personalInfo.get('city')?.errors }">
@@ -108,7 +108,7 @@
                                     Enter only character
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 input-container input-box">
                                 <label>State / Province</label>
                                 <select class="form-select classic" formControlName="state"
                                     [ngClass]="{ 'is-invalid': submitted && personalInfo.get('state')?.errors }">
@@ -120,7 +120,7 @@
                                     class="invalid-feedback">State is required
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 input-container input-box">
                                 <label>ZIP / Postel</label>
                                 <input class="form-control" type="text" formControlName="zip"
                                     [ngClass]="{ 'is-invalid': submitted && personalInfo.get('zip')?.errors }">
@@ -134,8 +134,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="row mt-4">
-                                <div class="col-sm-6">
+                            <div class="row mt-2">
+                                <div class="col-sm-6 input-container">
                                     <label>SSN (US Only) why?</label>
                                     <input class="form-control" type="text" formControlName="ssn"
                                         [ngClass]="{ 'is-invalid': submitted && personalInfo.get('ssn')?.errors }">
@@ -143,7 +143,7 @@
                                         class="invalid-feedback">SSN is required
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 input-container input-box">
                                     <label>Date of Birth</label>
                                     <input class="form-control" type="date" formControlName="dob"
                                         [ngClass]="{ 'is-invalid': submitted && personalInfo.get('dob')?.errors }">
@@ -155,7 +155,7 @@
                         </div>
                         <div class="form-group mt-4">
                             <div class="d-flex justify-content-end col-md-12">
-                                <button class="btn btn-dark btn-lg btn-block" type="submit">Submit</button>
+                                <button class="btn btn-dark btn-lg btn-block me-2" type="submit">Submit</button>
                             </div>
                         </div>
                     </form>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PersonalInformationService } from './personal-information.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-personal-information',
@@ -9,10 +9,12 @@ import { PersonalInformationService } from './personal-information.service';
 })
 export class PersonalInformationComponent implements OnInit {
 
+  @Output() newItemEvent = new EventEmitter();
+
   personalInfo!: FormGroup;
   submitted: Boolean = false;
 
-  constructor(private personalInformationService: PersonalInformationService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
@@ -38,7 +40,13 @@ export class PersonalInformationComponent implements OnInit {
       //   .subscribe(res => {
       //     return res;
       //   })
+      this.addNewItem('binal')
     }
+  }
+
+  addNewItem(value: string) {
+
+    this.newItemEvent.emit(value);
   }
 
 }
