@@ -1,5 +1,5 @@
 .card-body {
-    max-width: 1340px;
+    max-width: 1055px;
     margin: 40px auto;
     padding: 10px 10px 40px;
     border: 0;
@@ -22,16 +22,16 @@
 }
 
 .main-row {
-    padding: 0px 30px;
+    padding: 50px 50px;
 }
 
 .font {
     font-size: 18px;
     font-weight: 300;
-    // background-color: rgba(33, 4, 32, 0.7);
+    margin-top: 20px;
 }
 
-input {
+.registration-form .form-group input {
     background-color: transparent;
     border-radius: 0px;
     border: 2px solid #ffffff;
@@ -55,6 +55,7 @@ input {
 .btn-container {
     display: flex;
     align-items: center;
+    margin-top: 15px;
 }
 
 

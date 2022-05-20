@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import {environment} from "../../../environments/environment";
+import { environment } from "../../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class signinService {
@@ -16,6 +16,12 @@ export class signinService {
 
   login(email: any, password: any) {
     console.log(email, password);
+  }
+
+  verifyUser(token: any) {
+    return this.http.put(
+      environment.apiUrl + 'user/verify', token
+    );
   }
 
 }

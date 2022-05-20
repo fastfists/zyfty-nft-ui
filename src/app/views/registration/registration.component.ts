@@ -45,14 +45,14 @@ export class RegistrationComponent implements OnInit {
     this.router.navigate(['/signin'])
     // this.router.navigate(['/registration-details'])
     // @ts-ignore
-    //   this.registrationService.registration(this.registrationForm.value)
-    //     .subscribe(
-    //       res => {
-    //         return res;
-    //       },
-    //       (err) => {
-    //         console.log('Success', err)
-    //       });
+    this.registrationService.registration(this.registrationForm.value)
+      .subscribe(
+        res => {
+          return res;
+        },
+        (err) => {
+          console.log('Success', err)
+        });
   }
 
 }

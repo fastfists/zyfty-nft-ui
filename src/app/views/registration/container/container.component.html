@@ -22,32 +22,6 @@
             </label>
         </div>
     </div>
-    <!-- <div #stepper1 id="stepper1" class="bs-stepper">
-        <div class="d-flex justify-content-center">
-            <div class="bs-stepper-header">
-                <div class="step" data-bs-target="#test-l-1">
-                    <button class="step-trigger" (click)="onSelect('personalInfo')">
-                        <span class=" bs-stepper-circle">1</span>
-                        <span class="bs-stepper-label"> Personal Information</span>
-                    </button>
-                </div>
-                <div class="line"></div>
-                <div class="step" data-bs-target="#test-l-2" style="display:inline-block;">
-                    <button class="step-trigger" (click)="onSelect('wallet')">
-                        <span class=" bs-stepper-circle">2</span>
-                        <span class="bs-stepper-label">Wallet</span>
-                    </button>
-                </div>
-                <div class="line"></div>
-                <div class="step" data-bs-target="#test-l-3">
-                    <button class="step-trigger" (click)="onSelect('kyc')">
-                        <span class=" bs-stepper-circle">3</span>
-                        <span class="bs-stepper-label">KYC/AML</span>
-                    </button>
-                </div>
-            </div>
-        </div> -->
-
     <div id="test-l-1" class="row" *ngIf="registrationType === 'personalInfo'">
         <app-personal-information (newItemEvent)="addItem($event)"></app-personal-information>
     </div>
@@ -57,5 +31,4 @@
     <div id="test-l-3" class="row" *ngIf="registrationType === 'kyc'">
         <app-kyc></app-kyc>
     </div>
-    <!-- </div> -->
 </div>

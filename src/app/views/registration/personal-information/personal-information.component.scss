@@ -43,11 +43,9 @@
 .font {
     font-size: 18px;
     font-weight: 300;
-    // background-color: rgba(33, 4, 32, 0.7);
 }
 
 .right-section {
-    // background-color: #210420;
     padding-left: 35px;
     padding-right: 35px;
 }
@@ -64,7 +62,7 @@
 }
 
 .registration-form .form-group label {
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .registration-form .form-group select {
@@ -79,20 +77,11 @@
     background-color: #19322f;
     padding: 12px 30px 15px;
     font-weight: 500;
-    text-transform: capitalize;
     font-size: 16px;
     line-height: 1;
-    box-shadow: none;
-    margin-bottom: 10px;
     border-radius: 0px;
     border: 2px solid #ffffff;
-    color: #ffffff;
 }
-
-::-webkit-calendar-picker-indicator {
-    filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(335%) hue-rotate(35deg) brightness(113%) contrast(100%);
-}
-
 
 select.classic {
     background-image:
@@ -111,7 +100,7 @@ select.classic {
 
 .vertical-line {
     border-left: 1px solid white;
-    height: 528px;
+    height: 395px;
     position: absolute;
     left: 50%;
     width: 1px;

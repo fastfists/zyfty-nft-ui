@@ -33,6 +33,7 @@ const routes: Routes = [
     ],
   },
   { path: 'signin', component: SigninComponent },
+  { path: 'user/verify', component: SigninComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'registration-details', component: ContainerComponent },
 ];

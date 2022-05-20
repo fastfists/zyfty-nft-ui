@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
 import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signin',
@@ -21,7 +22,10 @@ export class SigninComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private signinService: signinService,
-    private router: Router) {
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private toastr: ToastrService
+  ) {
     // redirect to home if already logged in
     if (this.signinService.userValue) {
       this.router.navigate(['/']);
@@ -29,6 +33,24 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.activeRoute.queryParams.subscribe((params) => {
+      console.log('paramMap ::', params.token)
+      if (params.token) {
+        console.log('Verify email ::')
+        this.verify();
+
+        // this.signinService.verifyUser(params.token).subscribe(
+        //   (data: any) => {
+        //     this.toastr.success('Zyfty NFTs request has been submited sucessfully!');
+        //   },
+        //   () => {
+        //     this.toastr.error('Something went wrong please try after sometime!');
+        //   }
+        // );
+      } else {
+        console.log('normal signin ::')
+      }
+    });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -56,7 +78,7 @@ export class SigninComponent implements OnInit {
       return;
     }
 
-    // this.signinService.login(this.f.email.value, this.f.password.value)
+    this.signinService.login(this.f.email.value, this.f.password.value)
     if (this.isLogin) {
       this.router.navigate(['/registration-details'])
       this.loading = false;
