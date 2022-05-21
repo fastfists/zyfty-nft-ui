@@ -14,6 +14,8 @@ export class ContainerComponent implements OnInit {
 
 
   registrationType = 'personalInfo';
+  walletFlag = true;
+  kycFlag = true;
 
   constructor() { }
 
@@ -25,7 +27,15 @@ export class ContainerComponent implements OnInit {
   }
 
   addItem(data: any) {
-    console.log('additem::', data)
+    if (data === 'wallet') {
+      this.walletFlag = false;
+      this.registrationType = data;
+    } else if (data === 'kyc') {
+      this.kycFlag = false;
+      this.registrationType = data;
+    } else {
+      this.registrationType = data;
+    }
   }
 
 }

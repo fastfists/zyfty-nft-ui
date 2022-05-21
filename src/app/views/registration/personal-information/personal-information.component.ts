@@ -19,16 +19,8 @@ export class PersonalInformationComponent implements OnInit {
   ngOnInit(): void {
 
     this.personalInfo = new FormGroup({
-      firstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      lastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       country: new FormControl(null, [Validators.required]),
-      street: new FormControl(null, [Validators.required]),
-      city: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      state: new FormControl(null, [Validators.required]),
-      zip: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
-      ssn: new FormControl(null, [Validators.required]),
-      dob: new FormControl(null, [Validators.required])
     });
   }
 
@@ -40,7 +32,7 @@ export class PersonalInformationComponent implements OnInit {
       //   .subscribe(res => {
       //     return res;
       //   })
-      this.addNewItem('binal')
+      this.addNewItem('wallet')
     }
   }
 

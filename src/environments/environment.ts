@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080/'
+  apiUrl: 'http://zyfty-env.eba-matcny2g.us-east-1.elasticbeanstalk.com/'
 };
 
 /*

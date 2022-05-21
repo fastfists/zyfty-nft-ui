@@ -27,8 +27,12 @@
   line-height: 1;
   margin-bottom: 10px;
   font-weight: 700;
-  background-color: rgba(33, 4, 32, 0.7);
   padding: 50px;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: underline !important;
 }
 
 .invalid-feedback {
