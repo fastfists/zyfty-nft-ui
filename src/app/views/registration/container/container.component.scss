@@ -13,3 +13,23 @@ label {
     margin-top: 15px;
     margin-right: 11px;
 }
+
+@media screen and (max-width:768px) {
+    .responsive {
+        margin-left: 31px;
+        margin-right: 25px;
+    }
+
+    .form-check-input {
+        margin-left: 30px;
+    }
+
+    label {
+        text-align: center;
+    }
+
+    .wallet-label {
+        margin-left: 18px;
+    }
+
+}

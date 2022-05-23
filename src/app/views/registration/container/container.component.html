@@ -1,5 +1,5 @@
 <div class="container-fluid banner-wrap pt-4 main-div">
-    <div class="col d-flex justify-content-center">
+    <div class="col d-flex justify-content-center responsive">
         <div class="form-check-inline">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
                 (click)="onSelect('personalInfo')" [(ngModel)]="registrationType" value="personalInfo" checked>
@@ -11,7 +11,7 @@
         <div class="form-check-inline">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
                 (click)="onSelect('wallet')" [(ngModel)]="registrationType" value="wallet" [disabled]="walletFlag">
-            <label class="form-check-label">
+            <label class="form-check-label wallet-label">
                 Wallet
             </label>
         </div>
