@@ -7,29 +7,13 @@
       <h2>nft marketplace</h2>
     </div>
     <div class="nft-mp-item-gallery">
-      <ngx-slick-carousel
-        class="carousel"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-        (init)="slickInit($event)"
-        (breakpoint)="breakpoint($event)"
-        (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)"
-        autoplay="true"
-      >
-        <div
-          ngxSlickItem
-          *ngFor="let slide of nftData.imageList; let i = index"
-          class="slide"
-        >
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)" autoplay="true">
+        <div ngxSlickItem *ngFor="let slide of nftData.imageList; let i = index" class="slide">
           <div class="slide-body">
             <div class="slide-item">
-              <img
-                src="{{ slide.nftImage }}"
-                alt=""
-                width="100%"
-                (click)="openImage(i)"
-              />
+              <img src="{{ slide.nftImage }}" alt="" width="100%" (click)="openImage(i)" />
             </div>
           </div>
         </div>
@@ -54,7 +38,7 @@
           </ul>
         </div>
         <div class="action-block">
-          <a class="buy-btn">Buy Now</a>
+          <a class="buy-btn" (click)="isLogin(nftData.id)">Buy Now</a>
           <a class="offer-btn">make offer</a>
         </div>
       </div>
@@ -68,8 +52,8 @@
         <span>{{nftData.bathRooms}} bathrooms</span>
         <span>{{nftData.livingArea}} Sq Ft</span>
 
-        <a (click)="openPurchaseManifest(modalData)">Purchase Manifest<span class="info-icon">
-          <img height="20" width="20" src="../../../../assets/images/icon-info.svg"></span></a>
+        <a (click)="openPurchaseManifest(modalData, nftData.id)">Purchase Manifest<span class="info-icon">
+            <img height="20" width="20" src="../../../../assets/images/icon-info.svg"></span></a>
 
 
       </div>
@@ -92,24 +76,24 @@
       </ng-template>
       <div class="all-details-list">
         <ul>
-          <li>Living Area: <span>{{nftData.livingArea}} Sq Ft  </span></li>
-          <li>Lot Size: <span>  {{nftData.lotSize}} Sq Ft</span></li>
-          <li>Total Rooms:  <span>  {{nftData.totalRooms}}</span></li>
-          <li>Bedrooms:  <span> {{nftData.bedRooms}}</span></li>
-          <li>Bathrooms:  <span>  {{nftData.bathRooms}} </span></li>
-          <li>Stories:  <span>  {{nftData.stories}}</span></li>
-          <li>Year Built:  <span> {{nftData.yearBuilt}}</span></li>
+          <li>Living Area: <span>{{nftData.livingArea}} Sq Ft </span></li>
+          <li>Lot Size: <span> {{nftData.lotSize}} Sq Ft</span></li>
+          <li>Total Rooms: <span> {{nftData.totalRooms}}</span></li>
+          <li>Bedrooms: <span> {{nftData.bedRooms}}</span></li>
+          <li>Bathrooms: <span> {{nftData.bathRooms}} </span></li>
+          <li>Stories: <span> {{nftData.stories}}</span></li>
+          <li>Year Built: <span> {{nftData.yearBuilt}}</span></li>
 
-          <li>Property Type:  <span>{{nftData.propertyType}}</span></li>
+          <li>Property Type: <span>{{nftData.propertyType}}</span></li>
         </ul>
         <ul>
           <li>Zoning: <span> {{nftData.zoning}} </span></li>
           <li>HOA Name: <span> {{nftData.hoaName}} </span></li>
           <li>HOA Fee: <span> {{nftData.hoaFee}}</span></li>
           <li>HOA Inculdes: <span> {{nftData.hoaInculdes}}</span></li>
-          <li>Tax Year:  <span>{{nftData.taxYear}} </span></li>
+          <li>Tax Year: <span>{{nftData.taxYear}} </span></li>
           <li>Tax Amount: <span> $ {{nftData.taxAmount}}</span></li>
-          <li>Property in Flood Zone:  <span>{{nftData.propertyInFloodZone}} </span></li>
+          <li>Property in Flood Zone: <span>{{nftData.propertyInFloodZone}} </span></li>
         </ul>
       </div>
     </div>

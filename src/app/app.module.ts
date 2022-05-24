@@ -28,7 +28,8 @@ import { PersonalInformationComponent } from './views/registration/personal-info
 import { WalletComponent } from './views/registration/wallet/wallet.component';
 import { ContainerComponent } from './views/registration/container/container.component';
 import { KycComponent } from './views/registration/kyc/kyc.component';
-
+import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,9 @@ import { KycComponent } from './views/registration/kyc/kyc.component';
     PersonalInformationComponent,
     WalletComponent,
     ContainerComponent,
-    KycComponent
+    KycComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

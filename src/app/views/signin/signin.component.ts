@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
-import { first } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +16,6 @@ export class SigninComponent implements OnInit {
   submitted = false;
   returnUrl!: string;
   private error: any;
-  isLogin = false;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -34,19 +32,15 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.queryParams.subscribe((params) => {
-      console.log('paramMap ::', params.token)
       if (params.token) {
-        console.log('Verify email ::')
-        this.verify();
-
-        // this.signinService.verifyUser(params.token).subscribe(
-        //   (data: any) => {
-        //     this.toastr.success('Zyfty NFTs request has been submited sucessfully!');
-        //   },
-        //   () => {
-        //     this.toastr.error('Something went wrong please try after sometime!');
-        //   }
-        // );
+        this.signinService.verifyUser({ token: params.token }).subscribe(
+          (data: any) => {
+            this.toastr.success('Your email has been verified sucessfully!');
+          },
+          () => {
+            this.toastr.error('Something went wrong please try after sometime!');
+          }
+        );
       } else {
         console.log('normal signin ::')
       }
@@ -63,26 +57,32 @@ export class SigninComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  verify() {
-    this.isLogin = true;
-    this.loading = false;
-  }
-
   onSubmit() {
+    let buyNowUrl = localStorage.getItem('buyNowUrl')
     this.submitted = true;
 
-    this.loading = true;
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.signinService.login(this.f.email.value, this.f.password.value)
-    if (this.isLogin) {
-      this.router.navigate(['/registration-details'])
-      this.loading = false;
-    }
+    this.loading = true;
+    this.signinService.login(this.loginForm.value)
+      .subscribe(
+        (res) => {
+          localStorage.setItem('user', res.email)
+          if (buyNowUrl) {
+            this.router.navigate([buyNowUrl])
+          } else {
+            this.router.navigate(['/'])
+            // this.router.navigate(['/registration-details'])
+          }
+          this.loading = false;
+          this.toastr.success('Login sucessfully!');
+        },
+        (err) => {
+          localStorage.removeItem('user');
+          this.toastr.error('Something went wrong please try after sometime!');
+        });
   }
 
 

@@ -1,11 +1,6 @@
 .signin-page {
   padding-top: 60px;
   padding-bottom: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .form-wrapper {
@@ -64,8 +59,6 @@
 }
 
 .login-form button {
-  background-color: transparent;
-  border: 0;
   border-radius: 0;
   padding: 12px 30px 15px;
   font-weight: 500;

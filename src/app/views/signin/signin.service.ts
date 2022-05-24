@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
+import { Observable } from 'rxjs';
 
+interface login {
+  email: string,
+  id: string
+}
 @Injectable({ providedIn: 'root' })
 export class signinService {
   userValue: any;
@@ -14,8 +19,10 @@ export class signinService {
   private URL = this.env.apiUrl;
 
 
-  login(email: any, password: any) {
-    console.log(email, password);
+  login(data: any): Observable<login> {
+    return this.http.put<login>(
+      environment.apiUrl + 'user/signin', data
+    );
   }
 
   verifyUser(token: any) {

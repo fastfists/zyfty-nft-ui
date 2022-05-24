@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { registrationService } from "./registration.service";
 import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -18,8 +19,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private registrationService: registrationService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -30,28 +31,24 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  // convenience getter for easy access to form fields
-  private emitter: any;
   get f() { return this.registrationForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.registrationForm.invalid) {
       return;
     }
-    this.loading = true;
-    this.router.navigate(['/signin'])
-    // this.router.navigate(['/registration-details'])
-    // @ts-ignore
+
     this.registrationService.registration(this.registrationForm.value)
       .subscribe(
         res => {
-          return res;
+          this.loading = true;
+          this.router.navigate(['/signin'])
+          this.toastr.success('Register sucessfully!');
         },
         (err) => {
-          console.log('Success', err)
+          this.toastr.error(err.error);
         });
   }
 

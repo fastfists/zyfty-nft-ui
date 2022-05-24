@@ -16,7 +16,8 @@ export class registrationService {
 
 
   registration(data: any) {
-    return this.http.post(`${environment.apiUrl}user/register`, data)
+    return this.http.post(
+      `${environment.apiUrl}user/register`, data)
       .pipe(
         tap(() => console.log('registration'))
       )
