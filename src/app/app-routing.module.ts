@@ -13,6 +13,7 @@ import { RegistrationComponent } from "./views/registration/registration.compone
 import { ContainerComponent } from './views/registration/container/container.component';
 import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
+import { AuthGuard } from './auth-guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
       {
         path: '',
         component: MarketplaceComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'details/:id',
@@ -39,7 +41,7 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'user/verify', component: SigninComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'registration-details', component: ContainerComponent },
+  { path: 'registration-details', component: ContainerComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

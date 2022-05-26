@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/auth-guard/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -22,7 +23,9 @@ export class SigninComponent implements OnInit {
     private signinService: signinService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService,
+
   ) {
     // redirect to home if already logged in
     if (this.signinService.userValue) {
@@ -33,7 +36,7 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.activeRoute.queryParams.subscribe((params) => {
       if (params.token) {
-        this.signinService.verifyUser({ token: params.token }).subscribe(
+        this.authService.verifyUser({ token: params.token }).subscribe(
           (data: any) => {
             this.toastr.success('Your email has been verified sucessfully!');
           },
@@ -66,7 +69,7 @@ export class SigninComponent implements OnInit {
     }
 
     this.loading = true;
-    this.signinService.login(this.loginForm.value)
+    this.authService.login(this.loginForm.value)
       .subscribe(
         (res) => {
           localStorage.setItem('user', res.email)
