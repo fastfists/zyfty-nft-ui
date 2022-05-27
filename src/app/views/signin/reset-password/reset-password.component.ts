@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ResetPasswordService } from './reset-password.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,10 +15,17 @@ export class ResetPasswordComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private resetPasswordService: ResetPasswordService,
+    private router: Router,
+    private activeRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.activeRoute.queryParams.subscribe((params) => {
+      console.log('params token ::', params.token)
+      localStorage.setItem('resetToken', params.token)
+    })
     this.resetForm = this.formBuilder.group({
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
@@ -38,15 +47,16 @@ export class ResetPasswordComponent implements OnInit {
     this.loading = true;
 
     console.log(this.resetForm.value);
-    // this.signinService.login(this.loginForm.value)
-    //   .subscribe(
-    //     res => {
-    //       this.router.navigate(['/registration-details'])
-    //       this.loading = false;
-    //     },
-    //     (err) => {
-    //       console.log('Error', err)
-    //     });
+    this.resetPasswordService.resetPassword({ password: this.resetForm.controls['password'].value })
+      .subscribe(
+        res => {
+          this.router.navigate(['/signin'])
+          localStorage.removeItem('resetToken');
+          this.loading = false;
+        },
+        (err) => {
+          console.log('Error', err)
+        });
   }
 }
 

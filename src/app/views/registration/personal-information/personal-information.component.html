@@ -31,14 +31,14 @@
                     <form [formGroup]="personalInfo" (ngSubmit)="onSubmit()" class="registration-form">
                         <div class="form-group col-sm-12 input-container mt-2">
                             <label>Email Address</label>
-                            <input class="form-control" type="text" formControlName="email"
-                                [ngClass]="{ 'is-invalid': submitted && personalInfo.get('email')?.errors }">
-                            <div *ngIf="submitted && personalInfo.get('email')?.errors" class="invalid-feedback">
-                                <div *ngIf="submitted && personalInfo.get('email')?.hasError('required')">Email
+                            <input class="form-control" type="text" formControlName="userName"
+                                [ngClass]="{ 'is-invalid': submitted && personalInfo.get('userName')?.errors }">
+                            <div *ngIf="submitted && personalInfo.get('userName')?.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && personalInfo.get('userName')?.hasError('required')">Email
                                     is
                                     required
                                 </div>
-                                <div *ngIf="submitted && personalInfo.get('email')?.hasError('email')">Email is
+                                <div *ngIf="submitted && personalInfo.get('userName')?.hasError('email')">Email is
                                     invalid
                                 </div>
                             </div>

@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   { path: 'signin', component: SigninComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'user/reset-password', component: ResetPasswordComponent },
   { path: 'user/verify', component: SigninComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'registration-details', component: ContainerComponent, canActivate: [AuthGuard] },

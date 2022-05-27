@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ForgotPasswordService } from './forgot-password.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,12 +15,14 @@ export class ForgotPasswordComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private forgotPasswordService: ForgotPasswordService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.forgotForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+      userName: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -34,17 +38,17 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.forgotForm.invalid) {
       return;
     }
-    localStorage.setItem('user', this.f.email.value)
+    localStorage.setItem('user', this.f.userName.value)
 
-    // this.signinService.login(this.forgotForm.value)
-    //   .subscribe(
-    //     res => {
-    //       this.router.navigate(['/registration-details'])
-    //       this.loading = false;
-    //     },
-    //     (err) => {
-    //       console.log('Error', err)
-    //     });
+    this.forgotPasswordService.forgotPassword(this.forgotForm.value)
+      .subscribe(
+        res => {
+          this.router.navigate(['/signin'])
+          this.loading = false;
+        },
+        (err) => {
+          console.log('Error', err)
+        });
   }
 
 }

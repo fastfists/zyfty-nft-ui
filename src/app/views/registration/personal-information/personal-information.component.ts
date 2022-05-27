@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
+import { PersonalInformationService } from './personal-information.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -14,12 +15,14 @@ export class PersonalInformationComponent implements OnInit {
   personalInfo!: FormGroup;
   submitted: Boolean = false;
 
-  constructor() { }
+  constructor(
+    private personalInformationService: PersonalInformationService
+  ) { }
 
   ngOnInit(): void {
 
     this.personalInfo = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      userName: new FormControl(null, [Validators.required, Validators.email]),
       country: new FormControl(null, [Validators.required]),
     });
   }
@@ -28,10 +31,10 @@ export class PersonalInformationComponent implements OnInit {
     this.submitted = true;
     if (this.personalInfo.valid) {
       console.log('personalInfo ::', this.personalInfo.value)
-      // this.personalInformationService.registration(this.personalInfo.value)
-      //   .subscribe(res => {
-      //     return res;
-      //   })
+      this.personalInformationService.personalInfo(this.personalInfo.value)
+        .subscribe(res => {
+          return res;
+        })
       this.addNewItem('wallet')
     }
   }

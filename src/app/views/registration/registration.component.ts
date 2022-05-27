@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { registrationService } from "./registration.service";
 import { first } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
@@ -25,7 +25,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 

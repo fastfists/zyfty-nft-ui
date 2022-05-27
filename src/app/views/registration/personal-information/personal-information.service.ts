@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,10 +15,10 @@ export class PersonalInformationService {
   private env = environment;
   private URL = this.env.apiUrl;
 
-  registration() {
-    // return this.http.post(`${environment.apiUrl}registration`, {})
-    //   .pipe(
-    //     tap(() => console.log('registration'))
-    //   )
+  personalInfo(formData: any) {
+    return this.http.put(
+      environment.apiUrl + 'user/edituser',
+      formData
+    );
   }
 }

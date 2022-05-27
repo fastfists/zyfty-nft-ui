@@ -7,8 +7,9 @@ import { environment } from 'src/environments/environment';
 import { User } from './user';
 
 interface login {
-  email: string,
-  id: string
+  userName: string,
+  id: string,
+  token: string
 }
 
 @Injectable({
@@ -42,14 +43,16 @@ export class AuthService {
   login(data: any): Observable<login> {
     // this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
 
-    return this.http.put<login>(
-      environment.apiUrl + 'user/signin', data
+    return this.http.post<login>(
+      environment.apiUrl + 'authenticate', data
     )
       .pipe(
         map((user) => {
           this.userData = user;
           if (user) {
+            console.log('user :::', user.token)
             localStorage.setItem("currentUser", JSON.stringify(user));
+            localStorage.setItem("token", user.token);
             this.currentUserSubject.next(this.userData);
             let userData = localStorage.getItem("currentUser");
             console.log("userDAta :: ", userData);

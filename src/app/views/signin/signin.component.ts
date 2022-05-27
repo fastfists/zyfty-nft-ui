@@ -49,7 +49,7 @@ export class SigninComponent implements OnInit {
       }
     });
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
@@ -68,11 +68,11 @@ export class SigninComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    // this.loading = true;
     this.authService.login(this.loginForm.value)
       .subscribe(
         (res) => {
-          localStorage.setItem('user', res.email)
+          localStorage.setItem('user', res.userName)
           if (buyNowUrl) {
             this.router.navigate([buyNowUrl])
           } else {
