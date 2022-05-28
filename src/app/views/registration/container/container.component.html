@@ -24,13 +24,13 @@
             </label>
         </div>
     </div>
-    <div id="test-l-1" class="row" *ngIf="registrationType === 'personalInfo'">
+    <div class="row" *ngIf="registrationType === 'personalInfo'">
         <app-personal-information (newItemEvent)="addItem($event)"></app-personal-information>
     </div>
-    <div id="test-l-2" class="row" *ngIf="registrationType === 'wallet'">
+    <div class="row" *ngIf="registrationType === 'wallet'">
         <app-wallet (newWallet)="addItem($event)"></app-wallet>
     </div>
-    <div id="test-l-3" class="row" *ngIf="registrationType === 'kyc'">
+    <div class="row" *ngIf="registrationType === 'kyc'">
         <app-kyc></app-kyc>
     </div>
 </div>

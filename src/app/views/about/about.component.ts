@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AboutService } from './about.service';
 import { ToastrService } from 'ngx-toastr';
+import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-about',
@@ -19,8 +20,8 @@ export class AboutComponent implements OnInit {
   requestFormModel!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private aboutService : AboutService,
-    private toastr : ToastrService) {}
+    private aboutService: AboutService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.requestFormModel = this.formBuilder.group({
@@ -40,10 +41,10 @@ export class AboutComponent implements OnInit {
     if (this.requestFormModel.valid) {
       this.aboutService.saveWhp(this.requestFormModel.value).subscribe(
         (data: any) => {
-          this.toastr.success('White paper request has been submitted successfully!');
+          this.toastr.success(successMassage.whpSuccess);
         },
         () => {
-          this.toastr.error('Something went wrong please try after sometime!');
+          this.toastr.error(errorMessage.error);
         }
       );
       window.scroll(0, 0);

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { registrationService } from "./registration.service";
-import { first } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-registration',
@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
         res => {
           this.loading = true;
           this.router.navigate(['/signin'])
-          this.toastr.success('Register sucessfully!');
+          this.toastr.success(successMassage.verifyEmailSend);
         },
         (err) => {
           this.toastr.error(err.error);

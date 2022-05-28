@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { HomeService } from './home.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
   requestFormModel!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private homeService : HomeService,
-    private toastr : ToastrService) {}
+    private homeService: HomeService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.emailForm = this.formBuilder.group({
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
           this.toastr.success('Zyfty NFTs request has been submited sucessfully!');
         },
         () => {
-          this.toastr.error('Something went wrong please try after sometime!');
+          this.toastr.error(errorMessage.error);
         }
       );
       window.scroll(0, 0);
@@ -74,10 +74,10 @@ export class HomeComponent implements OnInit {
     if (this.requestFormModel.valid) {
       this.homeService.saveWhp(this.requestFormModel.value).subscribe(
         (data: any) => {
-          this.toastr.success('White paper request has been submitted successfully!');
+          this.toastr.success(successMassage.whpSuccess);
         },
         () => {
-          this.toastr.error('Something went wrong please try after sometime!');
+          this.toastr.error(errorMessage.error);
         }
       );
       window.scroll(0, 0);

@@ -44,13 +44,12 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-12 input-container mt-2">
-                            <label>Country / Region</label>
+                            <label>Country</label>
                             <select class="form-select custom-select classic" formControlName="country"
                                 [ngClass]="{ 'is-invalid': submitted && personalInfo.get('country')?.errors }">
-                                <option style="background: white; color: black;" value="AL">Alabama</option>
-                                <option style="background: white; color: black;" value="AK">Alaska</option>
-                                <option style="background: white; color: black;" value="AZ">Arizona</option>
-                                <option style="background: white; color: black;" value="AR">Arkansas</option>
+                                <option class="country-option" *ngFor="let country of countries" [value]="country.name">
+                                    {{country.name}}
+                                </option>
                             </select>
                             <div *ngIf="submitted && personalInfo.get('country')?.hasError('required')"
                                 class="invalid-feedback">Country is required

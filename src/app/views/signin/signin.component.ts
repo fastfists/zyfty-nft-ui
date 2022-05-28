@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth-guard/auth.service';
+import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-signin',
@@ -25,7 +26,6 @@ export class SigninComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private toastr: ToastrService,
     private authService: AuthService,
-
   ) {
     // redirect to home if already logged in
     if (this.signinService.userValue) {
@@ -38,10 +38,10 @@ export class SigninComponent implements OnInit {
       if (params.token) {
         this.authService.verifyUser({ token: params.token }).subscribe(
           (data: any) => {
-            this.toastr.success('Your email has been verified sucessfully!');
+            this.toastr.success(successMassage.mailVerified);
           },
           () => {
-            this.toastr.error('Something went wrong please try after sometime!');
+            this.toastr.error(errorMessage.verifyEmailError);
           }
         );
       } else {
@@ -80,11 +80,11 @@ export class SigninComponent implements OnInit {
             // this.router.navigate(['/registration-details'])
           }
           this.loading = false;
-          this.toastr.success('Login sucessfully!');
+          this.toastr.success(successMassage.loginSuccess);
         },
         (err) => {
           localStorage.removeItem('user');
-          this.toastr.error('Something went wrong please try after sometime!');
+          this.toastr.error(errorMessage.loginError);
         });
   }
 

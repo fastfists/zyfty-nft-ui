@@ -8,10 +8,11 @@ import {
 } from '@angular/forms';
 import { FaqsService } from './faqs.service';
 import { ToastrService } from 'ngx-toastr';
+import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-faqs',
-  templateUrl:'./faqs.component.html',
+  templateUrl: './faqs.component.html',
   styleUrls: ['./faqs.component.scss']
 })
 export class FaqsComponent implements OnInit {
@@ -19,8 +20,8 @@ export class FaqsComponent implements OnInit {
   requestFormModel!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private faqsService : FaqsService,
-    private toastr : ToastrService) {}
+    private faqsService: FaqsService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.requestFormModel = this.formBuilder.group({
@@ -39,10 +40,10 @@ export class FaqsComponent implements OnInit {
     if (this.requestFormModel.valid) {
       this.faqsService.saveWhp(this.requestFormModel.value).subscribe(
         (data: any) => {
-          this.toastr.success('White paper request has been submitted successfully!');
+          this.toastr.success(successMassage.whpSuccess);
         },
         () => {
-          this.toastr.error('Something went wrong please try after sometime!');
+          this.toastr.error(errorMessage.error);
         }
       );
       window.scroll(0, 0);

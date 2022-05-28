@@ -27,8 +27,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MarketplaceComponent,
-        canActivate: [AuthGuard]
+        component: MarketplaceComponent
       },
       {
         path: 'details/:id',
