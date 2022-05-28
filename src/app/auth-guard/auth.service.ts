@@ -56,7 +56,7 @@ export class AuthService {
             this.currentUserSubject.next(this.userData);
             let userData = localStorage.getItem("currentUser");
             console.log("userDAta :: ", userData);
-            this.router.navigateByUrl("/signin");
+            this.router.navigateByUrl("/user/signin");
           }
           return user
         })

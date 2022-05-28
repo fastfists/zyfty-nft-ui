@@ -23,7 +23,6 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe((params) => {
-      console.log('params token ::', params.token)
       localStorage.setItem('resetToken', params.token)
     })
     this.resetForm = this.formBuilder.group({
@@ -45,12 +44,12 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
+    let token = localStorage.getItem('resetToken')
 
-    console.log(this.resetForm.value);
-    this.resetPasswordService.resetPassword({ password: this.resetForm.controls['password'].value })
+    this.resetPasswordService.resetPassword({ password: this.resetForm.controls['password'].value, token: token })
       .subscribe(
         res => {
-          this.router.navigate(['/signin'])
+          this.router.navigate(['/user/signin'])
           localStorage.removeItem('resetToken');
           this.loading = false;
         },

@@ -13,7 +13,7 @@ export class ResetPasswordService {
 
   resetPassword(formData: any) {
     return this.http.put(
-      environment.apiUrl + 'user/forgot-password',
+      environment.apiUrl + 'user/new-password',
       formData
     );
   }

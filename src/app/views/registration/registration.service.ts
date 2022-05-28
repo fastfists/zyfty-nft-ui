@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
-import { tap } from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class registrationService {
@@ -17,10 +16,9 @@ export class registrationService {
 
   registration(data: any) {
     return this.http.post(
-      `${environment.apiUrl}user/register`, data)
-      .pipe(
-        tap(() => console.log('registration'))
-      )
+      environment.apiUrl + 'user/register',
+      data
+    );
   }
 
 }

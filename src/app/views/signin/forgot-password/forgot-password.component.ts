@@ -43,7 +43,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.forgotPasswordService.forgotPassword(this.forgotForm.value)
       .subscribe(
         res => {
-          this.router.navigate(['/signin'])
+          this.router.navigate(['/user/signin'])
           this.loading = false;
         },
         (err) => {

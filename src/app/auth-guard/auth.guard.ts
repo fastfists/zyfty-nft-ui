@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
     const currentUser = this.authService.currentUserValue;
 
     if (Object.keys(currentUser).length === 0 && currentUser.constructor === Object) {
-      this.router.navigate(['/signin']);
+      this.router.navigate(['/user/signin']);
       return false;
     }
     return true;

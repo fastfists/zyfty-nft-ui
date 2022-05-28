@@ -66,7 +66,7 @@ export class DetailsComponent implements OnInit {
       console.log('Already login::')
     } else {
       localStorage.setItem('buyNowUrl', '/marketplace/details/' + id)
-      this.router.navigate(['/signin'])
+      this.router.navigate(['/user/signin'])
     }
   }
 

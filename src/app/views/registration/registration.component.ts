@@ -44,7 +44,7 @@ export class RegistrationComponent implements OnInit {
       .subscribe(
         res => {
           this.loading = true;
-          this.router.navigate(['/signin'])
+          this.router.navigate(['/user/signin'])
           this.toastr.success(successMassage.verifyEmailSend);
         },
         (err) => {

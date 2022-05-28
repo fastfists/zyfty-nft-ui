@@ -35,12 +35,12 @@ const routes: Routes = [
       }
     ],
   },
-  { path: 'signin', component: SigninComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'user/signin', component: SigninComponent },
+  { path: 'user/forgot-password', component: ForgotPasswordComponent },
   { path: 'user/reset-password', component: ResetPasswordComponent },
   { path: 'user/verify', component: SigninComponent },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'registration-details', component: ContainerComponent, canActivate: [AuthGuard] },
+  { path: 'user/registration', component: RegistrationComponent },
+  { path: 'user/registration-details', component: ContainerComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

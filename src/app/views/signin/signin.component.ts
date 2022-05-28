@@ -77,7 +77,7 @@ export class SigninComponent implements OnInit {
             this.router.navigate([buyNowUrl])
           } else {
             this.router.navigate(['/'])
-            // this.router.navigate(['/registration-details'])
+            // this.router.navigate(['/user/registration-details'])
           }
           this.loading = false;
           this.toastr.success(successMassage.loginSuccess);
