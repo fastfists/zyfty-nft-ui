@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ForgotPasswordService } from './forgot-password.service';
+import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,7 +19,8 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private forgotPasswordService: ForgotPasswordService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -45,9 +48,10 @@ export class ForgotPasswordComponent implements OnInit {
         res => {
           this.router.navigate(['/user/signin'])
           this.loading = false;
+          this.toastr.success(successMassage.verifyEmailSend);
         },
         (err) => {
-          console.log('Error', err)
+          this.toastr.error(errorMessage.forgotPassword);
         });
   }
 
