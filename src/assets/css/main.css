@@ -229,6 +229,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   -moz-transition: 0.4s all ease-in-out;
   -ms-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;
+  background-color: #080404;
 }
 .site-header .logo {
   text-indent: -99999px;
@@ -272,7 +273,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   }
 }
 .site-header.nav-active {
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 .site-header.nav-active .header-menu {
   height: 80px;
@@ -752,6 +753,114 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   .nft-foundation .content {
     padding: 30px;
   }
+}
+
+.social-content {
+  background-color: #19322f;
+  padding: 100px 0 50px;
+}
+@media screen and (max-width: 767px) {
+  .social-content {
+    padding: 60px 0;
+  }
+}
+.social-content .card-list {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -moz-align-items: flex-end;
+  -ms-align-items: flex-end;
+  align-items: flex-end;
+}
+@media screen and (max-width: 767px) {
+  .social-content .card-list {
+    flex-wrap: wrap;
+    -webkit-flex-direction: column-reverse;
+    -moz-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+.social-content .card-item {
+  flex-basis: 50%;
+}
+@media screen and (max-width: 767px) {
+  .social-content .card-item {
+    flex-basis: 100%;
+  }
+}
+.social-content ul {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.social-content ul a {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  margin-right: 40px;
+}
+.social-content ul a:before {
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}
+@media screen and (max-width: 767px) {
+  .social-content ul a {
+    height: 65px;
+    width: 65px;
+  }
+  .social-content ul a:before {
+    width: 65px;
+    height: 65px;
+  }
+}
+.social-content ul a.item-1 {
+  margin-right: 95px;
+}
+.social-content ul a.item-1:before {
+  background-image: url(../images/social-1.svg);
+  height: 155px;
+  width: 155px;
+  background-position: top;
+}
+@media screen and (max-width: 767px) {
+  .social-content ul a.item-1:before {
+    height: 120px;
+    width: 120px;
+  }
+}
+.social-content ul a.item-2:before {
+  background-image: url(../images/twitter.svg);
+}
+@media screen and (max-width: 767px) {
+  .social-content ul a.item-3 {
+    margin-right: 0;
+  }
+}
+.social-content .card-title {
+  font-size: 46px;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: right;
+  margin-bottom: 45px;
+  letter-spacing: 1px;
+  line-height: 62px;
+}
+.social-content .description p {
+  font-size: 18px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-align: right;
 }
 
 .nft-form-wrap {

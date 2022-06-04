@@ -58,46 +58,6 @@
                 </p>
             </div>
         </div>
-      <div class="btn-wrap">
-        <button class="request-btn" (click)="requestWhitePaperModal($event)">REQUEST WHITEPAPER</button>
-        <div class="form-popup"  (click) = "stopPropagation($event)">
-          <h2 class="form-title">
-            To receive a copy of the Zyfty whitepaper please provide your name and
-            email.
-          </h2>
-          <form [formGroup]="requestFormModel" (ngSubmit)="onRequestSubmit()">
-            <div class="form-element">
-              <label>Name:</label>
-              <input type="text" formControlName="name" />
-              <div *ngIf="reqSubmitted && requestFormModel.get('name')?.hasError('required')"
-                   class="text-danger">
-                Name is required
-              </div>
-              <div class="text-danger"
-                   *ngIf="requestFormModel?.get('name')?.hasError('pattern')">
-                Enter valid name
-              </div>
-            </div>
-            <div class="form-element">
-              <label>Email:</label>
-              <input type="text" formControlName="email" required/>
-              <div
-                *ngIf="reqSubmitted && requestFormModel?.get('email')?.hasError('required')"
-                class="text-danger"
-              >
-                Email is required
-              </div>
-              <div
-                class="text-danger"
-                *ngIf="requestFormModel?.get('email')?.hasError('pattern')"
-              >
-                Enter valid email
-              </div>
-            </div>
-            <button type="submit">SUBMIT</button>
-          </form>
-        </div>
-      </div>
     </div>
 </div>
 
@@ -228,6 +188,37 @@
     </div>
 </div>
 
+<!-- social connect -->
+<div class="social-content">
+    <div class="container">
+        <div class="card-list">
+            <div class="card-item">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)" class="item-1">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="item-2">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-item">
+                <h3 class="card-title">
+                    STAY CURRENT WITH ZYFTY<br />
+                    AND THE NFT MARKET
+                </h3>
+                <div class="description">
+                    <p>
+                        Please follow Zyfty on your preferred social media platform for
+                        content, news and updates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- nft form -->
 <div class="nft-form-wrap" id="nftForm">

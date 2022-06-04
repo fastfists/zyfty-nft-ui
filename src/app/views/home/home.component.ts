@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   submitted: boolean = false;
   reqSubmitted: boolean = false;
   emailForm!: FormGroup;
-  requestFormModel!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
     private homeService: HomeService,
@@ -37,17 +36,6 @@ export class HomeComponent implements OnInit {
       ),
       hasPermission: new FormControl(),
       isInterested: new FormControl(),
-    });
-
-    this.requestFormModel = this.formBuilder.group({
-      name: new FormControl('', [
-        Validators.required,
-        Validators.pattern('[A-Za-z ]+'),
-      ]),
-      email: new FormControl(
-        '',
-        Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-      )
     });
   }
 
@@ -67,28 +55,6 @@ export class HomeComponent implements OnInit {
       this.emailForm.reset();
     }
 
-  }
-
-  onRequestSubmit() {
-    this.reqSubmitted = true;
-    if (this.requestFormModel.valid) {
-      this.homeService.saveWhp(this.requestFormModel.value).subscribe(
-        (data: any) => {
-          this.toastr.success(successMassage.whpSuccess);
-        },
-        () => {
-          this.toastr.error(errorMessage.error);
-        }
-      );
-      window.scroll(0, 0);
-      this.reqSubmitted = false;
-      this.requestFormModel.reset();
-    }
-  }
-
-  requestWhitePaperModal(event: any) {
-    $(".form-popup").show();
-    event.stopPropagation();
   }
 
   stopPropagation(event: any) {
