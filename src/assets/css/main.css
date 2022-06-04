@@ -1167,10 +1167,13 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
 @media screen and (max-width: 767px) {
   .nft-founder-wrap .founder-row .founder-col .founder-wrap .content-popup {
     width: auto;
-    height: 70%;
+    height: auto;
     top: 50%;
     right: 0 !important;
     left: 0 !important;
+  }
+  .nft-founder-wrap .content-popup .linkedin-text {
+    bottom: 15px;
   }
 }
 .nft-founder-wrap .img-box {
