@@ -7,14 +7,10 @@ $(document).ready(function(){
             navbar.classList.remove('nav-active');
         }
     };
-    $('.menu-toggle').on('click', function (e) {
-        $('.site-nav').toggleClass("active");
-        $(this).toggleClass("active");
-    });
 
-    $('.list-items').on('click', function (e) {
-        $('.site-nav').toggleClass("active");
-        $('.menu-toggle').toggleClass("active");
+    $('.list-items').click(function (e) {
+        $('.site-nav').toggleClass(".site-nav.active");
+        $('.menu-toggle').toggleClass(".menu-toggle.active");
     });
 
     $(".request-btn").click(function (e) {
@@ -30,6 +26,10 @@ $(document).ready(function(){
         if(!$(event.target).closest(".primary-nav").length) {
             $('.site-nav').removeClass("active");
             $('.menu-toggle').removeClass("active");
+        } else {
+            $('.site-nav').toggleClass("active");
+            $(this).toggleClass("active");
+            $('.menu-toggle').toggleClass("active");
         }
     });
    

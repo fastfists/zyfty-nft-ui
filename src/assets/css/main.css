@@ -229,6 +229,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   -moz-transition: 0.4s all ease-in-out;
   -ms-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;
+  background-color: #080404;
 }
 .site-header .logo {
   text-indent: -99999px;
@@ -269,7 +270,7 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   }
 }
 .site-header.nav-active {
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 .site-header.nav-active .header-menu {
   height: 80px;
@@ -799,9 +800,6 @@ input[type=search]:-webkit-search-decoration, input[type=search]:-webkit-search-
   }
 }
 .social-content ul a.item-2:before {
-  background-image: url(../images/discord.svg);
-}
-.social-content ul a.item-3:before {
   background-image: url(../images/twitter.svg);
 }
 @media screen and (max-width: 767px) {
