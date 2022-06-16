@@ -5,3 +5,28 @@
     font-weight: medium;
     font-size: 26.7pt;
 }
+
+@media screen and (max-width: 991px) {
+  .nft-link a { font-size: 20px; }
+
+  .site-header .header-menu{
+    display: block;
+  }
+  .nft-link {
+    text-align: center;
+    border-top: 5px groove #3c8836;
+    background: #080404;
+    margin: 0 -20px;
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+  .site-header .header-menu {
+    padding: 15px 0;
+  }
+  .primary-nav {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    z-index: 1;
+  }
+}
