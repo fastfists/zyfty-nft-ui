@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  apiUrl: 'https://api.zyfty.io/'
+  apiUrl: 'https://api.zyfty.io'
 };
 
 /*
