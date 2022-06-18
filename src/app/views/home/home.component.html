@@ -9,31 +9,7 @@
 
 <!-- nft solution -->
 <div class="nft-sol-wrap">
-    <div class="right-section">
-        <div class="card-list">
-            <div class="card-item">
-                <img src="../assets/images/nft-1.svg" />
-                <h3 class="card-title">
-                    Home<br />
-                    Acquisition
-                </h3>
-            </div>
-            <div class="card-item">
-                <img src="../assets/images/nft-2.svg" />
-                <h3 class="card-title">
-                    NFT<br />
-                    Creation
-                </h3>
-            </div>
-            <div class="card-item">
-                <img src="../assets/images/nft-3.svg" />
-                <h3 class="card-title">
-                    NFT<br />
-                    Marketplace
-                </h3>
-            </div>
-        </div>
-    </div>
+
     <div class="container">
         <div class="left-section">
             <h2 class="nft-title">
@@ -41,7 +17,8 @@
             </h2>
             <div class="description">
                 <p>
-                    Zyfty creates private, transferrable NFTs representing ownership of long-term lease contracts of up to 99 years.
+                    Zyfty creates private, transferrable NFTs representing ownership of long-term lease contracts of up
+                    to 99 years.
                 </p>
                 <p>
                     This simple solution eliminates any
@@ -58,47 +35,38 @@
                 </p>
             </div>
         </div>
-      <div class="btn-wrap">
-        <button class="request-btn" (click)="requestWhitePaperModal($event)">REQUEST WHITEPAPER</button>
-        <div class="form-popup"  (click) = "stopPropagation($event)">
-          <h2 class="form-title">
-            To receive a copy of the Zyfty whitepaper please provide your name and
-            email.
-          </h2>
-          <form [formGroup]="requestFormModel" (ngSubmit)="onRequestSubmit()">
-            <div class="form-element">
-              <label>Name:</label>
-              <input type="text" formControlName="name" />
-              <div *ngIf="reqSubmitted && requestFormModel.get('name')?.hasError('required')"
-                   class="text-danger">
-                Name is required
-              </div>
-              <div class="text-danger"
-                   *ngIf="requestFormModel?.get('name')?.hasError('pattern')">
-                Enter valid name
-              </div>
-            </div>
-            <div class="form-element">
-              <label>Email:</label>
-              <input type="text" formControlName="email" required/>
-              <div
-                *ngIf="reqSubmitted && requestFormModel?.get('email')?.hasError('required')"
-                class="text-danger"
-              >
-                Email is required
-              </div>
-              <div
-                class="text-danger"
-                *ngIf="requestFormModel?.get('email')?.hasError('pattern')"
-              >
-                Enter valid email
-              </div>
-            </div>
-            <button type="submit">SUBMIT</button>
-          </form>
-        </div>
+    </div>
+  <div class="right-section">
+    <div class="card-list">
+      <div class="card-item">
+        <img src="../assets/images/nft-1.svg" />
+        <h3 class="card-title">
+          Home<br />
+          Acquisition
+        </h3>
+      </div>
+      <div class="card-item-arrow">
+        <img src="../assets/images/arrow-rt.svg" />
+      </div>
+      <div class="card-item">
+        <img src="../assets/images/nft-2.svg" />
+        <h3 class="card-title">
+          NFT<br />
+          Creation
+        </h3>
+      </div>
+      <div class="card-item-arrow">
+        <img src="../assets/images/arrow-rt.svg" />
+      </div>
+      <div class="card-item">
+        <img src="../assets/images/nft-3.svg" />
+        <h3 class="card-title">
+          NFT<br />
+          Marketplace
+        </h3>
       </div>
     </div>
+  </div>
 </div>
 
 
@@ -111,7 +79,8 @@
         <div class="content">
             <h3 class="content-title">Privacy with Ownership</h3>
             <p>
-                Zyfty is the title holder of record, thus securing the NFT owner’s privacy while providing the benefits of home ownership.
+                Zyfty is the title holder of record, thus securing the NFT owner’s privacy while providing the benefits
+                of home ownership.
             </p>
             <h3 class="content-title">Fast Transactions</h3>
             <p>
@@ -119,7 +88,7 @@
             </p>
             <h3 class="content-title">Liquidity</h3>
             <p>
-                Zyfty NFTs allow fast, inexpensive transactions and have exposure the the DeFi ecosystem.
+                Zyfty NFTs allow fast, inexpensive transactions and have exposure to the DeFi ecosystem.
             </p>
         </div>
     </div>
@@ -133,8 +102,6 @@
                 <h2 class="title">
                     FAQs
                 </h2>
-                <a href="javascript:void(0)" [routerLink]="['/faqs']" class="more-faqs">MORE FAQS</a>
-
             </div>
             <div class="card-item">
                 <div class="faq-wrap">
@@ -149,10 +116,10 @@
                     <div class="ans">
                         <span class="text1">A</span>
                         <span class="text2">
-                          An NFT owner can elect to redeem their
-                          NFT at any point with Zyfty.  This will
-                          cause the NFT to be destroyed.  See
-                          white paper and for details.
+                            An NFT owner can elect to redeem their
+                            NFT at any point with Zyfty. This will
+                            cause the NFT to be destroyed. See
+                            white paper and for details.
                         </span>
                         <a href="javascript:void(0)" [routerLink]="['/faqs']" class="read-more">READ MORE &#62;</a>
                     </div>
@@ -161,9 +128,9 @@
                     <div class="ques">
                         <span class="text1">Q</span>
                         <span class="text2">
-                          Can I look at the NFT home
-                          before I enter into the
-                          purchase process (before I bid)?
+                            Can I look at the NFT home
+                            before I enter into the
+                            purchase process (before I bid)?
 
                         </span>
                     </div>
@@ -198,6 +165,7 @@
                 </div>
             </div>
         </div>
+        <a href="javascript:void(0)" [routerLink]="['/faqs']" class="more-faqs">MORE FAQS</a>
     </div>
 </div>
 
@@ -228,6 +196,37 @@
     </div>
 </div>
 
+<!-- social connect -->
+<div class="social-content">
+    <div class="container">
+        <div class="card-list">
+            <div class="card-item">
+                <ul>
+                    <li>
+                        <a href="https://zyfty.medium.com/" target="_blank" class="item-1">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/Zyfty_io" target="_blank" class="item-2">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-item">
+                <h3 class="card-title">
+                    STAY CURRENT WITH ZYFTY<br />
+                    AND THE NFT MARKET
+                </h3>
+                <div class="description">
+                    <p>
+                        Please follow Zyfty on your preferred social media platform for
+                        content, news and updates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- nft form -->
 <div class="nft-form-wrap" id="nftForm">

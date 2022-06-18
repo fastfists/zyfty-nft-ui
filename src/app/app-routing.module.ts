@@ -38,8 +38,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+      useHash: true,
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
+      onSameUrlNavigation: "reload",
     }),
     RouterModule.forChild(routes)
   ],

@@ -1,17 +1,9 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AboutService {
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  saveWhp(formData: any) {
-    return this.http.post(
-      environment.apiUrl + 'whitepaperRequest/save',
-      formData
-    );
-  }
 }

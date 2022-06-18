@@ -2,10 +2,14 @@
     <div class="container">
         <div class="header-menu">
             <div class="logo">
-                <a href="javascript:void(0)" [routerLink]="['/']">
-                    <h1 class="logo">zyfty</h1>
-                </a>
+              <a href="javascript:void(0)" [routerLink]="['/']">
+                <h1 class="logo">
+                  <img width="150" src="../../assets/images/logo.svg">
+                </h1>
+              </a>
             </div>
+            <div class="nft-link"><a [routerLink]="['.']" [fragment]='"nftForm"'>NFTs are
+                    happening NOW - Click here</a></div>
             <nav class="primary-nav">
                 <span class="menu-toggle">
                     <span class="line-1 line"></span>
@@ -29,7 +33,7 @@
                         <a href="javascript:void(0)" [routerLink]="['/faqs']">FAQs</a>
                     </li>
                     <li class="list-items">
-                        <a href="javascript:void(0)" (click)="redirectToPage()"> Get Started</a>
+                        <a href="javascript:void(0)" [routerLink]="['.']" [fragment]='"nftForm"'> Get Started</a>
                     </li>
                     <li class="list-items">
                       <a href="javascript:void(0)" [routerLink]="['/signin']">Sign In</a>
