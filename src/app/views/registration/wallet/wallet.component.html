@@ -1,0 +1,30 @@
+<div class="justify-content-center mt-4 mb-4">
+    <div class="col-md-12 registration-form">
+        <div class="card-body">
+            <div class="row main-row">
+                <form [formGroup]="wallet" (ngSubmit)="onSubmit()">
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-primary btn-mobile">Use MetaMask Wallet</button>
+                    </div>
+                    <div class="font">
+                        <p> Choose an option above to add your MetaMask wallet address OR manually enter your MetaMask
+                            wallet address below.
+                        </p>
+                    </div>
+                    <div class="font">
+                        <p> MetaMask wallet address to receive Zyfty Tokens:
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <input type="text" class="form-control" formControlName="token">
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

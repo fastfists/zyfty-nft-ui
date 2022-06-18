@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute } from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
-import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/auth-guard/auth.service';
+import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-signin',
@@ -18,11 +20,13 @@ export class SigninComponent implements OnInit {
   private error: any;
 
   constructor(private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
-              private signinService: signinService,
-              private router: Router)
-
-  {
+    private route: ActivatedRoute,
+    private signinService: signinService,
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private toastr: ToastrService,
+    private authService: AuthService,
+  ) {
     // redirect to home if already logged in
     if (this.signinService.userValue) {
       this.router.navigate(['/']);
@@ -30,8 +34,22 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.activeRoute.queryParams.subscribe((params) => {
+      if (params.token) {
+        this.authService.verifyUser({ token: params.token }).subscribe(
+          (data: any) => {
+            this.toastr.success(successMassage.mailVerified);
+          },
+          () => {
+            this.toastr.error(errorMessage.verifyEmailError);
+          }
+        );
+      } else {
+        console.log('normal signin ::')
+      }
+    });
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
@@ -42,18 +60,32 @@ export class SigninComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-
   onSubmit() {
+    let buyNowUrl = localStorage.getItem('buyNowUrl')
     this.submitted = true;
 
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
-    this.signinService.login(this.f.email.value, this.f.password.value)
+    // this.loading = true;
+    this.authService.login(this.loginForm.value)
+      .subscribe(
+        (res) => {
+          localStorage.setItem('user', res.userName)
+          if (buyNowUrl) {
+            this.router.navigate([buyNowUrl])
+          } else {
+            this.router.navigate(['/'])
+            // this.router.navigate(['/user/registration-details'])
+          }
+          this.loading = false;
+          this.toastr.success(successMassage.loginSuccess);
+        },
+        (err) => {
+          localStorage.removeItem('user');
+          this.toastr.error(errorMessage.loginError);
+        });
   }
 
 

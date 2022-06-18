@@ -13,7 +13,7 @@ import { AboutComponent } from './views/about/about.component';
 import { HeaderComponent } from './views/common/header/header.component';
 import { FooterComponent } from './views/common/footer/footer.component';
 import { CominsoonComponent } from './views/common/cominsoon/cominsoon.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
@@ -24,7 +24,13 @@ import { LightboxModule } from 'ngx-lightbox';
 import { DetailsComponent } from './views/marketplace/details/details.component';
 import { SigninComponent } from './views/signin/signin.component';
 import { RegistrationComponent } from './views/registration/registration.component';
-
+import { PersonalInformationComponent } from './views/registration/personal-information/personal-information.component';
+import { WalletComponent } from './views/registration/wallet/wallet.component';
+import { ContainerComponent } from './views/registration/container/container.component';
+import { KycComponent } from './views/registration/kyc/kyc.component';
+import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
+import { JwtInterceptor } from './auth-guard/jwt-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +45,22 @@ import { RegistrationComponent } from './views/registration/registration.compone
     MarketplaceComponent,
     DetailsComponent,
     SigninComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PersonalInformationComponent,
+    WalletComponent,
+    ContainerComponent,
+    KycComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

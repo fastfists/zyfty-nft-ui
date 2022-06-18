@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router, ActivatedRoute} from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { registrationService } from "./registration.service";
-import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { successMassage } from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-registration',
@@ -14,41 +15,40 @@ export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
   loading = false;
   submitted = false;
+  isSignup = false;
 
   constructor(private formBuilder: FormBuilder,
-              private registrationService: registrationService,
-              private route: ActivatedRoute,
-              private router: Router
-  ) {}
+    private registrationService: registrationService,
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
   }
 
-  // convenience getter for easy access to form fields
-  private emitter: any;
   get f() { return this.registrationForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.registrationForm.invalid) {
       return;
     }
-    this.loading = true;
-    // @ts-ignore
+
     this.registrationService.registration(this.registrationForm.value)
       .subscribe(
         res => {
-          return res;
+          this.loading = true;
+          this.router.navigate(['/user/signin'])
+          this.toastr.success(successMassage.verifyEmailSend);
         },
         (err) => {
-          console.log('Success', err)
+          this.toastr.error(err.error);
         });
   }
 

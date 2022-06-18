@@ -10,6 +10,10 @@ import { MarketplaceComponent } from "./views/marketplace/marketplace.component"
 import { DetailsComponent } from "./views/marketplace/details/details.component";
 import { SigninComponent } from "./views/signin/signin.component";
 import { RegistrationComponent } from "./views/registration/registration.component";
+import { ContainerComponent } from './views/registration/container/container.component';
+import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
+import { AuthGuard } from './auth-guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,7 +27,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MarketplaceComponent,
+        component: MarketplaceComponent
       },
       {
         path: 'details/:id',
@@ -31,8 +35,12 @@ const routes: Routes = [
       }
     ],
   },
-  { path: 'signin', component: SigninComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'user/signin', component: SigninComponent },
+  { path: 'user/forgot-password', component: ForgotPasswordComponent },
+  { path: 'user/reset-password', component: ResetPasswordComponent },
+  { path: 'user/verify', component: SigninComponent },
+  { path: 'user/registration', component: RegistrationComponent },
+  { path: 'user/registration-details', component: ContainerComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -47,4 +55,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
