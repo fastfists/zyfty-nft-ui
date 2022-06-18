@@ -450,6 +450,37 @@ input[type=search]:-webkit-search-results-decoration {
   }
 }
 
+.site-footer .social-content ul {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: left !important;
+}
+.site-footer .social-content ul li { margin-bottom: 0; }
+.site-footer .social-content ul a {
+  display: inline-block;
+  height: 70px;
+  width: 90px;
+  margin: 15px 15px 0;
+  position: relative;
+}
+.site-footer .social-content ul a:before {
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.site-footer .social-content ul a.medium:before {
+  background-image: url(../images/social-1.svg);
+}
+.site-footer .social-content ul a.twitter:before {
+  background-image: url(../images/twitter.svg);
+}
+
 /*_Color Variables_*/
 .banner-wrap {
   background-image: url(../images/image-1.jpg);
@@ -816,17 +847,6 @@ input[type=search]:-webkit-search-results-decoration {
   }
 }
 
-.social-content {
-  background-color: #19322f;
-  padding: 100px 0 50px;
-}
-
-@media screen and (max-width: 991px) {
-  .social-content {
-    padding: 60px 0;
-  }
-}
-
 .social-content .card-list {
   display: -moz-box;
   display: -ms-flexbox;
@@ -855,70 +875,6 @@ input[type=search]:-webkit-search-results-decoration {
 @media screen and (max-width: 991px) {
   .social-content .card-item {
     flex-basis: 100%;
-  }
-}
-
-.social-content ul {
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
-
-.social-content ul a {
-  display: inline-block;
-  height: 100px;
-  width: 100px;
-  margin-right: 40px;
-}
-
-.social-content ul a:before {
-  content: "";
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  height: 100px;
-  width: 100px;
-  position: absolute;
-}
-
-@media screen and (max-width: 991px) {
-  .social-content ul a {
-    height: 65px;
-    width: 65px;
-  }
-
-  .social-content ul a:before {
-    width: 65px;
-    height: 65px;
-  }
-}
-
-.social-content ul a.item-1 {
-  margin-right: 95px;
-}
-
-.social-content ul a.item-1:before {
-  background-image: url(../images/social-1.svg);
-  height: 155px;
-  width: 155px;
-  background-position: top;
-}
-
-@media screen and (max-width: 991px) {
-  .social-content ul a.item-1:before {
-    height: 120px;
-    width: 120px;
-  }
-}
-
-.social-content ul a.item-2:before {
-  background-image: url(../images/twitter.svg);
-}
-
-@media screen and (max-width: 991px) {
-  .social-content ul a.item-3 {
-    margin-right: 0;
   }
 }
 
