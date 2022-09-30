@@ -31,6 +31,10 @@ import { KycComponent } from './views/registration/kyc/kyc.component';
 import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
 import { JwtInterceptor } from './auth-guard/jwt-interceptor';
+import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
+import { ModalModule } from './views/nftmarket/modal';
+import { NftHappeningFormComponent } from './views/nft-happening-form/nft-happening-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +56,11 @@ import { JwtInterceptor } from './auth-guard/jwt-interceptor';
     KycComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    NftmarketComponent,
+    NftHappeningFormComponent,
+
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, ModalModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
   {

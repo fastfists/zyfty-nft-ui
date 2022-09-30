@@ -5,7 +5,8 @@ import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+
+export class NftHappeningFormService {
   constructor(private http: HttpClient) {}
 
   saveNft(formData: any) {
@@ -13,12 +14,6 @@ export class HomeService {
       environment.apiUrl + 'nftRequest/save',
       formData
     );
-   }
-
-  saveWhp(formData: any) {
-    return this.http.post(
-      environment.apiUrl + 'whitepaperRequest/save',
-      formData
-    );
   }
+
 }
