@@ -19,11 +19,12 @@
   <div class="nft-list-block">
     <div class="container">
       <div class="nft-list">
-        <div class="list-item" *ngFor="let item of items" (click)="openModal('nftModalData', item)">
+        <div class="nft-list-item" *ngFor="let nftItem of nftItems" (click)="openModal(nftItem)" >
           <div class="list-item-inner">
-            <img src="{{ item.image }}" />
-            <div class="title">{{ item.name }}</div>
-            <div class="rate">Price: {{ item.rate }}</div>
+            <img src="{{nftItem.nftImage }}" />
+            <div class="title">
+              <span>{{ nftItem.address }}, {{ nftItem.zip }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -34,98 +35,6 @@
 
   </div>
 
- <nft-modal id="nftModalData">
-  <button class="closed" (click)="closeModal('nftModalData');">
-    <svg viewBox="0 0 24 24" class="sc-gsDKAQ hDhDYS sc-furwcr kqVGZL" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.8 11.8L4 4l7.8 7.8L4 19.6l7.8-7.8zm0 0l7.8 7.8-7.8-7.8L19.6 4l-7.8 7.8z" stroke="currentColor" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-  </button>
-  <div class="modal-inner">
-    <div class="media-gallery">
-      <div class="column">
-        <ul class="media-col" *ngIf="selectedNft">
-          <li  [ngClass]="{'full-width': i===0}"  class="media-col-item" *ngFor="let item of selectedNft.images  let i = index" >
-            <figure><img src="{{item.url}}" alt=""></figure>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="data-gallery">
-      <div class="main-header">
-        <div class="logo"><img width="150" src="../../assets/images/logo.svg"></div>
-        <div class="action-bar">
-          <span>Save</span>
-          <span>Share</span>
-          <span>More</span>
-        </div>
-      </div>
-      <div class="main-summary">
-        <div class="primary-data">
-          <div class="meta-data"><span class="rate">$430,000</span><span class="sqft-area"><strong>2600</strong><span>sqft</span></span></div>
-          <div class="address">12729 N Prairie Creek Rd, Rapid City, SD 57702</div>
-          <!-- <div class="sale">For Sale</div>-->
-          <div class="contact-buttons">
-            <button class="purchase-button">Purchase Due Diligence Package</button>
-            <button class="offer-button">Make Offer</button>
-          </div>
-        </div>
-        <div class="another-data">
-          <nav ngbNav #nav="ngbNav" class="nav-tabs">
-            <ng-container ngbNavItem>
-              <a ngbNavLink>Overview</a>
-              <ng-template ngbNavContent>
-                <i>Note: This property is not currently for sale or for rent on Zillow. The description and property data below may’ve been provided by a third party,
-                  the homeowner or public records.</i> <br><br/>
-                <div class="main-info-block">WATER VIEWS OF THE BAY AND DOWNTOWN!
-                  TWO BALCONIES AND A 2 CAR TANDEM GARAGE! <br><br/>
-
-                  RARELY available, recently remodeled!  <br><br/>
-
-                  Gorgeous home in one of San Diego's best beach communities!
-                  Large open floor plan with vaulted ceilings &amp; mass amount of natural light <br><br/>
-
-                  THIS PROPERTY HAS EVERYTHING !! <br><br/>
-
-                  luxury vinyl plank throughout, updated fixtures and remodeled bathrooms
-                  remodeled kitchen with premium appliances, Central AC and Heat ..Laundry room in Unit! <br><br/>
-
-                  Perfect for entertaining! All of this within walking distance to the Bay, beach, shops and dining!
-                  Property will not last long at this price! <br><br/>
-
-                  NO SMOKING ALLOWED</div>
-
-                <div class="map-area">
-                  <img src="../../../assets/images/staticmap.png" />
-                </div>
-              </ng-template>
-            </ng-container>
-            <ng-container ngbNavItem>
-              <a ngbNavLink>Facts and features</a>
-              <ng-template ngbNavContent>
-                <ul class="fea-list">
-                  <li><span>Type:</span>Townhouse</li>
-                  <li><span>Year built:</span>1991</li>
-                  <li><span>Heating:</span>Forced air</li>
-                  <li><span>Cooling:</span>Other</li>
-                  <li><span>Parking:</span>2 Parking spaces</li>
-                  <li><span>HOA:</span>$150 monthly</li>
-                  <li><span>Lot:</span>7,794 sqft</li>
-                  <li><span>Type:</span>Townhouse</li>
-                  <li><span>Type:</span>Townhouse</li>
-                  <li><span>Type:</span>Townhouse</li>
-                  <li><span>Type:</span>Townhouse</li>
-                </ul>
-              </ng-template>
-            </ng-container>
-          </nav>
-
-          <div [ngbNavOutlet]="nav" class="mt-4"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nft-modal>
 
 
 

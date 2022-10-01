@@ -19,7 +19,6 @@ import { ToastrModule } from "ngx-toastr";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { MarketplaceComponent } from './views/marketplace/marketplace.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LightboxModule } from 'ngx-lightbox';
 import { DetailsComponent } from './views/marketplace/details/details.component';
 import { SigninComponent } from './views/signin/signin.component';
@@ -32,8 +31,9 @@ import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-p
 import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
 import { JwtInterceptor } from './auth-guard/jwt-interceptor';
 import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
-import { ModalModule } from './views/nftmarket/modal';
 import { NftHappeningFormComponent } from './views/nft-happening-form/nft-happening-form.component';
+import { NftDetailsComponent } from './views/nftmarket/modal/nft-details/nft-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -58,9 +58,9 @@ import { NftHappeningFormComponent } from './views/nft-happening-form/nft-happen
     ResetPasswordComponent,
     NftmarketComponent,
     NftHappeningFormComponent,
-
+    NftDetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, ModalModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule, ToastrModule.forRoot(), NgbModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
   {
