@@ -27,6 +27,10 @@
           font-size: 16px;
           line-height: 24px;
           padding: 15px 20px;
+          box-shadow: unset;
+          &:focus {
+            border: 1px solid #ced4da !important;
+          }
         }
 
         button.search-btn {
@@ -67,18 +71,30 @@
           position: relative;
           z-index: 2;
           height: 100%;
+          width: 100%;
           overflow: hidden;
           background-color: rgb(255, 255, 255);
-          box-shadow: rgba(0, 0, 0, .1) 0px 4px 15px;
+          box-shadow: rgba(0, 0, 0, .3) 0px 4px 15px;
           transition: box-shadow 0.25s ease-in-out 0s;
+
+          .img-thumbnail {
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+              height: 100%;
+              width: 100%;
+            }
+          }
 
           .title {
             display: block;
-            height: 100%;
             font-weight: 600;
             font-size: 14px;
-            padding: 15px 15px 5px;
+            padding: 15px 15px;
             color: rgb(4, 17, 29);
+            background-color: #e9e8e8;
           }
 
           .rate {

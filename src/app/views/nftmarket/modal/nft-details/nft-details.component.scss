@@ -43,10 +43,15 @@
 
             &.full-width {
               grid-column: span 2;
+
+              figure{
+                height: 100%;
+                width: 100%;
+              }
             }
 
             figure{
-                max-height: 230px;
+                height: 230px;
                 overflow: hidden;
                 img {
                   height: 100%;
@@ -92,70 +97,62 @@
       .main-summary {
         padding: 25px 15px 0;
 
-        .meta-data {
-          margin-bottom: 8px;
+        .primary-data {
 
-          .rate {
-            display: inline-block;
-            margin-right: 16px;
-            font-weight: 700;
-            font-size: 36px;
-            line-height: 40px;
-          }
-          .sqft-area {
-            display: inline-block;
-            font-size: 16px;
-            line-height: 24px;
-          }
-        }
-        .address {
-          font-size: 16px;
-          line-height: 24px;
-          padding: 0 0 16px 0px;
-          display: flex;
-          margin-bottom: 20px;
-          border-bottom: 1px solid rgb(209, 209, 213);
-        }
-        .sale{
-          position: relative;
-          font-weight: 700;
-
-          &:before {
-            background-color: rgb(255, 90, 80);
-            border-radius: 50%;
-            content: "";
-            height: 1em;
-            width: 1em;
-            display: inline-block;
-            line-height: 1;
-          }
-        }
-        .contact-buttons {
-          padding: 16px 0px;
-          display: flex;
-          margin-bottom: 16px;
-          border-bottom: 1px solid rgb(209, 209, 213);
-
-          button.purchase-button {
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 21px;
-            border-radius: 4px;
-            user-select: none;
-            padding: 9px 16px;
-            background-color: rgb(13, 69, 153);
-            border: 1px solid rgb(13, 69, 153);
-            color: rgb(255, 255, 255);
+          .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
           }
 
-          button.offer-button {
-            background-color: rgb(242, 250, 255);
-            color: rgb(13, 69, 153);
-            border: 1px solid rgb(13, 69, 153);
-            border-radius: 4px;
-            user-select: none;
-            padding: 9px 16px;
-            margin-left: 8px;
+          .sub-detail {
+            span {
+              display: inline-block;
+              font-size: 14px;
+              line-height: 1;
+              margin-right: 20px;
+              text-transform: capitalize;
+              position: relative;
+
+              &:not(:last-child):after {
+                position: absolute;
+                content: "";
+                height: 100%;
+                width: 1px;
+                background-color: #c9c9c9;
+                right: -10px;
+                top: 0;
+              }
+            }
+          }
+
+          .contact-buttons {
+            padding: 16px 0px;
+            display: flex;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgb(209, 209, 213);
+
+            button.purchase-button {
+              font-weight: normal;
+              font-size: 14px;
+              line-height: 21px;
+              border-radius: 4px;
+              user-select: none;
+              padding: 9px 16px;
+              background-color: rgb(13, 69, 153);
+              border: 1px solid rgb(13, 69, 153);
+              color: rgb(255, 255, 255);
+            }
+
+            button.offer-button {
+              background-color: rgb(242, 250, 255);
+              color: rgb(13, 69, 153);
+              border: 1px solid rgb(13, 69, 153);
+              border-radius: 4px;
+              user-select: none;
+              padding: 9px 16px;
+              margin-left: 8px;
+            }
           }
         }
         .another-data {
@@ -184,12 +181,12 @@
                 display: flex;
                 break-inside: avoid;
 
-                span {
-                  flex: 0 0 80px;
+                span:first-child {
+                  flex: 0 0 100px;
                   margin-right: 3px;
                   color: rgb(42, 42, 51);
                   font-weight: 400;
-                  font-size: 15px;
+                  font-size: 14px;
                   line-height: 24px;
                 }
               }
@@ -197,6 +194,7 @@
 
             .map-area {
               margin-top: 30px;
+
               img {
                 object-fit: cover;
                 object-position: 50% 50%;
@@ -204,6 +202,10 @@
                 height: 100%;
                 width: 100%;
               }
+            }
+
+            agm-map {
+              height: 300px;
             }
           }
         }

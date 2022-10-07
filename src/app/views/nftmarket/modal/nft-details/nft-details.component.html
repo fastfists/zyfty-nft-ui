@@ -26,7 +26,7 @@
       </div>
       <div class="main-summary">
         <div class="primary-data">
-            <div class="title">{{selectedNftDetails.address}},{{selectedNftDetails.city}},{{selectedNftDetails.state}} {{selectedNftDetails.zip}}</div>
+            <div class="title">{{selectedNftDetails.address}}, {{selectedNftDetails.city}}, {{selectedNftDetails.state}} {{selectedNftDetails.zip}}</div>
             <div class="sub-detail">
               <span>{{selectedNftDetails.propertyType}}</span>
               <span>{{selectedNftDetails.bedRooms}} bedrooms</span>
@@ -61,32 +61,34 @@
                   Perfect for entertaining! All of this within walking distance to the Bay, beach, shops and dining!
                   Property will not last long at this price! <br><br/>
 
-                  NO SMOKING ALLOWED</div>
+                  NO SMOKING ALLOWED</div><br>
 
-                <div class="map-area">
-                  <img src="../../../assets/images/staticmap.png" />
-                </div>
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+                <br>
+
               </ng-template>
             </ng-container>
             <ng-container ngbNavItem>
               <a ngbNavLink>Facts and features</a>
               <ng-template ngbNavContent>
                 <ul class="fea-list">
-                  <li>Living Area: <span>{{selectedNftDetails.livingArea}} Sq Ft </span></li>
-                  <li>Lot Size: <span> {{selectedNftDetails.lotSize}} Sq Ft</span></li>
-                  <li>Total Rooms: <span> {{selectedNftDetails.totalRooms}}</span></li>
-                  <li>Bedrooms: <span> {{selectedNftDetails.bedRooms}}</span></li>
-                  <li>Bathrooms: <span> {{selectedNftDetails.bathRooms}} </span></li>
-                  <li>Stories: <span> {{selectedNftDetails.stories}}</span></li>
-                  <li>Year Built: <span> {{selectedNftDetails.yearBuilt}}</span></li>
-                  <li>Property Type: <span>{{selectedNftDetails.propertyType}}</span></li>
-                  <li>Zoning: <span> {{selectedNftDetails.zoning}} </span></li>
-                  <li>HOA Name: <span> {{selectedNftDetails.hoaName}} </span></li>
-                  <li>HOA Fee: <span> {{selectedNftDetails.hoaFee}}</span></li>
-                  <li>HOA Inculdes: <span> {{selectedNftDetails.hoaInculdes}}</span></li>
-                  <li>Tax Year: <span>{{selectedNftDetails.taxYear}} </span></li>
-                  <li>Tax Amount: <span> $ {{selectedNftDetails.taxAmount}}</span></li>
-                  <li>Property in Flood Zone: <span>{{selectedNftDetails.propertyInFloodZone}} </span></li>
+                  <li><span>Living Area:</span> <span>{{selectedNftDetails.livingArea}} Sq Ft </span></li>
+                  <li><span>Lot Size:</span> <span> {{selectedNftDetails.lotSize}} Sq Ft</span></li>
+                  <li><span>Total Rooms:</span> <span> {{selectedNftDetails.totalRooms}}</span></li>
+                  <li><span>Bedrooms:</span> <span> {{selectedNftDetails.bedRooms}}</span></li>
+                  <li><span>Bathrooms:</span> <span> {{selectedNftDetails.bathRooms}} </span></li>
+                  <li><span>Stories:</span> <span> {{selectedNftDetails.stories}}</span></li>
+                  <li><span>Year Built:</span> <span> {{selectedNftDetails.yearBuilt}}</span></li>
+                  <li><span>Property Type:</span> <span>{{selectedNftDetails.propertyType}}</span></li>
+                  <li><span>Zoning:</span> <span> {{selectedNftDetails.zoning}} </span></li>
+                  <li><span>HOA Name:</span> <span> {{selectedNftDetails.hoaName}} </span></li>
+                  <li><span>HOA Fee:</span> <span> {{selectedNftDetails.hoaFee}}</span></li>
+                  <li><span>HOA Inculdes:</span> <span> {{selectedNftDetails.hoaInculdes}}</span></li>
+                  <li><span>Tax Year:</span> <span>{{selectedNftDetails.taxYear}} </span></li>
+                  <li><span>Tax Amount:</span> <span> $ {{selectedNftDetails.taxAmount}}</span></li>
+                  <li><span>Property in Flood Zone:</span> <span>{{selectedNftDetails.propertyInFloodZone}} </span></li>
                 </ul>
               </ng-template>
             </ng-container>
