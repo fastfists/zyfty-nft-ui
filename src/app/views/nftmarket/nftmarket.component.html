@@ -1,11 +1,13 @@
 <div class="nft-market-wrap">
 
+
+
   <div class="nft-search-block">
     <div class="container">
       <div class="nft-search-content">
         <h2 class="title">Find, Create, Own</h2>
         <div class="input-group">
-          <input type="search" id="form1" placeholder="Enter a city or ZIP code" class="form-control" [(ngModel)]="searchText"/>
+          <input type="search" id="form1" placeholder="Enter a city or ZIP code" class="form-control" [(ngModel)]="searchText" (click)="resetSearch(searchText)"/>
           <button type="button" class="search-btn" (click)="getSearchText(searchText)">
             <svg viewBox="0 0 32 32" theme="[object Object]" class="Icon-c11n-8-69-2__sc-13llmml-0 fhGCBg sc-1bvnalc-0 kzKZEl" aria-hidden="true" focusable="false" role="img">
               <path stroke="none" d="M29.41,26.59,23.77,21A12,12,0,0,0,14,2c-.17,0-.33,0-.5,0s-.33,0-.5,0A11,11,0,0,0,2,13c0,.17,0,.33,0,.5s0,.33,0,.5a12,12,0,0,0,
@@ -18,13 +20,17 @@
 
   <div class="nft-list-block">
     <div class="container">
-      <div class="nft-list">
-        <div class="nft-list-item" *ngFor="let nftItem of nftItems" (click)="openModal(nftItem)" >
+      <div class="nft-list row">
+        <div class="d-flex justify-content-center">
+          <span class="sr-only" id="loading"  *ngIf= "isFetchingRecord" ></span>
+          <h3  *ngIf= "nftItems.length == 0 && !isFetchingRecord"> No Data Found</h3>
+        </div>
+        <div class="nft-list-item col-lg-3 col-md-4 col-sm-6" *ngFor="let nftItem of nftItems" (click)="openModal(nftItem)" >
           <div class="list-item-inner">
             <div class="img-thumbnail">
               <img src="{{nftItem.nftImage }}" />
             </div>
-            <div class="title">
+            <div class="item-title">
               <span>{{ nftItem.address }}, {{ nftItem.zip }}</span>
             </div>
           </div>

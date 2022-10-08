@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NftDetailsComponent} from '../nftmarket/modal/nft-details/nft-details.component';
 import {nftmarketService} from "./nftmarket.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-nftmarket',
@@ -12,8 +13,9 @@ export class NftmarketComponent implements OnInit {
 
   nftItems: any = []
   searchText: any = "";
+  isFetchingRecord: boolean = false;
 
-  constructor(public modalService: NgbModal, private nftmarketService: nftmarketService) {
+  constructor(public modalService: NgbModal, private nftmarketService: nftmarketService, private http: HttpClient) {
   }
 
   openModal(selectedNft: any) {
@@ -21,14 +23,17 @@ export class NftmarketComponent implements OnInit {
     modalRef.componentInstance.setSelectedNftDetails(selectedNft);
   }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.getNftItems();
   }
 
   getNftItems() {
+    this.isFetchingRecord = true;
     this.nftmarketService.nftItems().subscribe(
       (data) => {
         this.nftItems = data
+        this.isFetchingRecord = false;
       },
       (err) => {
         console.log('Success', err)
@@ -37,9 +42,11 @@ export class NftmarketComponent implements OnInit {
   }
 
   getSearchText(searchText: any) {
+    this.isFetchingRecord = true;
     this.nftmarketService.searchText(searchText).subscribe(
       (data) => {
-        this.nftItems = data
+        this.nftItems = data;
+        this.isFetchingRecord = false;
       },
       (err) => {
         console.log('Success', err)
@@ -47,4 +54,10 @@ export class NftmarketComponent implements OnInit {
     );
   }
 
+  resetSearch(searchText: any) {
+    console.log(searchText)
+    if(searchText == undefined || searchText == null) {
+      this.getNftItems();
+    }
+  }
 }
