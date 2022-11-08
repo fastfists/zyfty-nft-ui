@@ -10,7 +10,8 @@ export class nftmarketService {
 
   private env = environment;
   private URL = this.env.apiUrl;
-  private API_KEY = this.env.map_api_key;
+  // private API_KEY = this.env.map_api_key;
+  private API_KEY = "API_KEY"
 
   nftItems() {
     return this.http.get(this.URL + 'nft/list', {})

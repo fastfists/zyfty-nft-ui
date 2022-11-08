@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContractService } from 'src/app/common-service/contract/contract.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private wallet: ContractService) { }
 
   isLogin = false;
 
@@ -28,5 +29,8 @@ export class HeaderComponent implements OnInit {
     this.isLogin = false;
     localStorage.clear();
     this.router.navigate(['/'])
+  }
+
+  connect() {
   }
 }
