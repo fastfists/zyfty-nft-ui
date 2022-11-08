@@ -38,6 +38,12 @@
                     <li class="list-items">
                         <a href="javascript:void(0)" [routerLink]="['.']" [fragment]='"nftForm"'> Get Started</a>
                     </li>
+                    <li class="list-items" *ngIf="isConnected">
+                        <a>Welcome [insert addr here]</a>
+                    </li>
+                    <li class="list-items" *ngIf="!isConnected">
+                        <a href="javascript:void(0)" (click)="connect()">Connect Wallet</a>
+                    </li>
                     <li class="list-items" *ngIf="!isLogin">
                         <a href="javascript:void(0)" [routerLink]="['/user/signin']">Sign In</a>
                     </li>
