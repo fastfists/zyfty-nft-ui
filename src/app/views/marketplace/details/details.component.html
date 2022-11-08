@@ -13,7 +13,7 @@
         <div ngxSlickItem *ngFor="let slide of nftData.imageList; let i = index" class="slide">
           <div class="slide-body">
             <div class="slide-item">
-              <img src="{{ slide.nftImage }}" alt="" width="100%" (click)="openImage(i)" />
+              <img src="{{ slide.nftImage }}" alt="" width="100%" (click)="openImage" />
             </div>
           </div>
         </div>
