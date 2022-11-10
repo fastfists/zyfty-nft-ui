@@ -1,6 +1,6 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { providers } from 'ethers';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 export const MetaMaskWeb3 = new InjectionToken<providers.BaseProvider>('Metamask Provider', {
   providedIn: 'root',
@@ -23,7 +23,8 @@ interface ProviderRpcError extends Error {
 })
 export class Provider {
 
-  account: Subject<any> = new Subject()
+  account: BehaviorSubject<string> = new BehaviorSubject("")
+  connected = new BehaviorSubject(false)
   ethereum: any = null;
 
   connect() {
@@ -32,16 +33,22 @@ export class Provider {
     }
     if (this.ethereum) {
       this.ethereum.request({ method: 'eth_requestAccounts' })
-      .then(this.handleAccountChange);
+          .then((accs: Array<string>) => this.handleAccountChange(accs));
+      console.log("Made it here")
     }
   }
 
-  handleAccountChange(accouonts: Array<string>) {
+  handleAccountChange(accounts: Array<string>) {
     // Set subjects
+    if (accounts.length < 0) {
+      this.account.next("")
+    }
+    this.account.next(accounts[0])
+    this.connected.next(true)
+    console.log("I'm here", accounts[0])
   }
 
   handleChainChange(chainId: number) {
-    // Set subjects
   }
 
   handleDisconnect(error: ProviderRpcError) {
@@ -51,8 +58,9 @@ export class Provider {
   constructor() { 
     // @ts-ignore
     this.ethereum = window['ethereum'];
-    if (typeof this.ethereum === 'undefined') {
-      console.log('MetaMask is installed!');
+    this.connected.next(false);
+    if (typeof this.ethereum !== 'undefined') {
+      console.log('MetaMask is not installed!');
     }
     this.ethereum.on('disconnect', this.handleDisconnect);
     this.ethereum.on('accountsChanged', this.handleAccountChange)
