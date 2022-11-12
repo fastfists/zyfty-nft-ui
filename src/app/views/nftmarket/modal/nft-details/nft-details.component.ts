@@ -30,7 +30,17 @@ export class NftDetailsComponent {
 
     this.nftmarketService.nftById(selectedNftDetails.id).subscribe(
       (data) => {
-        this.selectedNftDetails = data
+        let that = this;
+        this.selectedNftDetails = data;
+        this.selectedNftDetails.displayImage =[];
+        this.selectedNftDetails.thumbnailImage =[];
+        this.selectedNftDetails.imageList.forEach((imageObj : any) => {
+          if(that.selectedNftDetails.thumbnailId ==  imageObj.id) {
+            that.selectedNftDetails.thumbnailImage.push(imageObj);
+          } else {
+            that.selectedNftDetails.displayImage.push(imageObj);
+          }
+        });
         this.getCurrentPosition(this.selectedNftDetails.address);
       },
       (err) => {
@@ -54,18 +64,28 @@ export class NftDetailsComponent {
       });
   }
 
-  openImage(): void {
+  openImage(index: number): void {
     // open lightbox imageList
-    for (let i = 0; i < this.selectedNftDetails.imageList.length; i++) {
-      const src = this.selectedNftDetails.imageList[i].nftImage;
-      const thumb = this.selectedNftDetails.imageList[i].nftImage;
+    // first push thumbnailImage because need to maintain index.
+    for (let i = 0; i < this.selectedNftDetails.thumbnailImage.length; i++) {
+      const src = this.selectedNftDetails.thumbnailImage[i].nftImage;
+      const thumb = this.selectedNftDetails.thumbnailImage[i].nftImage;
       const _albums = {
         src: src,
         thumb: thumb
       };
       this._albums.push(_albums);
     }
-    this._lightbox.open(this._albums, 0, {
+    for (let i = 0; i < this.selectedNftDetails.displayImage.length; i++) {
+      const src = this.selectedNftDetails.displayImage[i].nftImage;
+      const thumb = this.selectedNftDetails.displayImage[i].nftImage;
+      const _albums = {
+        src: src,
+        thumb: thumb
+      };
+      this._albums.push(_albums);
+    }
+    this._lightbox.open(this._albums, index, {
       wrapAround: true,
       showImageNumberLabel: true,
       disableScrolling: false,
