@@ -65,6 +65,7 @@ export class NftDetailsComponent {
   }
 
   openImage(index: number): void {
+    this._albums = [];
     // open lightbox imageList
     // first push thumbnailImage because need to maintain index.
     for (let i = 0; i < this.selectedNftDetails.thumbnailImage.length; i++) {
