@@ -8,8 +8,6 @@
                 </h1>
               </a>
             </div>
-            <div class="nft-link"><a [routerLink]="['.']" [fragment]='"nftForm"'>NFTs are
-                    happening NOW - Click here</a></div>
             <nav class="primary-nav">
                 <span class="menu-toggle">
                     <span class="line-1 line"></span>
@@ -39,10 +37,7 @@
                         <a href="javascript:void(0)" [routerLink]="['.']" [fragment]='"nftForm"'> Get Started</a>
                     </li>
                     <li class="list-items" *ngIf="(isConnected$ | async)">
-                        <p>Welcome {{address$ | async}}</p>
-                    </li>
-                    <li class="list-items" *ngIf="(isConnected$ | async)">
-                        <p>Welcome {{address$ | async}}</p>
+                        <a href="javascript:void(0)">Connected {{(address$ | async).slice(0, 6)}}... {{(address$ | async).slice(-4)}}</a>
                     </li>
                     <li class="list-items" *ngIf="!(isConnected$ | async)">
                         <a href="javascript:void(0)" (click)="connect()">Connect Wallet {{address$ | async}}</a>

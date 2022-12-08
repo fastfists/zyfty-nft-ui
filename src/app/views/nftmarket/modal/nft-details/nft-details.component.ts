@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {nftmarketService} from "../../nftmarket.service";
 import {Router} from "@angular/router";
+import { Provider } from 'src/app/common-service/provider/provider.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class NftDetailsComponent {
   lng: any;
   zoom: number = 4;
 
-  constructor(private activeModal: NgbActiveModal, private nftmarketService: nftmarketService, private router: Router) {
+  constructor(private activeModal: NgbActiveModal, private nftmarketService: nftmarketService, private router: Router, private provider: Provider) {
   }
 
   closeModal() {
@@ -60,5 +61,14 @@ export class NftDetailsComponent {
       localStorage.setItem('buyNowUrl', '/marketplace/details/' + id)
       this.router.navigate(['/user/signin'])
     }
+  }
+
+
+  purchaseNft() {
+      let id = this.selectedNftDetails.id
+      console.log("escrow", id)
+      this.provider.buyToken(id).then((_) =>
+          console.log("Thing finished")
+      ).catch(console.error);
   }
 }

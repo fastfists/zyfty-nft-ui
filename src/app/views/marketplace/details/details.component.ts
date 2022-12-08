@@ -5,6 +5,7 @@ import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng
 import { DetailsService } from './details.service';
 import * as moment from 'moment';
 import { ActivatedRoute, Router } from "@angular/router";
+import { environment } from "../../../../environments/environment";
 
 @Component({
   selector: 'app-details',

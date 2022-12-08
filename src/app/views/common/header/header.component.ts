@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Provider } from 'src/app/common-service/provider/provider.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
 
   isLogin = false;
   isConnected$? :BehaviorSubject<boolean> = undefined
-  address = ""
-  address$: Observable<any> = new Observable()
+  address$!: BehaviorSubject<any>
 
   ngOnInit(): void {
     let user = localStorage.getItem('user')
@@ -24,8 +23,9 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogin = false;
     }
-    this.address$ = this.provider.account.asObservable()
+    this.address$ = this.provider.account
     this.isConnected$ = this.provider.connected
+    console.log("Welcome", this.isConnected$.getValue(), this.address$.getValue())
   }
 
   redirectToPage() {
