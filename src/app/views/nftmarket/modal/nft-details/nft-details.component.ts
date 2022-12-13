@@ -15,6 +15,7 @@ export class NftDetailsComponent {
   lat: any;
   lng: any;
   zoom: number = 4;
+  tokensLeft: number = 500;
 
   constructor(private activeModal: NgbActiveModal, private nftmarketService: nftmarketService, private router: Router, private provider: Provider) {
   }
@@ -29,6 +30,10 @@ export class NftDetailsComponent {
       (data) => {
         this.selectedNftDetails = data
         this.getCurrentPosition(this.selectedNftDetails.address);
+
+        this.provider.tokensLeft(selectedNftDetails.id).then((tokens) => {
+            this.tokensLeft = tokens;
+        })
       },
       (err) => {
         console.log('Success', err)
@@ -67,7 +72,7 @@ export class NftDetailsComponent {
   purchaseNft() {
       let id = this.selectedNftDetails.id
       console.log("escrow", id)
-      this.provider.buyToken(id).then((_) =>
+      this.provider.buyToken(id, 1).then((_) =>
           console.log("Thing finished")
       ).catch(console.error);
   }

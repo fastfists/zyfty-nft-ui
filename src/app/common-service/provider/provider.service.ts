@@ -1,7 +1,7 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { providers } from 'ethers';
 import { BehaviorSubject, Subject } from 'rxjs';
-import ZyfySalesContract from "../../../artifacts/contracts/ZyftySalesContract.sol/ZyftySalesContract.json";
+import TokenFactory from "../../../artifacts/contracts/TokenEscrow.sol/TokenFactory.json";
 import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
 import ZyftyNFT from "../../../artifacts/contracts/ZyftyNFT.sol/ZyftyNFT.json";
 import { environment } from '../../../environments/environment';
@@ -32,12 +32,15 @@ export class Provider {
   connected = new BehaviorSubject(false)
   ethereum: any = null;
 
+  provider: providers.Web3Provider | null = null; 
+  signer: providers.JsonRpcSigner | null = null;
 
   connect() {
     if (typeof this.ethereum !== 'undefined') {
       console.log('MetaMask is installed!');
     }
     if (this.ethereum) {
+      this.provider = new ethers.providers.Web3Provider(this.ethereum);
       this.ethereum.request({ method: 'eth_requestAccounts' })
           .then((accs: Array<string>) => this.handleAccountChange(accs));
     }
@@ -65,6 +68,7 @@ export class Provider {
       return;
     }
     this.account.next(accounts[0])
+    this.signer = this.provider!.getSigner()
     this.connected.next(true)
   }
 
@@ -77,29 +81,30 @@ export class Provider {
     this.connected.next(false)
   }
 
-  async buyToken(id: Number) {
+  async tokensLeft(id: Number) {
     const provider = new ethers.providers.Web3Provider(this.ethereum);
     const signer = provider.getSigner()
+    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, signer);
 
-    const escrow = new ethers.Contract(environment.escrowAddress, ZyfySalesContract.abi, signer);
-    const nft = new ethers.Contract(environment.nftAddress, ZyftyNFT.abi, signer);
-    const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, signer);
+    return await escrow.tokensLeft(id);
+  }
+
+  async buyToken(id: Number, tokens: Number) {
+
+    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!);
+    const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer!);
 
     // Get signed message
     if (!this.connected.value) {
         await this.connectAsync()
     }
 
-
-    let hash = await nft.createAgreementHash(id, this.account.value);
-    const sig = await signer.signMessage(ethers.utils.arrayify(hash))
-
-    // approove optional
+    // approve optional
     let property = await escrow.getProperty(id);
-    let price = property.price.toNumber()
+    let price = property.pricePer.toNumber()
     await token.approve(escrow.address, price)
 
-    escrow.buyProperty(id, sig)
+    escrow.buyToken(id, tokens)
         .then(() => {
             console.log("Got it working")
         })

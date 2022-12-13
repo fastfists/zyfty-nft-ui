@@ -8,8 +8,15 @@
                 </h1>
               </a>
             </div>
+            <!-- <a *ngIf="(isConnected$ | async)" href="javascript:void(0)" > -->
+            <!--     Connected {{(address$ | async).slice(0, 6)}}... {{(address$ | async).slice(-4)}} -->
+            <!-- </a> -->
+            <!-- <a *ngIf="!(isConnected$ | async)" href="javascript:void(0)" (click)="connect()"> -->
+            <!--     Connect Wallet {{address$ | async}} -->
+            <!-- </a> -->
             <nav class="primary-nav">
                 <span class="menu-toggle">
+
                     <span class="line-1 line"></span>
                     <span class="line-2 line"></span>
                     <span class="line-3 line"></span>
@@ -20,9 +27,6 @@
                     </li>
                     <li class="list-items">
                         <a href="javascript:void(0)" [routerLink]="['/about']">About</a>
-                    </li>
-                    <li class="list-items" style="display: none">
-                        <a href="javascript:void(0)" [routerLink]="['/marketplace']">NFT Marketplace</a>
                     </li>
                     <li class="list-items">
                       <a href="javascript:void(0)" [routerLink]="['/nft-market']">NFT Marketplace</a>
@@ -36,18 +40,12 @@
                     <li class="list-items">
                         <a href="javascript:void(0)" [routerLink]="['.']" [fragment]='"nftForm"'> Get Started</a>
                     </li>
-                    <li class="list-items" *ngIf="(isConnected$ | async)">
-                        <a href="javascript:void(0)">Connected {{(address$ | async).slice(0, 6)}}... {{(address$ | async).slice(-4)}}</a>
-                    </li>
-                    <li class="list-items" *ngIf="!(isConnected$ | async)">
-                        <a href="javascript:void(0)" (click)="connect()">Connect Wallet {{address$ | async}}</a>
-                    </li>
-                    <li class="list-items" *ngIf="!isLogin">
-                        <a href="javascript:void(0)" [routerLink]="['/user/signin']">Sign In</a>
-                    </li>
-                    <li class="list-items" *ngIf="isLogin">
-                        <a href="javascript:void(0)" (click)="logOut()">Log Out</a>
-                    </li>
+                    <!-- <li class="list-items" *ngIf="!isLogin"> -->
+                    <!--     <a href="javascript:void(0)" [routerLink]="['/user/signin']">Sign In</a> -->
+                    <!-- </li> -->
+                    <!-- <li class="list-items" *ngIf="isLogin"> -->
+                    <!--     <a href="javascript:void(0)" (click)="logOut()">Log Out</a> -->
+                    <!-- </li> -->
                 </ul>
             </nav>
         </div>
