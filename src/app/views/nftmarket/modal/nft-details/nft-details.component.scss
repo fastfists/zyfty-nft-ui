@@ -107,11 +107,7 @@
         justify-content: space-between;
         align-items: center;
 
-        .action-bar {
-          span{
-            padding-left: 10px;
-          }
-        }
+
       }
 
       .main-summary {
@@ -149,8 +145,6 @@
           .contact-buttons {
             padding: 16px 0px;
             display: flex;
-            margin-bottom: 16px;
-            border-bottom: 1px solid rgb(209, 209, 213);
 
             button.purchase-button {
               font-weight: normal;
@@ -162,6 +156,7 @@
               background-color: rgb(13, 69, 153);
               border: 1px solid rgb(13, 69, 153);
               color: rgb(255, 255, 255);
+              margin-right: 8px;
             }
 
             button.offer-button {
@@ -171,7 +166,35 @@
               border-radius: 4px;
               user-select: none;
               padding: 9px 16px;
-              margin-left: 8px;
+              margin-right: 8px;
+            }
+          }
+
+          .token-block {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #d1d1d5;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            span{
+              margin-right: 10px;
+            }
+            form {
+              border: 1px solid #d1d1d5;
+              border-radius: 30px;
+              padding: 12px 5px;
+              input {
+                width: 40px;
+                height: 15px;
+                text-align: center;
+                padding: 0;
+
+                &.qty {
+                  border-left: 1px solid #d1d1d5;
+                  border-right: 1px solid #d1d1d5;
+                }
+              }
             }
           }
         }
@@ -192,21 +215,23 @@
 
             ul.fea-list {
               list-style: none;
-              columns: 192px auto;
-              break-inside: avoid;
-              padding-inline-start: 0px;
+              padding-left: 20px;
 
               li {
-                margin-bottom: 16px;
-                display: flex;
-                break-inside: avoid;
+
+                &.sub-title {
+                  font-size: 15px;
+                  font-weight: 300;
+                  list-style: disc;
+                }
+                margin-bottom: 10px;
 
                 span:first-child {
                   flex: 0 0 100px;
                   margin-right: 3px;
                   color: rgb(42, 42, 51);
-                  font-weight: 400;
-                  font-size: 14px;
+                  font-weight: 300;
+                  font-size: 13px;
                   line-height: 24px;
                 }
               }

@@ -267,7 +267,7 @@ input[type=search]:-webkit-search-results-decoration {
   -moz-align-items: center;
   -ms-align-items: center;
   align-items: center;
-  height: 120px;
+  height: 80px;
   -webkit-transition: 0.4s all ease-in-out;
   -moz-transition: 0.4s all ease-in-out;
   -ms-transition: 0.4s all ease-in-out;
