@@ -46,6 +46,33 @@ export class Provider {
     }
   }
 
+  getCosts() {
+       let subject = new BehaviorSubject<any>([]);
+
+       this.costsAsync().then((data) => {
+           console.log(data);
+           subject.next(data);
+       });
+
+       return subject
+  }
+
+  async costsAsync() {
+    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
+    console.log("starting fetch")
+    let vals = []
+    for (let i = 0; i < 4; i++) {
+        console.log("in ")
+        let p = {
+            "tokensLeft": await this.tokensLeft(i + 1),
+            "pricePer": await this.pricePer(i + 1)
+        }
+        console.log("bro bro", p)
+        vals.push(p)
+    }
+    return vals
+  }
+
   async connectAsync() {
     if (typeof this.ethereum !== 'undefined') {
       console.log('MetaMask is installed!');
@@ -82,17 +109,21 @@ export class Provider {
   }
 
   async tokensLeft(id: Number) {
-    const provider = new ethers.providers.Web3Provider(this.ethereum);
-    const signer = provider.getSigner()
-    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, signer);
+    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
 
-    return await escrow.tokensLeft(id);
+    return await escrow.tokensLeft(id)
+  }
+
+  async pricePer(id: Number) {
+    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
+
+    return await escrow.pricePer(id)
   }
 
   async buyToken(id: Number, tokens: Number) {
 
-    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!);
-    const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer!);
+    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
+    const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer!)
 
     // Get signed message
     if (!this.connected.value) {
@@ -100,7 +131,7 @@ export class Provider {
     }
 
     // approve optional
-    let property = await escrow.getProperty(id);
+    let property = await escrow.getProperty(id)
     let price = property.pricePer.toNumber()
     await token.approve(escrow.address, price)
 
@@ -108,8 +139,7 @@ export class Provider {
         .then(() => {
             console.log("Got it working")
         })
-        // @ts-ignore
-        .catch((err) => {
+        .catch((err: any) => {
             console.log(err.message)
         });
 
@@ -117,17 +147,17 @@ export class Provider {
 
   constructor() { 
     // @ts-ignore
-    this.ethereum = window['ethereum'];
+    this.ethereum = window['ethereum']
     this.account = new BehaviorSubject("")
     this.connected.next(false);
     if (typeof this.ethereum === 'undefined') {
-      console.log('MetaMask is not installed!');
+      console.log('MetaMask is not installed!')
     }
     if (this.ethereum._state.account !== undefined) {
         this.handleAccountChange(this.ethereum._state.account)
     }
 
-    this.ethereum.on('disconnect', (error: ProviderRpcError) => this.handleDisconnect(error));
+    this.ethereum.on('disconnect', (error: ProviderRpcError) => this.handleDisconnect(error))
     this.ethereum.on('accountsChanged', (accs: Array<string>) => this.handleAccountChange(accs))
     this.ethereum.on('chainChanged', (chainId: number) => this.handleChainChange(chainId))
     // this.ethereum.on('message', this.handleMessage());

@@ -9,9 +9,8 @@ export const environment = {
   sellerAddress: "0x63B060a3E5a89308DB2Da5D16429AB01A65e29D8",
   adminAddress: "0x8c931Af0686fB7C4D0c6046cCdd9A6ceBC6A53AA",
 
-  tokenAddress: "0xe132f289dAa95f59a8f8eB102Fbd8674B2745F18",
-  escrowAddress: "0x63EC310C0aaAA0a238400921d90e6C3802EF8B44"
-  
+  tokenAddress: "0x943688AacF826e5b93b5637150Bb3Ad2343E4BE4",
+  escrowAddress: "0x6FF44bb0A0Ebaca36a08C70759CcDdC518863e5A"
 };
 
 /*

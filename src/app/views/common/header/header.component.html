@@ -8,12 +8,12 @@
                 </h1>
               </a>
             </div>
-            <!-- <a *ngIf="(isConnected$ | async)" href="javascript:void(0)" > -->
-            <!--     Connected {{(address$ | async).slice(0, 6)}}... {{(address$ | async).slice(-4)}} -->
-            <!-- </a> -->
-            <!-- <a *ngIf="!(isConnected$ | async)" href="javascript:void(0)" (click)="connect()"> -->
-            <!--     Connect Wallet {{address$ | async}} -->
-            <!-- </a> -->
+            <a *ngIf="(isConnected$ | async)" href="javascript:void(0)" >
+                Connected {{(address$ | async).slice(0, 6)}}... {{(address$ | async).slice(-4)}}
+            </a>
+            <a *ngIf="!(isConnected$ | async)" href="javascript:void(0)" (click)="connect()">
+                Connect Wallet {{address$ | async}}
+            </a>
             <nav class="primary-nav">
                 <span class="menu-toggle">
 

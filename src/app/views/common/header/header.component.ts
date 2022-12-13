@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
     }
     this.address$ = this.provider.account
     this.isConnected$ = this.provider.connected
-    console.log("Welcome", this.isConnected$.getValue(), this.address$.getValue())
   }
 
   redirectToPage() {
@@ -40,7 +39,6 @@ export class HeaderComponent implements OnInit {
 
   connect() {
     // Connects to the wallet
-    console.log("Connected", this.provider)
     this.provider.connect()
   }
 }

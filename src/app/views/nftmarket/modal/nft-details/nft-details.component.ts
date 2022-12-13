@@ -21,7 +21,12 @@ export class NftDetailsComponent {
   quntity: number = 1;
   public _albums: Array<any> = [];
 
-  constructor(private _lightbox: Lightbox, private activeModal: NgbActiveModal, private nftmarketService: nftmarketService, private router: Router, private provier: Provider) {
+  constructor(private _lightbox: Lightbox,
+              private activeModal: NgbActiveModal,
+              private nftmarketService: nftmarketService,
+              private provider: Provider,
+              private router: Router,
+              ) {
   }
 
   closeModal() {

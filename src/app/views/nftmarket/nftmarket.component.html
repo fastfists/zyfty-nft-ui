@@ -35,7 +35,9 @@
               <span>4.8% CAP</span>
             </div>
             <div class="item-token">
-              <button>400 Tokens at $3,000 each</button>
+                <div *ngIf="chainNFT.length >= nftItem.id">
+                    <button>{{ chainNFT[nftItem.id - 1].tokensLeft}} Tokens at USDC {{ chainNFT[nftItem.id - 1].pricePer}}</button>
+                </div>
             </div>
           </div>
         </div>
