@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {nftmarketService} from "../../nftmarket.service";
 import {Router} from "@angular/router";
-import { Provider } from 'src/app/common-service/provider/provider.service';
 import {Lightbox} from "ngx-lightbox";
+import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class NftDetailsComponent {
   constructor(private _lightbox: Lightbox,
               private activeModal: NgbActiveModal,
               private nftmarketService: nftmarketService,
-              private provider: Provider,
+              private escrow: EscrowService,
               private router: Router,
               ) {
   }
@@ -50,7 +50,7 @@ export class NftDetailsComponent {
         });
         this.getCurrentPosition(this.selectedNftDetails.address);
 
-        this.provider.tokensLeft(selectedNftDetails.id).then((tokens) => {
+        this.escrow.tokensLeft(selectedNftDetails.id).then((tokens) => {
             this.tokensLeft = tokens;
         })
       },
@@ -125,17 +125,12 @@ export class NftDetailsComponent {
   purchaseNft() {
       let id = this.selectedNftDetails.id
       console.log("escrow", id)
-      this.provider.buyToken(id, 1).then((_) =>
+      this.escrow.buyToken(id, 1).then((_) =>
           console.log("Thing finished")
       ).catch(console.error);
   }
-  gtyUpdate(isUpdate: boolean){
-    if (isUpdate) {
-        this.quntity = this.quntity + 1;
-    }
-    else if (this.quntity > 1 && !isUpdate){
-      this.quntity = this.quntity - 1;
-    }
+  ctyUpdate(value: number){
+    this.quntity += value;
   }
 
 }

@@ -39,9 +39,9 @@
           <div class="token-block">
             <span>Token Quantity</span>
             <form id='tokenform' method='POST' action='#' class="numbo">
-              <input type='button' value='-' class='qtyminus' field='quantity' (click)="gtyUpdate(false)" [disabled]="quntity <= 1" />
+              <input type='button' value='-' class='qtyminus' field='quantity' (click)="ctyUpdate(-1)" [disabled]="quntity <= 1" />
               <input type='text' name='quantity' [(ngModel)]="quntity" class='qty' />
-              <input type='button' value='+' class='qtyplus' field='quantity' (click)="gtyUpdate(true)" />
+              <input type='button' value='+' class='qtyplus' field='quantity' (click)="ctyUpdate(1)" />
             </form>
           </div>
 

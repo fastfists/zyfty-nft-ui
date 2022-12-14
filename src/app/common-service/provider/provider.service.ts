@@ -1,10 +1,6 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { providers } from 'ethers';
-import { BehaviorSubject, Subject } from 'rxjs';
-import TokenFactory from "../../../artifacts/contracts/TokenEscrow.sol/TokenFactory.json";
-import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
-import ZyftyNFT from "../../../artifacts/contracts/ZyftyNFT.sol/ZyftyNFT.json";
-import { environment } from '../../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 import { ethers } from "ethers";
 
 export const MetaMaskWeb3 = new InjectionToken<providers.BaseProvider>('Metamask Provider', {
@@ -26,14 +22,14 @@ interface ProviderRpcError extends Error {
 @Injectable({
   providedIn: 'root'
 })
-export class Provider {
+export class WalletProvider {
 
   account: BehaviorSubject<string> = new BehaviorSubject("")
   connected = new BehaviorSubject(false)
   ethereum: any = null;
 
   provider: providers.Web3Provider | null = null; 
-  signer: providers.JsonRpcSigner | null = null;
+  signer: BehaviorSubject<providers.JsonRpcSigner | null> = new BehaviorSubject<providers.JsonRpcSigner | null>(null);
 
   connect() {
     if (typeof this.ethereum !== 'undefined') {
@@ -46,32 +42,6 @@ export class Provider {
     }
   }
 
-  getCosts() {
-       let subject = new BehaviorSubject<any>([]);
-
-       this.costsAsync().then((data) => {
-           console.log(data);
-           subject.next(data);
-       });
-
-       return subject
-  }
-
-  async costsAsync() {
-    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
-    console.log("starting fetch")
-    let vals = []
-    for (let i = 0; i < 4; i++) {
-        console.log("in ")
-        let p = {
-            "tokensLeft": await this.tokensLeft(i + 1),
-            "pricePer": await this.pricePer(i + 1)
-        }
-        console.log("bro bro", p)
-        vals.push(p)
-    }
-    return vals
-  }
 
   async connectAsync() {
     if (typeof this.ethereum !== 'undefined') {
@@ -95,7 +65,7 @@ export class Provider {
       return;
     }
     this.account.next(accounts[0])
-    this.signer = this.provider!.getSigner()
+    this.signer.next(this.provider!.getSigner())
     this.connected.next(true)
   }
 
@@ -106,43 +76,6 @@ export class Provider {
   handleDisconnect(error: ProviderRpcError) {
     this.account.next("")
     this.connected.next(false)
-  }
-
-  async tokensLeft(id: Number) {
-    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
-
-    return await escrow.tokensLeft(id)
-  }
-
-  async pricePer(id: Number) {
-    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
-
-    return await escrow.pricePer(id)
-  }
-
-  async buyToken(id: Number, tokens: Number) {
-
-    const escrow = new ethers.Contract(environment.escrowAddress, TokenFactory.abi, this.signer!)
-    const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer!)
-
-    // Get signed message
-    if (!this.connected.value) {
-        await this.connectAsync()
-    }
-
-    // approve optional
-    let property = await escrow.getProperty(id)
-    let price = property.pricePer.toNumber()
-    await token.approve(escrow.address, price)
-
-    escrow.buyToken(id, tokens)
-        .then(() => {
-            console.log("Got it working")
-        })
-        .catch((err: any) => {
-            console.log(err.message)
-        });
-
   }
 
   constructor() { 

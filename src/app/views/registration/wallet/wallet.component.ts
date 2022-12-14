@@ -1,8 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Provider } from 'src/app/common-service/provider/provider.service';
+import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-wallet',
@@ -16,7 +15,7 @@ export class WalletComponent implements OnInit {
   wallet!: FormGroup;
   account$ = this.provider.account
 
-  constructor(private provider: Provider) { }
+  constructor(private provider: WalletProvider) { }
 
   ngOnInit(): void {
 
@@ -39,9 +38,7 @@ export class WalletComponent implements OnInit {
   }
 
   connectWallet() {
-    console.log("before", this.provider)
     this.provider.connect()
-    console.log("after", this.provider)
   }
 
   addWallet(value: String) {
