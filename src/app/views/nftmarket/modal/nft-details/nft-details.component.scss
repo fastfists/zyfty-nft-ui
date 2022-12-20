@@ -1,3 +1,4 @@
+
 #nftModalData {
   display: grid;
 
@@ -167,6 +168,17 @@
               user-select: none;
               padding: 9px 16px;
               margin-right: 8px;
+            }
+
+            button.offer-button-disabled {
+              background-color: rgba(242, 250, 255, 0.3);
+              color: rgba(13, 69, 153, 0.3);
+              border: 1px solid rgba(13, 69, 153, 0.3);
+              border-radius: 4px;
+              padding: 9px 16px;
+              margin-right: 8px;
+              pointer-events: all !important;
+              cursor: not-allowed;
             }
           }
 

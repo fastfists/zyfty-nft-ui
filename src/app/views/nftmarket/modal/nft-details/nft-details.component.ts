@@ -4,6 +4,7 @@ import {nftmarketService} from "../../nftmarket.service";
 import {Router} from "@angular/router";
 import {Lightbox} from "ngx-lightbox";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
+import { KYCService } from 'src/app/common-service/contracts/kyc.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class NftDetailsComponent {
   lng: any;
   zoom: number = 4;
   tokensLeft: number = 500;
+  verified: boolean = false;
 
   quntity: number = 1;
   public _albums: Array<any> = [];
@@ -25,6 +27,7 @@ export class NftDetailsComponent {
               private activeModal: NgbActiveModal,
               private nftmarketService: nftmarketService,
               private escrow: EscrowService,
+              private kyc: KYCService,
               private router: Router,
               ) {
   }
@@ -54,6 +57,9 @@ export class NftDetailsComponent {
 
         this.escrow.tokensLeft(selectedNftDetails.id).then((tokens) => {
             this.tokensLeft = tokens;
+        })
+        this.kyc.isVerified().then((status) => {
+            this.verified = status
         })
       },
       (err) => {
@@ -123,16 +129,18 @@ export class NftDetailsComponent {
     }
   }
 
-
   purchaseNft() {
       let id = this.selectedNftDetails.id
       console.log("escrow", id)
-      this.escrow.buyToken(id, 1).then((_) =>
+      this.escrow.buyToken(id, this.quntity).then((_) =>
           console.log("Thing finished")
       ).catch(console.error);
   }
+
   ctyUpdate(value: number){
-    this.quntity += value;
+    if (this.quntity + value > 0 && this.quntity + value < this.tokensLeft) {
+      this.quntity += value;
+    }
   }
 
 }
