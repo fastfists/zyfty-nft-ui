@@ -13,8 +13,8 @@ import { Injectable } from '@angular/core'; // at top
 export class ContainerComponent implements OnInit {
 
 
-  registrationType = 'kyc';
-  // registrationType = 'personalInfo';
+  // registrationType = 'kyc';
+  registrationType = 'personalInfo';
   walletFlag = true;
   kycFlag = true;
 

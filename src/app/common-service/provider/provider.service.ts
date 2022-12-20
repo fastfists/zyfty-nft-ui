@@ -25,6 +25,7 @@ interface ProviderRpcError extends Error {
 export class WalletProvider {
 
   account: BehaviorSubject<string> = new BehaviorSubject("")
+  chain: BehaviorSubject<number> = new BehaviorSubject(0);
   connected = new BehaviorSubject(false)
   ethereum: any = null;
 
@@ -65,12 +66,18 @@ export class WalletProvider {
       return;
     }
     this.account.next(accounts[0])
+
+    this.provider!.getNetwork().then((network) => {
+        this.chain.next(network.chainId);
+    })
+
     this.signer.next(this.provider!.getSigner())
     this.connected.next(true)
   }
 
   handleChainChange(chainId: number) {
     console.log("Chain changed to", chainId)
+    this.chain.next(chainId);
   }
 
   handleDisconnect(error: ProviderRpcError) {

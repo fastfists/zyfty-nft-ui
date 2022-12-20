@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',

@@ -20,6 +20,7 @@ export class AppComponent {
         if (event instanceof NavigationEnd) {
           this.headerFooter = (event.url !== '/user/signin') && (event.url !== '/user/registration') &&
             (event.url !== '/user/registration-details') && (event.url !== '/user/forgot-password') && (event.url !== '/user/reset-password')
+          this.headerFooter = true;
         }
       });
   }

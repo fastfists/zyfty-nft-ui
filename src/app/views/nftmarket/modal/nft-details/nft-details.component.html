@@ -10,10 +10,10 @@
       <div class="column">
         <ul class="media-col" *ngIf="selectedNftDetails">
           <li class="full-width media-col-item" *ngFor="let nftItem of selectedNftDetails.thumbnailImage  let i = index" >
-            <figure><img src="{{nftItem.nftImage}}" alt="" (click)="openImage(i)"></figure>
+            <figure><img src="{{nftItem.nft_image}}" alt="" (click)="openImage(i)"></figure>
           </li>
           <li class="media-col-item" *ngFor="let nftItem of selectedNftDetails.displayImage  let i = index" >
-            <figure><img src="{{nftItem.nftImage}}" alt="" (click)="openImage(i + selectedNftDetails.thumbnailImage.length)"></figure>
+            <figure><img src="{{nftItem.nft_image}}" alt="" (click)="openImage(i + selectedNftDetails.thumbnailImage.length)"></figure>
           </li>
         </ul>
       </div>

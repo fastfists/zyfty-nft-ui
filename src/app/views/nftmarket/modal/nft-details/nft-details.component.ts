@@ -38,6 +38,8 @@ export class NftDetailsComponent {
     this.nftmarketService.nftById(selectedNftDetails.id).subscribe(
       (data) => {
         let that = this;
+        console.log(data);
+
         this.selectedNftDetails = data;
         this.selectedNftDetails.displayImage =[];
         this.selectedNftDetails.thumbnailImage =[];

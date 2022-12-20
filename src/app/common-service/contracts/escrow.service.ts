@@ -3,7 +3,6 @@ import { ethers, providers } from 'ethers';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import TokenFactory from "../../../artifacts/contracts/TokenEscrow.sol/TokenFactory.json";
 import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
-import ZyftyNFT from "../../../artifacts/contracts/ZyftyNFT.sol/ZyftyNFT.json";
 import { environment } from '../../../environments/environment';
 import { WalletProvider } from '../provider/provider.service';
 

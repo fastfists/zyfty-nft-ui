@@ -4,6 +4,7 @@ import {NftDetailsComponent} from '../nftmarket/modal/nft-details/nft-details.co
 import {nftmarketService} from "./nftmarket.service";
 import {HttpClient} from "@angular/common/http";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
+import { KYCService } from 'src/app/common-service/contracts/kyc.service';
 
 @Component({
   selector: 'app-nftmarket',
@@ -15,9 +16,10 @@ export class NftmarketComponent implements OnInit {
   nftItems: any = []
   chainNFT: any = []
   searchText: any = "";
+  verified: boolean = false;
   isFetchingRecord: boolean = false;
 
-  constructor(public modalService: NgbModal, private nftmarketService: nftmarketService, private http: HttpClient, private escrow: EscrowService) {
+  constructor(public modalService: NgbModal, private nftmarketService: nftmarketService, private http: HttpClient, private escrow: EscrowService, private kyc: KYCService) {
   }
 
   openModal(selectedNft: any) {
@@ -31,13 +33,17 @@ export class NftmarketComponent implements OnInit {
   }
 
   getCosts() {
-      console.log("getting costs");
       this.escrow.getCosts().then((data) => {
-          console.log("got costs", data);
           if (data != null) {
               this.chainNFT = data;
           }
       })
+  }
+
+  checkVerification() {
+    this.kyc.isVerified().then((status) => {
+      this.verified = status;
+    })
   }
 
   getNftItems() {
@@ -45,12 +51,14 @@ export class NftmarketComponent implements OnInit {
         if (signer != null) {
             console.log("Signer is non null");
             this.getCosts();
+            this.checkVerification();
         }
     })
 
     this.isFetchingRecord = true;
     this.nftmarketService.nftItems().subscribe(
       (data) => {
+        console.log("Got items", data);
         this.nftItems = data
         this.isFetchingRecord = false;
       },
