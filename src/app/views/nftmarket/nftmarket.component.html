@@ -5,7 +5,7 @@
   <div class="nft-search-block">
     <div class="container">
       <div class="nft-search-content">
-        <h2 class="title">Invest in Real Estate <br> With Your Crypto and Your Wallet</h2>
+        <h2 class="title">Invest in Real Estate <br> With Crypto</h2>
         <div class="input-group">
           <input type="search" id="form1" placeholder="Enter a city or ZIP code" class="form-control" [(ngModel)]="searchText" (click)="resetSearch(searchText)"/>
           <button type="button" class="search-btn" (click)="getSearchText(searchText)">
@@ -20,7 +20,7 @@
 
   <div class="nft-list-block">
 
-  <div *ngIf="!verified">
+  <div *ngIf="!verified && !isFetchingRecord">
       <div class="text-center">
           <h3>Wallet not verified</h3>
           <a [routerLink]="['/user/registration']" class="btn btn-large bg-purple">

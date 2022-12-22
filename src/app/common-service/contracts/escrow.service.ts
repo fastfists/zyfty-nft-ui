@@ -42,10 +42,10 @@ export class EscrowService {
     if (this.escrow == null) return;
     const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer$.value!)
 
-    // approve optional
-    let property = await this.escrow.getProperty(id)
-    let price = property.pricePer.toNumber()
-    await token.approve(this.escrow.address, price)
+    // // approve optional
+    // let property = await this.escrow.getProperty(id)
+    // let price = property.pricePer.toNumber()
+    // await token.approve(this.escrow.address, price)
 
     await this.escrow.buyToken(id, tokens);
   }

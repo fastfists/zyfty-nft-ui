@@ -39,7 +39,7 @@ export class PersonalInformationComponent implements OnInit {
         .subscribe(res => {
           return res;
         })
-      this.addNewItem('wallet')
+      this.addNewItem('kyc')
     }
   }
 

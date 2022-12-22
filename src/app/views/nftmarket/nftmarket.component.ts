@@ -35,6 +35,7 @@ export class NftmarketComponent implements OnInit {
   getCosts() {
       this.escrow.getCosts().then((data) => {
           if (data != null) {
+              console.log("ChainDaata", data);
               this.chainNFT = data;
           }
       })
@@ -42,6 +43,7 @@ export class NftmarketComponent implements OnInit {
 
   checkVerification() {
     this.kyc.isVerified().then((status) => {
+      console.log("Got status", status)
       this.verified = status;
     })
   }
