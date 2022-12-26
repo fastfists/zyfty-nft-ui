@@ -7,7 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
-import { FoundersComponent } from './views/founders/founders.component';
+import { TeamComponent } from './views/team/team.component';
 import { SolutionComponent } from './views/solution/solution.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
 import { AboutComponent } from './views/about/about.component';
@@ -39,7 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    FoundersComponent,
+    TeamComponent,
     SolutionComponent,
     FaqsComponent,
     HomeComponent,
