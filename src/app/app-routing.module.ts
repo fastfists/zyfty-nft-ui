@@ -15,14 +15,6 @@ import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-p
 import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { NftmarketComponent } from "./views/nftmarket/nftmarket.component";
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './views/home/home.component';
-import {FaqsComponent} from './views/faqs/faqs.component';
-import {TeamComponent} from './views/team/team.component';
-import {SolutionComponent} from './views/solution/solution.component';
-import {AboutComponent} from './views/about/about.component';
-import {CominsoonComponent} from './views/common/cominsoon/cominsoon.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
