@@ -17,6 +17,10 @@ export class DashboardComponent implements OnInit {
   constructor(private provider: WalletProvider, private kyc: KYCService, private escrow: EscrowService) {
   }
 
+  switchPage(page: string) {
+    this.page = page;
+  }
+
   ngOnInit(): void {
   }
 

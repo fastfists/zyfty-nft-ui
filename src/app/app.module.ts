@@ -57,7 +57,7 @@ import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.compon
     DashboardComponent,
     AccountComponent,
     EscrowComponent,
-    DashboardkycComponent
+    DashboardkycComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule,
     ToastrModule.forRoot(), NgbModule, AgmCoreModule.forRoot({
