@@ -26,13 +26,10 @@ export class KYCService {
   }
 
   async isVerified(): Promise<boolean>  {
-      console.log("Is verified?)")
-      if (this.signer$.value == null) {
-
-        console.log("Is verified?)")
+      if (this.signer$.value == null || this.kyc == null) {
         return false;
       }
-      let value: boolean = await this.kyc!.hasValid(this.provider.account.value!);
+      let value: boolean = await this.kyc.hasValid(this.provider.account.value!);
       return value;
   }
 

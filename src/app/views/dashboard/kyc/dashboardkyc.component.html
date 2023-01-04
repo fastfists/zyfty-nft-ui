@@ -1,1 +1,14 @@
-<p class="text-white">kyc works!</p>
+<div class="w-10/12 h-full mx-auto text-white">
+  <div class="grid grid-cols-2">
+    <div class="flex">
+      <div>Verified</div>
+      <div>{{ verified }}</div>
+    </div>
+    <div>
+      <ng-container *ngIf="!verified">
+        <p>Verify your account here </p>
+        <app-kyc></app-kyc>
+      </ng-container>
+    </div>
+  </div>
+</div>
