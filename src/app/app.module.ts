@@ -30,6 +30,10 @@ import { JwtInterceptor } from './auth-guard/jwt-interceptor';
 import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
 import { NftDetailsComponent } from './views/nftmarket/modal/nft-details/nft-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { AccountComponent } from './views/dashboard/account/account.component';
+import { EscrowComponent } from './views/dashboard/escrow/escrow.component';
+import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     NftmarketComponent,
-    NftDetailsComponent
+    NftDetailsComponent,
+    DashboardComponent,
+    AccountComponent,
+    EscrowComponent,
+    DashboardkycComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule,
     ToastrModule.forRoot(), NgbModule, AgmCoreModule.forRoot({

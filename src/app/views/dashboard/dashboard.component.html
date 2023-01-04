@@ -1,0 +1,27 @@
+<div class="h-[70vh] p-[80px] px-0 pb-0 flex">
+  <div class="flex flex-col items-center text-center">
+    <div class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100">
+      <button>Account</button>
+    </div>
+    <div class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100">
+      <button>KYC</button>
+    </div>
+
+    <div class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100">
+      <button >Active Escrows</button>
+    </div>
+  </div>
+  <div class="bg-darkgreen w-100 text-white">
+    <div *ngIf="page == 'Account'">
+      <app-account></app-account>
+    </div>
+
+    <div *ngIf="page == 'KYC'">
+      <app-dashbaordkyc></app-dashbaordkyc>
+    </div>
+
+    <div *ngIf="page == 'Escrow'">
+      <app-escrow></app-escrow>
+    </div>
+  </div>
+</div>

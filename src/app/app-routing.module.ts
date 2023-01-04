@@ -11,6 +11,7 @@ import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-p
 import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { NftmarketComponent } from "./views/nftmarket/nftmarket.component";
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'user/registration', component: RegistrationComponent },
   { path: 'user/registration-details', component: ContainerComponent, canActivate: [AuthGuard] },
   { path: 'nft-market', component: NftmarketComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
