@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ethers, providers } from 'ethers';
 import { BehaviorSubject } from 'rxjs';
-import ZyftyKYC from "../../../artifacts/contracts/ZyftyKYC.sol/ZyftyKYC.json";
+import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
 import { environment } from '../../../environments/environment';
 import { WalletProvider } from '../provider/provider.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class KYCService {
+export class TokenService {
 
   signer$: BehaviorSubject<providers.JsonRpcSigner | null>
-  kyc: ethers.Contract | null = null
+  token: ethers.Contract | null = null;
 
   constructor(private provider: WalletProvider) {
       this.signer$ = this.provider.signer;
@@ -19,21 +19,16 @@ export class KYCService {
       this.signer$.subscribe({
           next: (data) => {
               if (data != null) {
-                this.kyc = new ethers.Contract(environment.kycAddress, ZyftyKYC.abi, data)
+                this.token = new ethers.Contract(environment.tokenAddress, TestToken.abi, data)
               }
           }
       });
   }
 
-  async isVerified(): Promise<boolean>  {
-      console.log("Is verified?)")
-      if (this.signer$.value == null) {
-
-        console.log("Is verified?)")
-        return false;
-      }
-      let value: boolean = await this.kyc!.hasValid(this.provider.account.value!);
-      return value;
+  async balance() : Promise<number> {
+    if (this.token != null) {
+      return await this.token.balanceOf(this.provider.account);
+    }
+    return 0;
   }
-
 }
