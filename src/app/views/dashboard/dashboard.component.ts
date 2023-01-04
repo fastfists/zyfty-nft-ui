@@ -13,12 +13,17 @@ import { WalletProvider } from '../../common-service/provider/provider.service';
 export class DashboardComponent implements OnInit {
 
   page = "Account";
+  connected = this.provider.connected;
 
   constructor(private provider: WalletProvider, private kyc: KYCService, private escrow: EscrowService) {
   }
 
   switchPage(page: string) {
     this.page = page;
+  }
+
+  connectWallet() {
+    this.provider.connect();
   }
 
   ngOnInit(): void {

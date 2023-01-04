@@ -1,27 +1,43 @@
 <div class="h-[70vh] p-[80px] px-0 pb-0 flex">
   <div class="flex flex-col items-center text-center">
-    <div class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100">
-      <button (click)="switchPage('Account')">Account</button>
-    </div>
-    <div class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100">
-      <button (click)="switchPage('KYC')">KYC</button>
-    </div>
-
-    <div class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100">
-      <button (click)="switchPage('Escrow')">Active Escrows</button>
-    </div>
+    <button [disabled]="!(connected | async)" (click)="switchPage('Account')" class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100 disabled:opacity-25">
+      Account
+    </button>
+    <button [disabled]="!(connected | async)" (click)="switchPage('KYC')" class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100 disabled:opacity-25">
+      KYC
+    </button>
+    <button [disabled]="!(connected | async)" (click)="switchPage('Escrow')" class="hover:bg-darkpurple hover:text-white inline-block whitespace-nowrap w-100 disabled:opacity-25">
+      Active Escrows
+    </button>
   </div>
-  <div class="bg-darkgreen w-100 text-white">
-    <div *ngIf="page == 'Account'">
-      <app-account></app-account>
-    </div>
+  <div class="bg-darkgreen w-100">
+    <ng-container *ngIf="!(connected | async)">
+      <div class="grid content-center justify-center h-full">
+        <div class="text-2xl text-center flex flex-col justify-around bg-white text-black w-72 h-52 m-auto h-screen rounded-2xl">
+          <div>
+            Connect your metamask wallet to continue
+          </div>
+          <div>
+            <button (click)="connectWallet()" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
+              Connect Wallet
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
 
-    <div *ngIf="page == 'KYC'">
-      <app-dashboardkyc></app-dashboardkyc>
-    </div>
+    <ng-container *ngIf="(connected | async)">
+      <ng-container *ngIf="page === 'Account'">
+        <app-account></app-account>
+      </ng-container>
 
-    <div *ngIf="page == 'Escrow'">
-      <app-escrow></app-escrow>
-    </div>
+      <ng-container *ngIf="page === 'KYC'">
+        <app-dashboardkyc></app-dashboardkyc>
+      </ng-container>
+
+      <ng-container *ngIf="page === 'Escrow'">
+        <app-escrow></app-escrow>
+      </ng-container>
+    </ng-container>
   </div>
 </div>
