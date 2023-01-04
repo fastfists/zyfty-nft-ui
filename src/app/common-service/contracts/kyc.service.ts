@@ -17,9 +17,9 @@ export class KYCService {
       this.signer$ = this.provider.signer;
 
       this.signer$.subscribe({
-          next: (data) => {
-              if (data != null) {
-                this.kyc = new ethers.Contract(environment.kycAddress, ZyftyKYC.abi, data)
+          next: (signer) => {
+              if (signer != null) {
+                this.kyc = new ethers.Contract(environment.kycAddress, ZyftyKYC.abi, signer)
               }
           }
       });

@@ -17,9 +17,9 @@ export class TokenService {
       this.signer$ = this.provider.signer;
 
       this.signer$.subscribe({
-          next: (data) => {
-              if (data != null) {
-                this.token = new ethers.Contract(environment.tokenAddress, TestToken.abi, data)
+          next: (signer) => {
+              if (signer != null) {
+                this.token = new ethers.Contract(environment.tokenAddress, TestToken.abi, signer)
               }
           }
       });
@@ -27,7 +27,9 @@ export class TokenService {
 
   async balance() : Promise<number> {
     if (this.token != null) {
-      return await this.token.balanceOf(this.provider.account);
+      let num = await this.token.balanceOf(this.provider.account.value);
+      num = ethers.utils.formatUnits( num , await this.token.decimals());
+      return num;
     }
     return 0;
   }

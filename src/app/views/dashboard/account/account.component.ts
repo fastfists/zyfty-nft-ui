@@ -1,4 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/common-service/contracts/token.service';
+import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 
 @Component({
   selector: 'app-account',
@@ -9,10 +11,14 @@ import { Component, Injectable, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
 
-  constructor() { }
+  account = this.provider.account;
+  balance = 0;
+  constructor(private provider: WalletProvider, private token: TokenService) { }
 
   ngOnInit(): void {
-    console.log("AccountComponent");
+    this.token.balance().then((balance) => {
+      this.balance = balance;
+    })
   }
 
 }
