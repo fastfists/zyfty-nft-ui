@@ -1,5 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { info } from 'console';
 import { TokenService } from 'src/app/common-service/contracts/token.service';
 import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 

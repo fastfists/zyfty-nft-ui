@@ -1,7 +1,6 @@
-import { DOCUMENT } from '@angular/common';
 import { Veriff } from "@veriff/js-sdk";
 import { createVeriffFrame } from "@veriff/incontext-sdk";
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { WalletProvider } from 'src/app/common-service/provider/provider.service
 })
 export class KycComponent implements OnInit {
 
-  constructor(private renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document, public provider: WalletProvider) { }
+  constructor(public provider: WalletProvider) { }
 
   veriff: any
   veriffOpen: boolean = false;
