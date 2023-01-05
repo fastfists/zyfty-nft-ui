@@ -1,8 +1,14 @@
-<div class="w-10/12 h-full mx-auto text-white">
+<div class="py-5 w-10/12 h-full mx-auto text-white">
+  <div class="text-3xl border-b">
+    KYC Overview
+  </div>
+  <div class="py-3"></div>
   <div class="grid grid-cols-2">
     <div class="flex">
-      <div>Verified</div>
-      <div>{{ verified }}</div>
+      <div>
+        <span class="text-lg">Verification Status: </span>
+        <span class="text-md font-bold">{{ verified }}</span>
+      </div>
     </div>
     <div>
       <ng-container *ngIf="!verified">

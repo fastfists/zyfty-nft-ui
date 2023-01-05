@@ -1,20 +1,4 @@
-<div class="card-body">
-    <div class="container">
-        <div class="form-title">
-            <h3 class="text-center hadding">KYC</h3>
-        </div>
-        <div class="text-center">
-            <p *ngIf="(provider.connected | async)" class="text-center"> 
-                Connected {{(provider.account | async)}}
-            </p>
-            <p *ngIf="!(provider.connected | async)">Choose metamask wallet to authenticate</p>
-        </div>
-        <div class="d-flex justify-content-center">
-            <button type="button" (click)="provider.connect()" class="btn btn-primary btn-mobile mr-5">Connect Wallet</button>
-            <button type="button" (click)="signMessage()" class="btn btn-secondary btn-mobile ml-5">Sign Message</button>
-        </div>
-        <div class="d-flex justify-content-center">
-            <div id="veriff-root"></div>
-        </div>
-    </div>
-</div>
+<button type="button" (click)="signMessage()" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
+  Click Here to verify
+</button>
+<div class="text-white" id="veriff-root"></div>
