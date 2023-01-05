@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { ethers, providers } from 'ethers';
 import { BehaviorSubject } from 'rxjs';
-import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
+import ERC20 from "../../../artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
 import { environment } from '../../../environments/environment';
 import { WalletProvider } from '../provider/provider.service';
 
@@ -11,18 +11,35 @@ import { WalletProvider } from '../provider/provider.service';
 export class TokenService {
 
   signer$: BehaviorSubject<providers.JsonRpcSigner | null>
-  token: ethers.Contract | null = null;
+  private token: ethers.Contract | null = null;
 
-  constructor(private provider: WalletProvider) {
+  address: string = environment.tokenAddress;
+
+  constructor(private provider: WalletProvider, @Inject('tokenAddress') @Optional() public tokenAddress?: string) {
       this.signer$ = this.provider.signer;
+      this.address = tokenAddress || this.address;
 
       this.signer$.subscribe({
           next: (signer) => {
               if (signer != null) {
-                this.token = new ethers.Contract(environment.tokenAddress, TestToken.abi, signer)
+                this.token = new ethers.Contract(this.address, ERC20.abi, signer)
               }
           }
       });
+  }
+
+  async symbol() : Promise<string> {
+    if (this.token == null) {
+      return "";
+    }
+    return await this.token.symbol();
+  }
+
+  async name() : Promise<string> {
+    if (this.token == null) {
+      return "";
+    }
+    return await this.token.name();
   }
 
   async balance() : Promise<number> {
