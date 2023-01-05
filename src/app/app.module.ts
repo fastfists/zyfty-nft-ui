@@ -34,6 +34,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AccountComponent } from './views/dashboard/account/account.component';
 import { EscrowComponent } from './views/dashboard/escrow/escrow.component';
 import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.component';
+import { EmailComponent } from './views/dashboard/email/email.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.compon
     AccountComponent,
     EscrowComponent,
     DashboardkycComponent,
+    EmailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule,
     ToastrModule.forRoot(), NgbModule, AgmCoreModule.forRoot({
