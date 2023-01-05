@@ -1,4 +1,6 @@
-<button type="button" (click)="signMessage()" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
+<button
+  *ngIf="!veriffOpen"
+  type="button" (click)="signMessage()" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
   Click Here to verify
 </button>
 <div class="text-white" id="veriff-root"></div>

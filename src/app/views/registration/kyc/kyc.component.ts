@@ -7,20 +7,19 @@ import { WalletProvider } from 'src/app/common-service/provider/provider.service
 @Component({
   selector: 'app-kyc',
   templateUrl: './kyc.component.html',
-  styleUrls: ['./kyc.component.scss']
 })
 export class KycComponent implements OnInit {
 
   constructor(private renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document, public provider: WalletProvider) { }
 
   veriff: any
+  veriffOpen: boolean = false;
 
   ngOnInit() {
     this.veriff = Veriff({
       apiKey: "8be90c62-dbd1-4bdf-baf2-79731a128158",
       parentId: "veriff-root",
       onSession: (_err: any, response: any) => {
-
         const veriffFrame = createVeriffFrame({
           url: response.verification.url,
           onEvent: function(event: any) {
@@ -34,20 +33,21 @@ export class KycComponent implements OnInit {
 
   signMessage() {
     this.provider.signMessage("I am the person I say I am").then(
-        (signedMessage: string) => {
+      (signedMessage: string) => {
         let data =
-            `I am the person I say I am-${this.provider.account.value}-${signedMessage}-${this.provider.chain.value}`;
+          `I am the person I say I am-${this.provider.account.value}-${signedMessage}-${this.provider.chain.value}`;
         this.veriff.setParams({
-            person: {
-              givenName: '',
-              lastName: '',
-            },
-            vendorData: data, // name+0xaddress+0xsigned name
+          person: {
+            givenName: '',
+            lastName: '',
+          },
+          vendorData: data, // name+0xaddress+0xsigned name
         });
         this.veriff.mount({
-            submitBtnText: 'Get verified'
+          submitBtnText: 'Get verified'
         });
-  });
+        this.veriffOpen = true;
+      });
 
   }
 
