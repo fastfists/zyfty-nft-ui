@@ -1,12 +1,26 @@
-<div class="w-10/12 h-full mx-auto text-white">
+<div class="py-5 w-10/12 h-full mx-auto text-white">
+  <div class="text-3xl border-b">
+    Assets Overview
+  </div>
+  <div class="py-3"></div>
   <div class="grid grid-cols-2">
-    <div class="flex">
-      <div>Wallet Address: </div>
-      <div>{{ account | async }}</div>
+    <div>
+      <span class="text-lg">Wallet Address: </span>
+      <span class="text-md font-bold">{{ account | async }}</span>
     </div>
-    <div class="flex">
-      <div>Balance: </div>
-      <div>{{ balance }}</div>
+    <div>
+      <div class="text-lg">Balances:</div>
+      <ng-container *ngIf="infoLoaded">
+        <div class="flex border max-w-md">
+          <div class="border-r w-full p-3"> {{ name }} </div>
+          <div class="text-md font-bold p-3 w-full"> {{ balance }} {{ symbol }}</div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!infoLoaded">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>
