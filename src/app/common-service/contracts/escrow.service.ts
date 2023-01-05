@@ -10,7 +10,7 @@ import { WalletProvider } from '../provider/provider.service';
   providedIn: 'root'
 })
 export class EscrowService {
-  
+
   signer$: BehaviorSubject<providers.JsonRpcSigner | null>
   escrow: ethers.Contract | null = null
 
@@ -33,8 +33,8 @@ export class EscrowService {
 
   async pricePer(id: Number) {
     if (this.escrow == null) return null;
-
-    return this.escrow.pricePer(id)
+    // TODO this should be based on token decimals (this is faster)
+    return ethers.utils.formatUnits(await this.escrow.pricePer(id), 18)
   }
 
   async buyToken(id: Number, tokens: Number) {

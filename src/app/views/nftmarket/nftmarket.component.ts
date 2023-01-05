@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NftDetailsComponent} from '../nftmarket/modal/nft-details/nft-details.component';
-import {nftmarketService} from "./nftmarket.service";
-import {HttpClient} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NftDetailsComponent } from '../nftmarket/modal/nft-details/nft-details.component';
+import { nftmarketService } from "./nftmarket.service";
+import { HttpClient } from "@angular/common/http";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
 import { KYCService } from 'src/app/common-service/contracts/kyc.service';
 
@@ -23,7 +23,7 @@ export class NftmarketComponent implements OnInit {
   }
 
   openModal(selectedNft: any) {
-    const modalRef = this.modalService.open(NftDetailsComponent, {size: 'xl', backdrop: 'static'})
+    const modalRef = this.modalService.open(NftDetailsComponent, { size: 'xl', backdrop: 'static' })
     modalRef.componentInstance.setSelectedNftDetails(selectedNft);
   }
 
@@ -33,12 +33,12 @@ export class NftmarketComponent implements OnInit {
   }
 
   getCosts() {
-      this.escrow.getCosts().then((data) => {
-          if (data != null) {
-              console.log("ChainDaata", data);
-              this.chainNFT = data;
-          }
-      })
+    this.escrow.getCosts().then((data) => {
+      if (data != null) {
+        console.log("ChainDaata", data);
+        this.chainNFT = data;
+      }
+    })
   }
 
   checkVerification() {
@@ -50,11 +50,11 @@ export class NftmarketComponent implements OnInit {
 
   getNftItems() {
     this.escrow.signer$.subscribe((signer) => {
-        if (signer != null) {
-            console.log("Signer is non null");
-            this.getCosts();
-            this.checkVerification();
-        }
+      if (signer != null) {
+        console.log("Signer is non null");
+        this.getCosts();
+        this.checkVerification();
+      }
     })
 
     this.isFetchingRecord = true;
@@ -71,7 +71,7 @@ export class NftmarketComponent implements OnInit {
   }
 
   tokensLeft(id: any) {
-      this.escrow.tokensLeft(id)
+    this.escrow.tokensLeft(id)
       .then((val) => {
         this.nftItems[id - 1].tokensLeft = val;
       });
@@ -92,7 +92,7 @@ export class NftmarketComponent implements OnInit {
 
   resetSearch(searchText: any) {
     console.log(searchText)
-    if(searchText == undefined || searchText == null) {
+    if (searchText == undefined || searchText == null) {
       this.getNftItems();
     }
   }
