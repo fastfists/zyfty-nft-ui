@@ -2,17 +2,18 @@
   <div class="text-3xl border-b">
     KYC Overview
   </div>
-  <div class="py-3"></div>
+  <div class="p-3"></div>
   <div class="grid grid-cols-2">
     <div class="flex">
       <div>
         <span class="text-lg">Verification Status: </span>
-        <span class="text-md font-bold">{{ verified }}</span>
+        <span class="text-md font-bold">{{ verifiedStr() }}</span>
       </div>
     </div>
     <div>
       <ng-container *ngIf="!verified">
         <p>Verify your account here </p>
+        <div class="p-2"></div>
         <app-kyc></app-kyc>
       </ng-container>
     </div>

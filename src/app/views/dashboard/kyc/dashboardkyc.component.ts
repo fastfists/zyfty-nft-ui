@@ -10,6 +10,7 @@ export class DashboardkycComponent implements OnInit {
   constructor(private kyc: KYCService) { }
 
   verified: Boolean = false;
+  verifiedStr = () => this.verified ? "Verified" : "Not Verified";
 
   ngOnInit(): void {
     this.kyc.isVerified().then((verified) => {
