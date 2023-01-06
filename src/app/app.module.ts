@@ -7,7 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
-import { FoundersComponent } from './views/founders/founders.component';
+import { TeamComponent } from './views/team/team.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
 import { AboutComponent } from './views/about/about.component';
 import { HeaderComponent } from './views/common/header/header.component';
@@ -39,7 +39,7 @@ import { EmailComponent } from './views/dashboard/email/email.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FoundersComponent,
+    TeamComponent,
     FaqsComponent,
     HomeComponent,
     AboutComponent,

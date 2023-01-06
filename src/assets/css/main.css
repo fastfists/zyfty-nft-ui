@@ -1174,6 +1174,11 @@ input[type=search]:-webkit-search-results-decoration {
   position: relative;
 }
 
+.nft-founder-wrap .img-box img {
+  height: 100%;
+  width: 100%;
+}
+
 .nft-founder-wrap .founder-row .founder-col .img-box:hover .content-popup {
   display: block;
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
-import { FoundersComponent } from './views/founders/founders.component';
+import { TeamComponent } from './views/team/team.component';
 import { AboutComponent } from './views/about/about.component';
 import { SigninComponent } from "./views/signin/signin.component";
 import { RegistrationComponent } from "./views/registration/registration.component";
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'founders', component: FoundersComponent },
+  { path: 'team', component: TeamComponent },
   { path: 'user/signin', component: SigninComponent },
   { path: 'user/forgot-password', component: ForgotPasswordComponent },
   { path: 'user/reset-password', component: ResetPasswordComponent },
