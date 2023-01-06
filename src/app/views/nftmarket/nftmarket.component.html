@@ -1,7 +1,4 @@
 <div class="nft-market-wrap">
-
-
-
   <div class="nft-search-block">
     <div class="container">
       <div class="nft-search-content">
@@ -20,15 +17,17 @@
 
   <div class="nft-list-block">
 
-  <div *ngIf="!verified && !isFetchingRecord">
+    <div *ngIf="!verified && !isFetchingRecord">
       <div class="text-center">
-          <h3 class="text-xl">Wallet not verified</h3>
-          <p class="p-3"></p>
-          <a [routerLink]="['/dashboard']" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
-              Verify Wallet
-          </a>
+        <h3 class="text-xl">Wallet not verified</h3>
+        <p class="p-3"></p>
+        <a
+          [routerLink]="['/dashboard']"
+          class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black" >
+          Verify Wallet
+        </a>
       </div>
-  </div>
+    </div>
     <div class="container">
       <div class="nft-list row">
         <div class="d-flex justify-content-center">
@@ -46,9 +45,9 @@
               <span>4.8% CAP</span>
             </div>
             <div class="item-token">
-                <div *ngIf="chainNFT.length >= nftItem.id">
-                    <button>{{ chainNFT[nftItem.id - 1].tokensLeft}} Tokens at USDC {{ chainNFT[nftItem.id - 1].pricePer}}</button>
-                </div>
+              <div *ngIf="chainNFT.length >= nftItem.id">
+                <button>{{ chainNFT[nftItem.id - 1].tokensLeft}} Tokens at USDC {{ chainNFT[nftItem.id - 1].pricePer}}</button>
+              </div>
             </div>
           </div>
         </div>
