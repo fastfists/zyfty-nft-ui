@@ -14,7 +14,6 @@ export class nftmarketService {
   private API_KEY = "API_KEY"
 
   nftItems() {
-    console.log("I'm here");
     return this.http.get(this.URL + 'nft/list')
       .pipe(
         tap(() => console.log('nftItem'))
