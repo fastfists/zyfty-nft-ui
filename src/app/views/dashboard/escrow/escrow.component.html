@@ -1,14 +1,21 @@
 <div class="flex justify-around py-5 pr-20 text-white">
   <div
-    *ngFor="let item of items"
+    *ngFor="let item of items; let i = index"
     class="bg-darkpurple p-0.5 rounded"
   >
     <img class="w-72" src="{{item.thumbnailImage.nft_image}}" />
     <div class="py-3 px-4 text-center flex justify-between">
       <span>{{ item.address }} {{ item.state }} {{ item.zip }}</span>
     </div>
-    <div class="py-3 px-4 text-center flex justify-between">
-      <span> IsOpen: </span>
-    </div>
+    <ng-container *ngIf="escrows.length > i">
+      <div class="py-3 px-4 text-center flex justify-between ">
+        <span> IsOpen: {{escrows[i].isOpen}}</span>
+        <span> Status: {{escrows[i].status}}</span>
+      </div>
+      <div class="py-3 px-4 text-center flex justify-between ">
+        <span> Tokens Left: {{escrows[i].tokensLeft}}</span>
+        <span> Tokens Owed: {{escrows[i].tokensOwed}}</span>
+      </div>
+    </ng-container>
   </div>
 </div>

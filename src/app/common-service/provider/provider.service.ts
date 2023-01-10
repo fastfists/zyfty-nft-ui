@@ -29,7 +29,7 @@ export class WalletProvider {
   connected = new BehaviorSubject(false)
   ethereum: any = null;
 
-  provider: providers.Web3Provider | null = null; 
+  provider: providers.Web3Provider | null = null;
   signer: BehaviorSubject<providers.JsonRpcSigner | null> = new BehaviorSubject<providers.JsonRpcSigner | null>(null);
 
   connect() {
@@ -39,7 +39,7 @@ export class WalletProvider {
     if (this.ethereum) {
       this.provider = new ethers.providers.Web3Provider(this.ethereum);
       this.ethereum.request({ method: 'eth_requestAccounts' })
-          .then((accs: Array<string>) => this.handleAccountChange(accs));
+        .then((accs: Array<string>) => this.handleAccountChange(accs));
     }
   }
 
@@ -49,13 +49,13 @@ export class WalletProvider {
       console.log('MetaMask is installed!');
     }
     if (this.ethereum) {
-      let accs:Array<string> = await this.ethereum.request({ method: 'eth_requestAccounts' })
+      let accs: Array<string> = await this.ethereum.request({ method: 'eth_requestAccounts' })
       this.handleAccountChange(accs);
     }
   }
 
   async signMessage(message: string) {
-    return await this.ethereum.request({ method: 'personal_sign', params: [ message, this.account.value ] });
+    return await this.ethereum.request({ method: 'personal_sign', params: [message, this.account.value] });
   }
 
   handleAccountChange(accounts: Array<string>) {
@@ -68,7 +68,7 @@ export class WalletProvider {
     this.account.next(accounts[0])
 
     this.provider!.getNetwork().then((network) => {
-        this.chain.next(network.chainId);
+      this.chain.next(network.chainId);
     })
 
     this.signer.next(this.provider!.getSigner())
@@ -85,7 +85,7 @@ export class WalletProvider {
     this.connected.next(false)
   }
 
-  constructor() { 
+  constructor() {
     // @ts-ignore
     this.ethereum = window['ethereum']
     this.account = new BehaviorSubject("")
@@ -94,7 +94,7 @@ export class WalletProvider {
       console.log('MetaMask is not installed!')
     }
     if (this.ethereum._state.account !== undefined) {
-        this.handleAccountChange(this.ethereum._state.account)
+      this.handleAccountChange(this.ethereum._state.account)
     }
 
     this.ethereum.on('disconnect', (error: ProviderRpcError) => this.handleDisconnect(error))
