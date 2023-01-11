@@ -40,17 +40,16 @@ export class NftDetailsComponent {
 
     this.nftmarketService.nftById(selectedNftDetails.id).subscribe(
       (data) => {
-        let that = this;
-        console.log(data);
-
+        console.log("Data fetched", data);
         this.selectedNftDetails = data;
         this.selectedNftDetails.displayImage =[];
         this.selectedNftDetails.thumbnailImage =[];
+
         this.selectedNftDetails.imageList.forEach((imageObj : any) => {
-          if(that.selectedNftDetails.thumbnailId ==  imageObj.id) {
-            that.selectedNftDetails.thumbnailImage.push(imageObj);
+          if(this.selectedNftDetails.thumbnail_id ==  imageObj.id) {
+            this.selectedNftDetails.thumbnailImage.push(imageObj);
           } else {
-            that.selectedNftDetails.displayImage.push(imageObj);
+            this.selectedNftDetails.displayImage.push(imageObj);
           }
         });
         this.getCurrentPosition(this.selectedNftDetails.address);
