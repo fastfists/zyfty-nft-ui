@@ -62,17 +62,14 @@ export class EscrowService {
       console.log("Doesn't have the right price")
     }
 
-    // // approve optional
-    // await token.approve(this.escrow.address, price)
-
     await this.escrow.buyToken(id, tokens);
     return;
   }
 
-  async getCosts() {
+  async getCosts() : Promise<{tokensLeft: number, pricePer: string}[]> {
     if (this.escrow == null) {
       console.log("Escrow is null")
-      return null;
+      return [];
     }
 
     console.log("Escrow", this.escrow);
@@ -82,6 +79,7 @@ export class EscrowService {
         "tokensLeft": await this.tokensLeft(i + 1),
         "pricePer": await this.pricePer(i + 1)
       }
+      console.log("got one");
       vals.push(p)
     }
     return vals

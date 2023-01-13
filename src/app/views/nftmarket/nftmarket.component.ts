@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NftDetailsComponent } from '../nftmarket/modal/nft-details/nft-details.component';
 import { nftmarketService } from "./nftmarket.service";
 import { HttpClient } from "@angular/common/http";
@@ -19,12 +19,19 @@ export class NftmarketComponent implements OnInit {
   verified: boolean = false;
   isFetchingRecord: boolean = false;
 
+  modalRef?: NgbModalRef = undefined;
+  modalId?: number = undefined;
+
   constructor(public modalService: NgbModal, private nftmarketService: nftmarketService, private http: HttpClient, private escrow: EscrowService, private kyc: KYCService) {
   }
 
-  openModal(selectedNft: any) {
-    const modalRef = this.modalService.open(NftDetailsComponent, { size: 'xl', backdrop: 'static' })
-    modalRef.componentInstance.setSelectedNftDetails(selectedNft);
+  openModal(nftId: number) {
+    this.modalId = nftId;
+
+    this.modalRef = this.modalService.open(NftDetailsComponent, { size: 'xl', backdrop: 'static' })
+    this.modalRef.componentInstance.setSelectedNftDetails(nftId);
+    this.modalRef.componentInstance.setVerified(this.verified);
+    this.modalRef.componentInstance.setTokensLeft(this.chainNFT);
   }
 
 
@@ -34,22 +41,21 @@ export class NftmarketComponent implements OnInit {
 
   getCosts() {
     this.escrow.getCosts().then((data) => {
-      if (data != null) {
-        console.log("ChainDaata", data);
-        this.chainNFT = data;
-      }
+      console.log("getting costs")
+      console.log("ChainDaata", data);
+      this.chainNFT = data;
     })
   }
 
   checkVerification() {
     this.kyc.isVerified().then((status) => {
-      console.log("Got status", status)
       this.verified = status;
     })
   }
 
   getNftItems() {
     this.escrow.signer$.subscribe((signer) => {
+      console.log("Signer is");
       if (signer != null) {
         console.log("Signer is non null");
         this.getCosts();

@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {nftmarketService} from "../../nftmarket.service";
-import {Router} from "@angular/router";
-import {Lightbox} from "ngx-lightbox";
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { nftmarketService } from "../../nftmarket.service";
+import { Router } from "@angular/router";
+import { Lightbox } from "ngx-lightbox";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
 import { KYCService } from 'src/app/common-service/contracts/kyc.service';
 
@@ -17,49 +17,49 @@ export class NftDetailsComponent {
   lat: any;
   lng: any;
   zoom: number = 4;
-  tokensLeft: number = 500;
+  tokensLeft: number = 400;
   verified: boolean = false;
 
   quntity: number = 1;
   public _albums: Array<any> = [];
 
   constructor(private _lightbox: Lightbox,
-              private activeModal: NgbActiveModal,
-              private nftmarketService: nftmarketService,
-              private escrow: EscrowService,
-              private kyc: KYCService,
-              private router: Router,
-              ) {
+    private activeModal: NgbActiveModal,
+    private nftmarketService: nftmarketService,
+    private escrow: EscrowService,
+    private router: Router,
+  ) {
+  }
+
+  setVerified(verification: boolean) {
+    this.verified = verification;
+  }
+
+  setTokensLeft(tokens: number) {
+    this.tokensLeft = tokens;
   }
 
   closeModal() {
     this.activeModal.close('Modal Closed');
   }
 
-  setSelectedNftDetails(selectedNftDetails: any): void {
+  setSelectedNftDetails(id: number): void {
 
-    this.nftmarketService.nftById(selectedNftDetails.id).subscribe(
+    this.nftmarketService.nftById(id).subscribe(
       (data) => {
         console.log("Data fetched", data);
         this.selectedNftDetails = data;
-        this.selectedNftDetails.displayImage =[];
-        this.selectedNftDetails.thumbnailImage =[];
+        this.selectedNftDetails.displayImage = [];
+        this.selectedNftDetails.thumbnailImage = [];
 
-        this.selectedNftDetails.imageList.forEach((imageObj : any) => {
-          if(this.selectedNftDetails.thumbnail_id ==  imageObj.id) {
+        this.selectedNftDetails.imageList.forEach((imageObj: any) => {
+          if (this.selectedNftDetails.thumbnail_id == imageObj.id) {
             this.selectedNftDetails.thumbnailImage.push(imageObj);
           } else {
             this.selectedNftDetails.displayImage.push(imageObj);
           }
         });
         this.getCurrentPosition(this.selectedNftDetails.address);
-
-        this.escrow.tokensLeft(selectedNftDetails.id).then((tokens) => {
-            this.tokensLeft = tokens;
-        })
-        this.kyc.isVerified().then((status) => {
-            this.verified = status
-        })
       },
       (err) => {
         console.log('Success', err)
@@ -69,14 +69,14 @@ export class NftDetailsComponent {
 
   getCurrentPosition(searchTerm: any) {
     this.nftmarketService.currentPosition(searchTerm).subscribe((data: any) => {
-        if (data.results.length > 0) {
-          let location = data.results[0].geometry.location;
-          this.lng = location.lng;
-          this.lat = location.lat;
-        } else {
-          this.getCurrentPosition(this.selectedNftDetails.zip)
-        }
-      },
+      if (data.results.length > 0) {
+        let location = data.results[0].geometry.location;
+        this.lng = location.lng;
+        this.lat = location.lat;
+      } else {
+        this.getCurrentPosition(this.selectedNftDetails.zip)
+      }
+    },
       (err) => {
         console.log('Success', err)
       });
@@ -129,14 +129,14 @@ export class NftDetailsComponent {
   }
 
   purchaseNft() {
-      let id = this.selectedNftDetails.id
-      console.log("escrow", id)
-      this.escrow.buyToken(id, this.quntity).then((_) =>
-          console.log("Thing finished")
-      ).catch(console.error);
+    let id = this.selectedNftDetails.id
+    console.log("escrow", id)
+    this.escrow.buyToken(id, this.quntity).then((_) =>
+      console.log("Thing finished")
+    ).catch(console.error);
   }
 
-  ctyUpdate(value: number){
+  ctyUpdate(value: number) {
     if (this.quntity + value > 0 && this.quntity + value < this.tokensLeft) {
       this.quntity += value;
     }

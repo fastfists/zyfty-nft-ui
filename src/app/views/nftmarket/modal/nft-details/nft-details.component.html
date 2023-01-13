@@ -26,16 +26,15 @@
         <div class="primary-data">
             <div class="address-detail">{{selectedNftDetails.address}}, {{selectedNftDetails.city}}, {{selectedNftDetails.state}} {{selectedNftDetails.zip}}</div>
             <div class="sub-detail">
-              <span>{{selectedNftDetails.propertyType}}</span>
-              <span>{{selectedNftDetails.bedRooms}} bedrooms</span>
-              <span>{{selectedNftDetails.bathRooms}} bathrooms</span>
-              <span>{{selectedNftDetails.livingArea}} Sq Ft</span>
+              <span>{{selectedNftDetails.property_type}}</span>
+              <span>{{selectedNftDetails.bed_rooms}} bedrooms</span>
+              <span>{{selectedNftDetails.bath_rooms}} bathrooms</span>
+              <span>{{selectedNftDetails.living_area}} Sq Ft</span>
               <span>{{tokensLeft}} Tokens Left</span>
             </div>
             <div class="contact-buttons">
               <button class="purchase-button" (click)="isLogin(selectedNftDetails.id)">View Documents</button>
-              <button *ngIf="verified" class="offer-button" (click)="purchaseNft()">Buy</button>
-              <button disabled title="Not Verified" *ngIf="!verified" class="offer-button-disabled" (click)="purchaseNft()">Buy</button>
+              <button [disabled]="verified" title="Not Verified" class="offer-button-disabled" (click)="purchaseNft()">Buy</button>
             </div>
           <div class="token-block">
             <span>Token Quantity</span>
