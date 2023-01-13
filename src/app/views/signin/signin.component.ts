@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { signinService } from "./signin.service";
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth-guard/auth.service';
@@ -13,13 +13,13 @@ import { errorMessage, successMassage } from 'src/app/common-service/toastr/toas
 })
 export class SigninComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
   loading = false;
   submitted = false;
   returnUrl!: string;
   private error: any;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private signinService: signinService,
     private router: Router,

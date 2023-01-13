@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { registrationService } from "./registration.service";
 import { ToastrService } from 'ngx-toastr';
@@ -12,12 +12,12 @@ import { successMassage } from 'src/app/common-service/toastr/toastr-message.ser
 })
 export class RegistrationComponent implements OnInit {
 
-  registrationForm!: FormGroup;
+  registrationForm!: UntypedFormGroup;
   loading = false;
   submitted = false;
   isSignup = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private registrationService: registrationService,
     private router: Router,
     private toastr: ToastrService
