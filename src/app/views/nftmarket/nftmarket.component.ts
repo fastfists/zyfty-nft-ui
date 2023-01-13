@@ -31,7 +31,9 @@ export class NftmarketComponent implements OnInit {
     this.modalRef = this.modalService.open(NftDetailsComponent, { size: 'xl', backdrop: 'static' })
     this.modalRef.componentInstance.setSelectedNftDetails(nftId);
     this.modalRef.componentInstance.setVerified(this.verified);
-    this.modalRef.componentInstance.setTokensLeft(this.chainNFT);
+    if (this.chainNFT.length >= nftId) {
+      this.modalRef.componentInstance.setTokensLeft(this.chainNFT[nftId - 1].tokensLeft);
+    }
   }
 
 
