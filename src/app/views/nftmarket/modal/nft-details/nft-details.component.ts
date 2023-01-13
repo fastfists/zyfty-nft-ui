@@ -4,8 +4,6 @@ import { nftmarketService } from "../../nftmarket.service";
 import { Router } from "@angular/router";
 import { Lightbox } from "ngx-lightbox";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
-import { KYCService } from 'src/app/common-service/contracts/kyc.service';
-
 
 @Component({
   selector: 'app-nft-details',
@@ -16,6 +14,7 @@ export class NftDetailsComponent {
   selectedNftDetails: any;
   lat: any;
   lng: any;
+  center: any
   zoom: number = 4;
   tokensLeft: number = 400;
   verified: boolean = false;
@@ -27,8 +26,7 @@ export class NftDetailsComponent {
     private activeModal: NgbActiveModal,
     private nftmarketService: nftmarketService,
     private escrow: EscrowService,
-    private router: Router,
-  ) {
+    private router: Router) {
   }
 
   setVerified(verification: boolean) {
@@ -73,6 +71,7 @@ export class NftDetailsComponent {
         let location = data.results[0].geometry.location;
         this.lng = location.lng;
         this.lat = location.lat;
+        this.center = { lat: this.lat, lng: this.lng };
       } else {
         this.getCurrentPosition(this.selectedNftDetails.zip)
       }

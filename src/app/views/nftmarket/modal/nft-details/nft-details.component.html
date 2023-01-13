@@ -71,9 +71,18 @@
 
                 </div>
 
-                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-                   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                </agm-map>
+                <p>loaded</p>
+                <google-map [zoom]="zoom"
+                  [center]="center"
+                >
+                  <map-marker [position]="center"></map-marker>
+                </google-map>
+                <p>end</p>
+
+                <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"> -->
+                <!--    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
+                <!-- </agm-map> -->
+
                 <br>
 
               </ng-template>

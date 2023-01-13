@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +34,7 @@ import { AccountComponent } from './views/dashboard/account/account.component';
 import { EscrowComponent } from './views/dashboard/escrow/escrow.component';
 import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.component';
 import { EmailComponent } from './views/dashboard/email/email.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -61,10 +61,19 @@ import { EmailComponent } from './views/dashboard/email/email.component';
     DashboardkycComponent,
     EmailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule,
-    ToastrModule.forRoot(), NgbModule, AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAfXLngkdMTHRaUbbPw8ya8m_I7AzLAjMo'
-    })],
+  imports: [
+    GoogleMapsModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    SlickCarouselModule,
+    LightboxModule,
+    ToastrModule.forRoot(),
+    NgbModule,
+    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
   {
