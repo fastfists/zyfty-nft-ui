@@ -36,6 +36,10 @@ export class AccountComponent implements OnInit {
     await this.token.mintMore();
   }
 
+  async addToWallet() {
+    await this.token.addToWallet();
+  }
+
   async loadTokenInfo(): Promise<[number, string, string]> {
     return [
       await this.token.balance(),

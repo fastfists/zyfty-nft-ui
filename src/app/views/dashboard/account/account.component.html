@@ -11,15 +11,20 @@
     <div>
       <div class="text-lg">Balances:</div>
       <ng-container *ngIf="infoLoaded">
-        <div class="flex border max-w-md">
-          <div class="border-r w-full p-3"> {{ name }} </div>
-          <div class="text-md font-bold p-3 w-full"> {{ balance }} {{ symbol }}</div>
+        <div class="flex border max-w-md items-center space-x-3 p-3">
+          <div class="text-center flex cursor-pointer hover:text-darkpurple" (click)="addToWallet()">
+            <iconify-icon icon="arcticons:metamask" width="32"></iconify-icon>
+          </div>
+          <div class="border-r font-bold w-full"> {{ name }} </div>
+          <div class="text-md font-bold w-full"> {{ balance }} {{ symbol }}</div>
         </div>
         <div *ngIf="allowTestToken">
           <div class="p-2"></div>
-          <button class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black" (click)="mintMore()">
-            Mint test tokens
-          </button>
+          <div class="flex">
+            <button class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black" (click)="mintMore()">
+              Mint test tokens
+            </button>
+          </div>
         </div>
       </ng-container>
       <ng-container *ngIf="!infoLoaded">
