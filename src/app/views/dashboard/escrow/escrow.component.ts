@@ -36,7 +36,7 @@ export class EscrowComponent implements OnInit {
                         this.escrow.getTokens(1), this.escrow.getTokens(2), this.escrow.getTokens(3), this.escrow.getTokens(4)])
     p.then((data) => {
       console.log("Got status", data)
-      for (let i = 0; i < 3; i ++) {
+      for (let i = 0; i < 4; i ++) {
         let tokensLeft = data[i];
         let tokens = data[i + 4];
         let percentage = ((400-tokensLeft) / 400)*100;
