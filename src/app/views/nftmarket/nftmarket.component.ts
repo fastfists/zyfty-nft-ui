@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NftDetailsComponent } from '../nftmarket/modal/nft-details/nft-details.component';
 import { nftmarketService } from "./nftmarket.service";
-import { HttpClient } from "@angular/common/http";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
 import { KYCService } from 'src/app/common-service/contracts/kyc.service';
+import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 
 @Component({
   selector: 'app-nftmarket',
@@ -22,7 +22,13 @@ export class NftmarketComponent implements OnInit {
   modalRef?: NgbModalRef = undefined;
   modalId?: number = undefined;
 
-  constructor(public modalService: NgbModal, private nftmarketService: nftmarketService, private http: HttpClient, private escrow: EscrowService, private kyc: KYCService) {
+  constructor(
+    public provider: WalletProvider,
+    public modalService: NgbModal,
+    public nftmarketService: nftmarketService,
+    private escrow: EscrowService,
+    private kyc: KYCService
+  ) {
   }
 
   openModal(nftId: number) {
