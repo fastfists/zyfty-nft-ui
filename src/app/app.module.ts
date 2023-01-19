@@ -29,6 +29,7 @@ import { JwtInterceptor } from './auth-guard/jwt-interceptor';
 import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
 import { NftDetailsComponent } from './views/nftmarket/modal/nft-details/nft-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AccountComponent } from './views/dashboard/account/account.component';
 import { EscrowComponent } from './views/dashboard/escrow/escrow.component';
@@ -73,6 +74,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     LightboxModule,
     ToastrModule.forRoot(),
     NgbModule,
+	NgbProgressbarModule
     ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },

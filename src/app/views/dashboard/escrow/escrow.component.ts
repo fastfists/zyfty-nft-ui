@@ -8,6 +8,7 @@ type escrow = {
   status?: string;
   tokensLeft?: number;
   tokensOwed?: number;
+  percentage: number;
 }
 
 @Component({
@@ -31,19 +32,22 @@ export class EscrowComponent implements OnInit {
         console.log("Bad", error);
       }
     );
-    // let p = Promise.all([this.escrow.isOpen(1), this.escrow.isOpen(2), this.escrow.isOpen(3), this.escrow.isOpen(4)])
-    let p = Promise.all([this.escrow.getTokens(1), this.escrow.getTokens(2), this.escrow.getTokens(3), this.escrow.getTokens(4)])
+    let p = Promise.all([this.escrow.tokensLeft(1), this.escrow.tokensLeft(2), this.escrow.tokensLeft(3), this.escrow.tokensLeft(4),
+                        this.escrow.getTokens(1), this.escrow.getTokens(2), this.escrow.getTokens(3), this.escrow.getTokens(4)])
     p.then((data) => {
       console.log("Got status", data)
-      this.escrows = data.map((tokens, i) => {
-        return {
+      for (let i = 0; i < 3; i ++) {
+        let tokensLeft = data[i];
+        let tokens = data[i + 4];
+        this.escrows.push({
           id: i + 1,
-          isOpen: false,
+          isOpen: true,
           status: "Open",
-          tokensLeft: 500 - tokens,
-          tokensOwed: tokens
-        }
-      })
+          tokensLeft: tokensLeft,
+          tokensOwed: tokens,
+          percentage: (400 - tokensLeft / 400) * 100
+        })
+      }
     })
   }
 }
