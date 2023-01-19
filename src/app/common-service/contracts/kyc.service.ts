@@ -14,23 +14,25 @@ export class KYCService {
   kyc: ethers.Contract | null = null
 
   constructor(private provider: WalletProvider) {
-      this.signer$ = this.provider.signer;
+    this.signer$ = this.provider.signer;
 
-      this.signer$.subscribe({
-          next: (signer) => {
-              if (signer != null) {
-                this.kyc = new ethers.Contract(environment.kycAddress, ZyftyKYC.abi, signer)
-              }
-          }
-      });
+    this.signer$.subscribe({
+      next: (signer) => {
+        if (signer != null) {
+          this.kyc = new ethers.Contract(environment.kycAddress, ZyftyKYC.abi, signer)
+        }
+      }
+    });
   }
 
-  async isVerified(): Promise<boolean>  {
-      if (this.signer$.value == null || this.kyc == null) {
-        return false;
-      }
-      let value: boolean = await this.kyc.hasValid(this.provider.account.value!);
-      return value;
+  async isVerified(): Promise<boolean> {
+    if (this.signer$.value == null || this.kyc == null) {
+      return false;
+    }
+    console.log("checking valid on ", this.provider.account.value!);
+    let value: boolean = await this.kyc.hasValid(this.provider.account.value!);
+    console.log("got response");
+    return value;
   }
 
 }

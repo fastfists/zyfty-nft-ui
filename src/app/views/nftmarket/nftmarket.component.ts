@@ -51,17 +51,19 @@ export class NftmarketComponent implements OnInit {
 
   checkVerification() {
     this.kyc.isVerified().then((status) => {
+      console.log("KYC status", status);
       this.verified = status;
+      if (this.modalRef != undefined) {
+        this.modalRef?.componentInstance.setVerified(status);
+      }
     })
   }
 
   getNftItems() {
     this.escrow.signer$.subscribe((signer) => {
-      console.log("Signer is");
       if (signer != null) {
-        console.log("Signer is non null");
-        this.getCosts();
         this.checkVerification();
+        this.getCosts();
       }
     })
 
