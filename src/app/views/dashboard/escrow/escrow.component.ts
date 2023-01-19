@@ -39,13 +39,15 @@ export class EscrowComponent implements OnInit {
       for (let i = 0; i < 3; i ++) {
         let tokensLeft = data[i];
         let tokens = data[i + 4];
+        let percentage = ((400-tokensLeft) / 400)*100;
+
         this.escrows.push({
           id: i + 1,
           isOpen: true,
           status: "Open",
           tokensLeft: tokensLeft,
           tokensOwed: tokens,
-          percentage: (400 - tokensLeft / 400) * 100
+          percentage
         })
       }
     })
