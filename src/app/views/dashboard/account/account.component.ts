@@ -16,6 +16,7 @@ export class AccountComponent implements OnInit {
   symbol = "";
   name = "";
   infoLoaded = false;
+  allowTestToken = true;
 
   constructor(private provider: WalletProvider, private token: TokenService) {
   }
@@ -29,6 +30,10 @@ export class AccountComponent implements OnInit {
         }
       }
     });
+  }
+
+  async mintMore() {
+    await this.token.mintMore();
   }
 
   async loadTokenInfo(): Promise<[number, string, string]> {

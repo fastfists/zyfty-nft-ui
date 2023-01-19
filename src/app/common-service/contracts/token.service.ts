@@ -35,7 +35,7 @@ export class TokenService {
       return;
     }
     let test_token = new ethers.Contract(this.address, TestToken.abi, this.signer$.value!)
-    await this.token.test_mint(this.provider.account.value, ethers.utils.parseUnits("50", await this.token.decimals()))
+    await test_token.test_mint(this.provider.account.value, ethers.utils.parseUnits("50", await this.token.decimals()))
   }
 
   async symbol() : Promise<string> {

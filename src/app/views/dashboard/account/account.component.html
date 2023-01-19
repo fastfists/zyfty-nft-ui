@@ -15,6 +15,12 @@
           <div class="border-r w-full p-3"> {{ name }} </div>
           <div class="text-md font-bold p-3 w-full"> {{ balance }} {{ symbol }}</div>
         </div>
+        <div *ngIf="allowTestToken">
+          <div class="p-2"></div>
+          <button class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black" (click)="mintMore()">
+            Mint test tokens
+          </button>
+        </div>
       </ng-container>
       <ng-container *ngIf="!infoLoaded">
         <div class="spinner-border" role="status">
