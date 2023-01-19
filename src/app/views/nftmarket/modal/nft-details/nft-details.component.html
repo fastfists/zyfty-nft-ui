@@ -34,7 +34,8 @@
             </div>
             <div class="contact-buttons">
               <button class="purchase-button" (click)="isLogin(selectedNftDetails.id)">View Documents</button>
-              <button [disabled]="verified" title="Not Verified" class="offer-button-disabled" (click)="purchaseNft()">Buy</button>
+              <button *ngIf="!verified" title="Not Verified" class="offer-button-disabled" (click)="purchaseNft()">Buy</button>
+              <button *ngIf="verified" class="offer-button" (click)="purchaseNft()">Buy</button>
             </div>
           <div class="token-block">
             <span>Token Quantity</span>

@@ -32,7 +32,7 @@ export class NftmarketComponent implements OnInit {
     this.modalRef.componentInstance.setSelectedNftDetails(nftId);
     this.modalRef.componentInstance.setVerified(this.verified);
     if (this.chainNFT.length >= nftId) {
-      this.modalRef.componentInstance.setTokensLeft(this.chainNFT[nftId - 1].tokensLeft);
+      this.modalRef.componentInstance.setTokensLeft(this.chainNFT[nftId].tokensLeft);
     }
   }
 

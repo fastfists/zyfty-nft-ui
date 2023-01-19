@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { ethers, providers } from 'ethers';
+import { BigNumber, ethers, providers } from 'ethers';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import TokenFactory from "../../../artifacts/contracts/TokenEscrow.sol/TokenFactory.json";
 import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
@@ -47,19 +47,20 @@ export class EscrowService {
     return ethers.utils.formatUnits(await this.escrow.pricePer(id), 18)
   }
 
-  async buyToken(id: Number, tokens: Number): Promise<undefined> {
+  async buyToken(id: Number, tokens: BigNumber): Promise<undefined> {
 
     if (this.escrow == null) return;
     let signer = this.signer$.value!;
     const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer$.value!)
 
     let property = await this.escrow.getProperty(id)
-    let price = property.pricePer
-
-    if (await token.allowance(this.provider.account.value, this.escrow.address) >= price) {
-      console.log("Has the right price")
+    let price = BigNumber.from(property.pricePer)
+    let allowance = BigNumber.from(await token.allowance(this.provider.account.value, this.escrow.address))
+    if (allowance.gte(price.mul(tokens))) {
+      console.log("Has the right price", price.mul(tokens), allowance)
     } else {
-      console.log("Doesn't have the right price")
+      console.log("Approving for ", price.mul(tokens))
+      await token.approve(this.escrow.address, price.mul(tokens))
     }
 
     await this.escrow.buyToken(id, tokens);

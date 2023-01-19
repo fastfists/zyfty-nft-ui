@@ -4,6 +4,8 @@ import { nftmarketService } from "../../nftmarket.service";
 import { Router } from "@angular/router";
 import { Lightbox } from "ngx-lightbox";
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
+import { ToastrService } from 'ngx-toastr';
+import { BigNumber } from 'ethers';
 
 @Component({
   selector: 'app-nft-details',
@@ -26,10 +28,12 @@ export class NftDetailsComponent {
     private activeModal: NgbActiveModal,
     private nftmarketService: nftmarketService,
     private escrow: EscrowService,
+    private toastr: ToastrService,
     private router: Router) {
   }
 
   setVerified(verification: boolean) {
+    console.log("setting verification", verification);
     this.verified = verification;
   }
 
@@ -130,9 +134,12 @@ export class NftDetailsComponent {
   purchaseNft() {
     let id = this.selectedNftDetails.id
     console.log("escrow", id)
-    this.escrow.buyToken(id, this.quntity).then((_) =>
+    this.escrow.buyToken(id, BigNumber.from(this.quntity)).then((_) =>
       console.log("Thing finished")
-    ).catch(console.error);
+    ).catch((err) => {
+      console.log("Error", err)
+      this.toastr.error(err.reason)
+    })
   }
 
   ctyUpdate(value: number) {
