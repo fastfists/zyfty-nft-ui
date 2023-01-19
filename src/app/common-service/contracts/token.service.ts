@@ -2,6 +2,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { ethers, providers } from 'ethers';
 import { BehaviorSubject } from 'rxjs';
 import ERC20 from "../../../artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
+import TestToken from "../../../artifacts/contracts/ZyftySalesContract.sol/TestToken.json";
 import { environment } from '../../../environments/environment';
 import { WalletProvider } from '../provider/provider.service';
 
@@ -26,6 +27,15 @@ export class TokenService {
               }
           }
       });
+  }
+
+  async mintMore() {
+    // Should error if not TestToken
+    if (this.token == null) {
+      return;
+    }
+    let test_token = new ethers.Contract(this.address, TestToken.abi, this.signer$.value!)
+    await this.token.test_mint(this.provider.account.value, ethers.utils.parseUnits("50", await this.token.decimals()))
   }
 
   async symbol() : Promise<string> {
