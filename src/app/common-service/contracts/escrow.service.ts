@@ -60,10 +60,16 @@ export class EscrowService {
       console.log("Has the right price", price.mul(tokens), allowance)
     } else {
       console.log("Approving for ", price.mul(tokens))
-      await token.approve(this.escrow.address, price.mul(tokens))
+      let trans = await token.approve(this.escrow.address, price.mul(tokens))
+      await trans.wait();
     }
 
-    await this.escrow.buyToken(id, tokens);
+    console.log("Buying tokens", tokens, id, this.provider.account.value)
+    let message = await this.escrow.createAgreementHash(id, this.provider.account.value)
+    let sig = await signer.signMessage(ethers.utils.arrayify(message))
+    console.log("Buying tokens", tokens, id, this.provider.account.value, message, sig)
+
+    await this.escrow.buyToken(id, tokens, sig);
     return;
   }
 
