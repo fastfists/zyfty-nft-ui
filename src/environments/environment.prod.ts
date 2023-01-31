@@ -7,9 +7,8 @@ export const environment = {
   sellerAddress: "0x63B060a3E5a89308DB2Da5D16429AB01A65e29D8",
   adminAddress: "0x8c931Af0686fB7C4D0c6046cCdd9A6ceBC6A53AA",
 
-  tokenAddress: "0xC3D1d53213080fA05011Ec939163d02f25cefC58",
-  escrowAddress: "0xEbe8Ac5cbd9f69941CB2FB985f2de05470F1d5E3",
-  kycAddress: "0x75B58a19a2d36b0aAb69fFFb37824A50DEEEBDAe"
-
+  tokenAddress: "0x385F95be1776cB5eE3C02854D976cab631C208b0",
+  escrowAddress: "0xf4Cb0D07DBFDd67F7c5Aac711331f7aD06b8c4EF",
+  kycAddress: "0xA08AAa0F9C71B8eCfd95001D53eBDE8dbBD7dF11"
 
 };

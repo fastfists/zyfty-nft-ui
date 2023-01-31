@@ -120,24 +120,27 @@ export class NftDetailsComponent {
     this._lightbox.close();
   }
 
-  isLogin(id: any) {
-    let isLogin = localStorage.getItem('user')
-    if (isLogin) {
-      console.log('Already login::')
-    } else {
-      this.closeModal();
-      localStorage.setItem('buyNowUrl', '/marketplace/details/' + id)
-      this.router.navigate(['/user/signin'])
-    }
-  }
-
   purchaseNft() {
     let id = this.selectedNftDetails.id
-    console.log("escrow", id)
-    this.escrow.buyToken(id, BigNumber.from(this.quntity)).then((_) =>
-      console.log("Thing finished")
-    ).catch((err) => {
-      console.log("Error", err)
+    this.escrow.buyToken(id, BigNumber.from(this.quntity)).then((wait) => {
+      let toast = this.toastr.info('<div class="flex"><div class="animate-ping rounded-full h-1 w-1 bg-white"></div> <div>Transaction is pending</div></div>', "", {
+        positionClass: 'toast-bottom-left',
+        tapToDismiss: false,
+        closeButton: false,
+        enableHtml: true,
+      })
+
+      console.log(wait);
+      wait.toPromise().then((tx) => {
+        toast.toastRef.close();
+        this.toastr.success('<div>Transaction is confirmed</div>', "", {
+          positionClass: 'toast-bottom-left',
+        })
+        this.ctyUpdate(-this.quntity);
+      })
+
+    }).catch((err) => {
+      console.error(err)
       this.toastr.error(err.reason)
     })
   }

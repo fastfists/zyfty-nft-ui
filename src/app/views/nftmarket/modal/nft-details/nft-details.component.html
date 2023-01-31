@@ -33,7 +33,7 @@
               <span>{{tokensLeft}} Tokens Left</span>
             </div>
             <div class="contact-buttons">
-              <button class="purchase-button" (click)="isLogin(selectedNftDetails.id)">View Documents</button>
+              <button class="purchase-button">View Documents</button>
               <button *ngIf="!verified" title="Not Verified" class="offer-button-disabled" (click)="purchaseNft()">Buy</button>
               <button *ngIf="verified" class="offer-button" (click)="purchaseNft()">Buy</button>
             </div>

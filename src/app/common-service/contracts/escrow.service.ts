@@ -47,9 +47,12 @@ export class EscrowService {
     return ethers.utils.formatUnits(await this.escrow.pricePer(id), 18)
   }
 
-  async buyToken(id: Number, tokens: BigNumber): Promise<undefined> {
+  async buyToken(id: Number, tokens: BigNumber): Promise<Observable<any>> {
 
-    if (this.escrow == null) return;
+    if (this.escrow == null) {
+      return from(Promise.reject("Escrow is null"))
+    }
+
     let signer = this.signer$.value!;
     const token = new ethers.Contract(environment.tokenAddress, TestToken.abi, this.signer$.value!)
 
@@ -69,8 +72,8 @@ export class EscrowService {
     let sig = await signer.signMessage(ethers.utils.arrayify(message))
     console.log("Buying tokens", tokens, id, this.provider.account.value, message, sig)
 
-    await this.escrow.buyToken(id, tokens, sig);
-    return;
+    let response = await this.escrow.buyToken(id, tokens, sig);
+    return from(response.wait());
   }
 
   async getCosts() : Promise<{tokensLeft: number, pricePer: string}[]> {

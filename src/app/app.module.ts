@@ -72,7 +72,14 @@ import { GoogleMapsModule } from '@angular/google-maps';
     BrowserAnimationsModule,
     SlickCarouselModule,
     LightboxModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      iconClasses : {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning',
+      }
+    }),
     NgbModule,
 	NgbProgressbarModule
     ],
