@@ -31,6 +31,7 @@ export class EmailComponent implements OnInit {
       if (account != "" && this.email != "none") {
         this.http.post(this.url + 'user/email', { address: account, email: this.email }).subscribe((data: any) => {
           this.toastr.success("Email updated successfully");
+          console.log("response");
         });
       }
     });
