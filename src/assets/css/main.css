@@ -331,6 +331,10 @@ input[type=search]:-webkit-search-results-decoration {
   }
 }
 
+.primary-nav {
+    margin-left: 10px;
+}
+
 .site-header .menu-toggle .line {
   display: block;
   width: 30px;

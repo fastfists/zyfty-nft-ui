@@ -1,15 +1,6 @@
-<div class="justify-content-center mt-4 mb-4">
-    <div class="col-md-12">
-        <div class="card-body">
-            <div class="row">
-                <div class="form-title">
-                    <h3 class="text-center hadding">KYC</h3>
-                </div>
-                <!-- <h5 class="text-center" style="color:yellow;">Under construction...</h5> -->
-                <div class="d-flex justify-content-center">
-                    <img class="images" src="../../../../assets/images/under-construction.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<button
+  *ngIf="!veriffOpen"
+  type="button" (click)="signMessage()" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
+  Click Here to verify
+</button>
+<div class="text-white" id="veriff-root"></div>

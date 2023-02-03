@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { WalletProvider } from 'src/app/common-service/provider/provider.service';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -11,16 +12,18 @@ export class WalletComponent implements OnInit {
 
   @Output() newWallet = new EventEmitter();
 
-  wallet!: FormGroup;
+  wallet!: UntypedFormGroup;
+  account$ = this.provider.account
 
-  constructor() { }
+  constructor(private provider: WalletProvider) { }
 
   ngOnInit(): void {
 
-    this.wallet = new FormGroup({
-      token: new FormControl(null)
+    this.wallet = new UntypedFormGroup({
+      token: new UntypedFormControl(null)
     });
 
+    this.account$ = this.provider.account
   }
 
   onSubmit() {
@@ -34,8 +37,11 @@ export class WalletComponent implements OnInit {
     }
   }
 
-  addWallet(value: String) {
+  connectWallet() {
+    this.provider.connect()
+  }
 
+  addWallet(value: String) {
     this.newWallet.emit(value);
   }
 

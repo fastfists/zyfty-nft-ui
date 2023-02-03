@@ -2,26 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { TeamComponent } from './views/team/team.component';
-import { SolutionComponent } from './views/solution/solution.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
 import { AboutComponent } from './views/about/about.component';
 import { HeaderComponent } from './views/common/header/header.component';
 import { FooterComponent } from './views/common/footer/footer.component';
-import { CominsoonComponent } from './views/common/cominsoon/cominsoon.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import { MarketplaceComponent } from './views/marketplace/marketplace.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LightboxModule } from 'ngx-lightbox';
-import { DetailsComponent } from './views/marketplace/details/details.component';
 import { SigninComponent } from './views/signin/signin.component';
 import { RegistrationComponent } from './views/registration/registration.component';
 import { PersonalInformationComponent } from './views/registration/personal-information/personal-information.component';
@@ -32,23 +27,25 @@ import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-p
 import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
 import { JwtInterceptor } from './auth-guard/jwt-interceptor';
 import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
-import { NftHappeningFormComponent } from './views/nft-happening-form/nft-happening-form.component';
 import { NftDetailsComponent } from './views/nftmarket/modal/nft-details/nft-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { AccountComponent } from './views/dashboard/account/account.component';
+import { EscrowComponent } from './views/dashboard/escrow/escrow.component';
+import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.component';
+import { EmailComponent } from './views/dashboard/email/email.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamComponent,
-    SolutionComponent,
     FaqsComponent,
     HomeComponent,
     AboutComponent,
     HeaderComponent,
     FooterComponent,
-    CominsoonComponent,
-    MarketplaceComponent,
-    DetailsComponent,
     SigninComponent,
     RegistrationComponent,
     PersonalInformationComponent,
@@ -58,13 +55,34 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     NftmarketComponent,
-    NftHappeningFormComponent,
-    NftDetailsComponent
+    NftDetailsComponent,
+    DashboardComponent,
+    AccountComponent,
+    EscrowComponent,
+    DashboardkycComponent,
+    EmailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule, SlickCarouselModule, LightboxModule,
-    ToastrModule.forRoot(), NgbModule, AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAfXLngkdMTHRaUbbPw8ya8m_I7AzLAjMo'
-    })],
+  imports: [
+    GoogleMapsModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    SlickCarouselModule,
+    LightboxModule,
+    ToastrModule.forRoot({
+      iconClasses : {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning',
+      }
+    }),
+    NgbModule,
+	NgbProgressbarModule
+    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
   {

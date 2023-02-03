@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletProvider } from 'src/app/common-service/provider/provider.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private provider : WalletProvider) {
+  }
 
   isLogin = false;
+  isConnected$? :BehaviorSubject<boolean> = undefined
+  address$!: BehaviorSubject<any>
 
   ngOnInit(): void {
     let user = localStorage.getItem('user')
@@ -18,15 +23,12 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogin = false;
     }
+    this.address$ = this.provider.account
+    this.isConnected$ = this.provider.connected
   }
 
-  redirectToPage() {
-    this.router.navigate(['/'], { fragment: 'nftForm' });
-  }
-
-  logOut() {
-    this.isLogin = false;
-    localStorage.clear();
-    this.router.navigate(['/'])
+  connect() {
+    // Connects to the wallet
+    this.provider.connect()
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ForgotPasswordService } from './forgot-password.service';
@@ -12,12 +12,12 @@ import { errorMessage, successMassage } from 'src/app/common-service/toastr/toas
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  forgotForm!: FormGroup;
+  forgotForm!: UntypedFormGroup;
   loading = false;
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private forgotPasswordService: ForgotPasswordService,
     private router: Router,
     private toastr: ToastrService,

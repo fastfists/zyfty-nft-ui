@@ -1,0 +1,25 @@
+<div class="flex justify-around py-5 pr-20 text-white">
+  <div
+    *ngFor="let item of items; let i = index"
+    class="bg-white text-black p-0.5 rounded m-2"
+  >
+    <!-- <img class="w-72" src="{{item.thumbnailImage.nft_image}}" /> -->
+    <!-- <div class="py-3 px-4 text-center flex justify-between"> -->
+    <!--   <span>{{ item.address }} {{ item.state }} {{ item.zip }}</span> -->
+    <!-- </div> -->
+    <div class="">
+      <div class="">
+        <img src="{{item.thumbnailImage.nft_image}}" />
+      </div>
+      <div class="px-3 py-4">
+        <div>{{ item.address }} {{ item.state }} {{ item.zip }}</div>
+        <ng-container *ngIf="escrows.length > i">
+          <div>{{escrows[i].status}} </div>
+          <div> Tokens Owned: {{escrows[i].tokensOwed}}</div>
+          <p><ngb-progressbar type="info" [value]="escrows[i].percentage" [striped]="true"></ngb-progressbar></p>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+</div>

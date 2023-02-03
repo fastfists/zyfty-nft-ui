@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -17,23 +17,23 @@ import { errorMessage, successMassage } from 'src/app/common-service/toastr/toas
 export class HomeComponent implements OnInit {
   submitted: boolean = false;
   reqSubmitted: boolean = false;
-  emailForm!: FormGroup;
+  emailForm!: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.emailForm = this.formBuilder.group({
-      name: new FormControl('', [
+      name: new UntypedFormControl('', [
         Validators.required,
         Validators.pattern('[A-Za-z ]+'),
       ]),
-      email: new FormControl(
+      email: new UntypedFormControl(
         '',
         Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
       ),
-      hasPermission: new FormControl(),
-      isInterested: new FormControl(),
+      hasPermission: new UntypedFormControl(),
+      isInterested: new UntypedFormControl(),
     });
   }
 

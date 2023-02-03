@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { PersonalInformationService } from './personal-information.service';
 import { countries } from 'src/app/common-service/countries/countries';
@@ -12,7 +12,7 @@ export class PersonalInformationComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter();
 
-  personalInfo!: FormGroup;
+  personalInfo!: UntypedFormGroup;
   submitted: Boolean = false;
   countries = countries;
 
@@ -22,9 +22,9 @@ export class PersonalInformationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.personalInfo = new FormGroup({
-      userName: new FormControl(null, [Validators.required, Validators.email]),
-      country: new FormControl(null, [Validators.required]),
+    this.personalInfo = new UntypedFormGroup({
+      userName: new UntypedFormControl(null, [Validators.required, Validators.email]),
+      country: new UntypedFormControl(null, [Validators.required]),
     });
 
     let userName = localStorage.getItem('user');
@@ -39,7 +39,7 @@ export class PersonalInformationComponent implements OnInit {
         .subscribe(res => {
           return res;
         })
-      this.addNewItem('wallet')
+      this.addNewItem('kyc')
     }
   }
 
