@@ -190,15 +190,15 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/google-maps@^13.1.0":
-  version "13.3.9"
-  resolved "https://registry.yarnpkg.com/@angular/google-maps/-/google-maps-13.3.9.tgz#245acce3c63885b0a5f729060f892477fdab70cb"
-  integrity sha512-hrnEPy8j3awVOLwx+jiYkXQDTrTYJ+CADGEwZw+plvQ3uBHz87jSws5O2ZqnFRd0WiPAmTMAfqRtmbEA4FIEDg==
+"@angular/google-maps@^15.1.3":
+  version "15.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/google-maps/-/google-maps-15.1.3.tgz#e73641ac3c5b5a0665eb94d076cd38e42303a80a"
+  integrity sha512-QhnbCSoR872ZsI2X7i8wcdRLD/WpmOjY9sfzGqchmCoPLx9h8pDH6/57c2uUp2/eYFSb12W82fPEFBoxpeQatQ==
   dependencies:
     "@types/google.maps" "^3.45.6"
     tslib "^2.3.0"
 
-"@angular/localize@^15.1.3":
+"@angular/localize@15.1.3":
   version "15.1.3"
   resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-15.1.3.tgz#24c1c1a2648e686f9117684e156ce3e53910d1fa"
   integrity sha512-d1K3peTNV9RfNb5Zt58OTX31TGRtq8iIqX7TTN52l7214ky4MEX1F+eDvqdRKSAaev+aNEwz6RX9LW2k1XAhPQ==
@@ -1814,6 +1814,11 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@nestjs/ng-universal@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/ng-universal/-/ng-universal-0.0.1.tgz#adb2b94507378e386352794f4ed32b6a5c71e02f"
+  integrity sha512-/2igQ7+SpfY2GfjxIbU54M4N5UtMCcs71JyBMr2A72mi8MPBYRrXBz/X1iuKQKU1MX3mjA1KsPJU9z6b7BgRZA==
+
 "@ng-bootstrap/ng-bootstrap@14.0.1":
   version "14.0.1"
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-14.0.1.tgz#09f93058d3c4a2f4e751c8b546e01f6d2524bd05"
@@ -2072,11 +2077,6 @@
   version "3.51.0"
   resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.51.0.tgz#56198ebe9ecb9b83821a290ae2abe97b68e3d20b"
   integrity sha512-44/oQYjc5D6kxBcI3Qk9rk3IIOMwnlEMWDV7pwPJ2YI89s5Q1OzDrFvR7QJ3LFrpVXEhig+gyagFg54+foinFg==
-
-"@types/googlemaps@^3.39.13":
-  version "3.43.3"
-  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.43.3.tgz#70cf962154a160fe78bcd69d6ccc296dd9175b1f"
-  integrity sha512-ZWNoz/O8MPEpiajvj7QiqCY8tTLFNqNZ/a+s+zTV58wFVNAvvqV4bdGfnsjTb5Cs4V6wEsLrX8XRhmnyYJ2Tdg==
 
 "@types/http-cache-semantics@*":
   version "4.0.1"
@@ -6063,27 +6063,20 @@ next-tick@^1.1.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
   integrity sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==
 
-ngx-filesaver@8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/ngx-filesaver/-/ngx-filesaver-8.1.0.tgz#f82a567f70c4ee81fc67b25bf594f3959c371b19"
-  integrity sha512-xAwThsB/ap9qs7BRgW+mJPWBK60uaqkfPnw3vzbykTdfIvGf62U/6osDCq4TCPl/POWLFui6b3Bu+gfDMqoZhw==
+ngx-filesaver@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-filesaver/-/ngx-filesaver-14.0.0.tgz#619ce81413f751b04e8b423ea4ee760836ab13cc"
+  integrity sha512-YnSbruOprSpcXZiuhnJ+AannRnSqRWiL0HIlDdwPd48DZYpuU0BTvSNmFj5oFbwLA0RFoOv2EkgedW4k2DEpYA==
   dependencies:
-    tslib "^1.9.0"
+    tslib "^2.3.0"
 
-ngx-lightbox@^2.5.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/ngx-lightbox/-/ngx-lightbox-2.6.2.tgz#d27edc14ef0130964f687b2c2a3f4d0ffc828ef1"
-  integrity sha512-+41RTijWtEjZSWKERXDqAFt+HBcDSjxtgtqgUU3FoLPjE3kEXQu5+fUPIWwiKkDv/hxdYK+yAGkdIqucqBML2A==
+ngx-lightbox@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-lightbox/-/ngx-lightbox-3.0.0.tgz#363893027f32ab5909b4fb0f10bf85acddd21eeb"
+  integrity sha512-gKLy0R3SbbzHkDnAINtT3HFC71XVd86+dkP3LBeKrvjngxB6wMABfY73fF5IGsu9HfKQUN2Ni2Nx6s12xNwXow==
   dependencies:
     file-saver "^2.0.5"
-    ngx-filesaver "8.1.0"
-
-ngx-slick-carousel@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/ngx-slick-carousel/-/ngx-slick-carousel-0.6.0.tgz#c10d3b42d7ecef1b41802e2c52239dbea34f1eeb"
-  integrity sha512-UpQv7nB0sFEEpomtScsIgq4iPa8GxI6mdUA0b1Fx2GkIRXrs0Ehz1tCPO+NUcELyiUxpU/E3bgQI09LKUBzpsw==
-  dependencies:
-    tslib "^2.0.0"
+    ngx-filesaver "14.0.0"
 
 ngx-toastr@^16.0.2:
   version "16.0.2"
@@ -7119,14 +7112,14 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rxjs@6.6.7, rxjs@~6.6.0:
+rxjs@6.6.7:
   version "6.6.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
   integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.5.5:
+rxjs@^7.5.5, rxjs@^7.8.0:
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.0.tgz#90a938862a82888ff4c7359811a595e14e1e09a4"
   integrity sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==
@@ -7836,7 +7829,7 @@ tree-kill@1.2.2:
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
-tslib@2.4.1, tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0:
+tslib@2.4.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
   integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==

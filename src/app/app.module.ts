@@ -15,7 +15,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LightboxModule } from 'ngx-lightbox';
 import { SigninComponent } from './views/signin/signin.component';
 import { RegistrationComponent } from './views/registration/registration.component';
@@ -70,7 +69,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SlickCarouselModule,
     LightboxModule,
     ToastrModule.forRoot({
       iconClasses : {
