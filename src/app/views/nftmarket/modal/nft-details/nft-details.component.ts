@@ -135,6 +135,7 @@ export class NftDetailsComponent {
         toast.toastRef.close();
         this.toastr.success('<div>Transaction is confirmed</div>', "", {
           positionClass: 'toast-bottom-left',
+          enableHtml: true,
         })
         this.ctyUpdate(-this.quntity);
       })

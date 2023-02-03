@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router, private provider : WalletProvider) { 
+  constructor(private router: Router, private provider : WalletProvider) {
   }
 
   isLogin = false;
@@ -25,16 +25,6 @@ export class HeaderComponent implements OnInit {
     }
     this.address$ = this.provider.account
     this.isConnected$ = this.provider.connected
-  }
-
-  redirectToPage() {
-    this.router.navigate(['/'], { fragment: 'nftForm' });
-  }
-
-  logOut() {
-    this.isLogin = false;
-    localStorage.clear();
-    this.router.navigate(['/'])
   }
 
   connect() {
