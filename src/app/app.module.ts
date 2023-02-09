@@ -35,6 +35,8 @@ import { EscrowComponent } from './views/dashboard/escrow/escrow.component';
 import { DashboardkycComponent } from './views/dashboard/kyc/dashboardkyc.component';
 import { EmailComponent } from './views/dashboard/email/email.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { TaxesComponent } from './views/dashboard/taxes/taxes.component';
+import { TransactionComponent } from './views/dashboard/transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     EscrowComponent,
     DashboardkycComponent,
     EmailComponent,
+    TaxesComponent,
+    TransactionComponent,
   ],
   imports: [
     GoogleMapsModule,

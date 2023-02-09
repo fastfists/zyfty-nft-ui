@@ -24,6 +24,18 @@
       class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
       Link Email
     </button>
+    <button
+      [disabled]="!(connected | async)"
+      (click)="switchPage('Taxes')"
+      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      Taxes
+    </button>
+    <button
+      [disabled]="!(connected | async)"
+      (click)="switchPage('Transaction')"
+      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      Transaction
+    </button>
   </div>
   <div class="w-100 bg-darkgreen">
     <ng-container *ngIf="!(connected | async)">
@@ -56,6 +68,15 @@
       <ng-container *ngIf="page === 'Email'">
         <app-email></app-email>
       </ng-container>
+
+      <ng-container *ngIf="page === 'Taxes'">
+        <app-taxes></app-taxes>
+      </ng-container>
+
+      <ng-container *ngIf="page === 'Transaction'">
+        <app-transaction></app-transaction>
+      </ng-container>
+
     </ng-container>
   </div>
 </div>
