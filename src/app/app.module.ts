@@ -63,7 +63,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   ],
   imports: [
     GoogleMapsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

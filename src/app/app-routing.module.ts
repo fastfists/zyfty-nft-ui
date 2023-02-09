@@ -31,11 +31,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
-      scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
-      onSameUrlNavigation: "reload",
-    }),
+    useHash: true,
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    onSameUrlNavigation: "reload",
+    initialNavigation: 'enabledBlocking'
+}),
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule],
