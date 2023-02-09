@@ -3,38 +3,44 @@
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Account')"
-      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirProfileCircled"></ng-icon>
       Account
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('KYC')"
-      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirEyeEmpty"></ng-icon>
       KYC
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Escrow')"
-      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirShieldLoading"></ng-icon>
       Active Escrows
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Email')"
-      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirMail"></ng-icon>
       Link Email
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Taxes')"
-      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirBank"></ng-icon>
       Taxes
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Transaction')"
-      class="text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
-      Transaction
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirDataTransferBoth"></ng-icon>
+      Transactions
     </button>
   </div>
   <div class="w-100 bg-darkgreen">
@@ -75,6 +81,10 @@
 
       <ng-container *ngIf="page === 'Transaction'">
         <app-transaction></app-transaction>
+      </ng-container>
+
+      <ng-container *ngIf="page === 'Rent'">
+        <app-rent></app-rent>
       </ng-container>
 
     </ng-container>
