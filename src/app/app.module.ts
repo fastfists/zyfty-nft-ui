@@ -37,7 +37,8 @@ import { EmailComponent } from './views/dashboard/email/email.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { TaxesComponent } from './views/dashboard/taxes/taxes.component';
 import { TransactionComponent } from './views/dashboard/transaction/transaction.component';
-import { iconoirBank, iconoirDataTransferBoth, iconoirDownload, iconoirEyeEmpty, iconoirMail, iconoirProfileCircled, iconoirShieldLoading } from "@ng-icons/iconoir";
+import { iconoirBank,
+  iconoirDataTransferBoth, iconoirDownload, iconoirEyeEmpty, iconoirMail, iconoirProfileCircled, iconoirShieldLoading, iconoirMoneySquare } from "@ng-icons/iconoir";
 import { NgIconsModule } from '@ng-icons/core';
 import { RentComponent } from './views/dashboard/rent/rent.component';
 
@@ -78,7 +79,7 @@ import { RentComponent } from './views/dashboard/rent/rent.component';
     HttpClientModule,
     BrowserAnimationsModule,
     LightboxModule,
-    NgIconsModule.withIcons({ iconoirBank, iconoirMail, iconoirShieldLoading, iconoirEyeEmpty, iconoirProfileCircled, iconoirDataTransferBoth, iconoirDownload }),
+    NgIconsModule.withIcons({ iconoirBank, iconoirMail, iconoirShieldLoading, iconoirEyeEmpty, iconoirProfileCircled, iconoirDataTransferBoth, iconoirDownload, iconoirMoneySquare }),
     ToastrModule.forRoot({
       iconClasses : {
         error: 'toast-error',

@@ -37,6 +37,13 @@
     </button>
     <button
       [disabled]="!(connected | async)"
+      (click)="switchPage('Rent')"
+      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      <ng-icon class="mr-2" name="iconoirMoneySquare"></ng-icon>
+      Rent
+    </button>
+    <button
+      [disabled]="!(connected | async)"
       (click)="switchPage('Transaction')"
       class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
       <ng-icon class="mr-2" name="iconoirDataTransferBoth"></ng-icon>
@@ -84,7 +91,8 @@
       </ng-container>
 
       <ng-container *ngIf="page === 'Rent'">
-        <app-rent></app-rent>
+        <app-rent>
+        </app-rent>
       </ng-container>
 
     </ng-container>
