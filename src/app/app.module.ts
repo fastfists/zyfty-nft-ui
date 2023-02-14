@@ -11,20 +11,11 @@ import { FaqsComponent } from './views/faqs/faqs.component';
 import { AboutComponent } from './views/about/about.component';
 import { HeaderComponent } from './views/common/header/header.component';
 import { FooterComponent } from './views/common/footer/footer.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { LightboxModule } from 'ngx-lightbox';
-import { SigninComponent } from './views/signin/signin.component';
-import { RegistrationComponent } from './views/registration/registration.component';
-import { PersonalInformationComponent } from './views/registration/personal-information/personal-information.component';
-import { WalletComponent } from './views/registration/wallet/wallet.component';
-import { ContainerComponent } from './views/registration/container/container.component';
-import { KycComponent } from './views/registration/kyc/kyc.component';
-import { ForgotPasswordComponent } from './views/signin/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './views/signin/reset-password/reset-password.component';
-import { JwtInterceptor } from './auth-guard/jwt-interceptor';
 import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
 import { NftDetailsComponent } from './views/nftmarket/modal/nft-details/nft-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -41,6 +32,7 @@ import { iconoirBank,
   iconoirDataTransferBoth, iconoirDownload, iconoirEyeEmpty, iconoirMail, iconoirProfileCircled, iconoirShieldLoading, iconoirMoneySquare } from "@ng-icons/iconoir";
 import { NgIconsModule } from '@ng-icons/core';
 import { RentComponent } from './views/dashboard/rent/rent.component';
+import { KycComponent } from './views/kyc/kyc.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +43,7 @@ import { RentComponent } from './views/dashboard/rent/rent.component';
     AboutComponent,
     HeaderComponent,
     FooterComponent,
-    SigninComponent,
-    RegistrationComponent,
-    PersonalInformationComponent,
-    WalletComponent,
-    ContainerComponent,
     KycComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
     NftmarketComponent,
     NftDetailsComponent,
     DashboardComponent,
@@ -92,12 +77,7 @@ import { RentComponent } from './views/dashboard/rent/rent.component';
 	NgbProgressbarModule
     ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: JwtInterceptor,
-    multi: true,
-  },],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
