@@ -2,7 +2,7 @@
   padding-top: 80px;
   padding-bottom: 0px;
 
-  #loading{
+  #loading {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -17,10 +17,13 @@
   }
 
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-
 
   .nft-search-block {
     background-image: url("../../../assets/images/image-1.jpg");
@@ -36,7 +39,7 @@
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 6px;
 
-      @media screen and (max-width:768px) {
+      @media screen and (max-width: 768px) {
         padding: 60px 0;
       }
 
@@ -46,7 +49,7 @@
         margin-bottom: 20px;
         color: white;
 
-        @media screen and (max-width:768px) {
+        @media screen and (max-width: 768px) {
           font-size: 25px !important;
           margin-bottom: 10px !important;
         }
@@ -66,7 +69,7 @@
           &:focus {
             border: 1px solid #ced4da !important;
           }
-          @media screen and (max-width:768px) {
+          @media screen and (max-width: 768px) {
             padding: 10px 15px;
           }
         }
@@ -75,7 +78,7 @@
           display: block;
           padding: 15px 20px;
           background-color: white;
-          @media screen and (max-width:768px) {
+          @media screen and (max-width: 768px) {
             padding: 10px 15px;
           }
 
@@ -84,19 +87,15 @@
             width: 20px;
             color: black;
           }
-
         }
-
       }
-
     }
-
   }
 
   .nft-list-block {
     padding: 75px 0;
     // background: #210420;
-    @media screen and (max-width:768px) {
+    @media screen and (max-width: 768px) {
       padding: 50px 0;
     }
 
@@ -151,8 +150,8 @@
             }
           }
 
-          .item-token{
-            button{
+          .item-token {
+            button {
               text-align: center;
               padding: 10px;
               display: block;
@@ -166,7 +165,4 @@
       }
     }
   }
-
 }
-
-

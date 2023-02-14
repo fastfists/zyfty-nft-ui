@@ -7,19 +7,17 @@ import { WalletProvider } from 'src/app/common-service/provider/provider.service
   templateUrl: './account.component.html',
 })
 @Injectable({
-  providedIn: 'root' // just before your class
+  providedIn: 'root', // just before your class
 })
 export class AccountComponent implements OnInit {
-
   account = this.provider.account;
   balance = 0;
-  symbol = "";
-  name = "";
+  symbol = '';
+  name = '';
   infoLoaded = false;
   allowTestToken = true;
 
-  constructor(private provider: WalletProvider, private token: TokenService) {
-  }
+  constructor(private provider: WalletProvider, private token: TokenService) {}
 
   ngOnInit(): void {
     this.account.subscribe({
@@ -28,7 +26,7 @@ export class AccountComponent implements OnInit {
           [this.balance, this.symbol, this.name] = await this.loadTokenInfo();
           this.infoLoaded = true;
         }
-      }
+      },
     });
   }
 
@@ -44,8 +42,7 @@ export class AccountComponent implements OnInit {
     return [
       await this.token.balance(),
       await this.token.symbol(),
-      await this.token.name()
-    ]
+      await this.token.name(),
+    ];
   }
-
 }

@@ -4,21 +4,30 @@
       <div class="logo">
         <a href="javascript:void(0)" [routerLink]="['/']">
           <h1 class="logo">
-            <img width="150" src="../../assets/images/logo.svg">
+            <img width="150" src="../../assets/images/logo.svg" />
           </h1>
         </a>
       </div>
 
       <div class="d-flex">
-        <a class="text-white" *ngIf="!(isConnected$ | async)" href="javascript:void(0)" (click)="connect()">
-          Connect Wallet {{address$ | async}}
+        <a
+          class="text-white"
+          *ngIf="!(isConnected$ | async)"
+          href="javascript:void(0)"
+          (click)="connect()"
+        >
+          Connect Wallet {{ address$ | async }}
         </a>
-        <a class="text-white"  *ngIf="(isConnected$ | async)" href="javascript:void(0)" >
-          Connected {{(address$ | async).slice(0, 5)}}... {{(address$ | async).slice(-3)}}
+        <a
+          class="text-white"
+          *ngIf="isConnected$ | async"
+          href="javascript:void(0)"
+        >
+          Connected {{ (address$ | async).slice(0, 5) }}...
+          {{ (address$ | async).slice(-3) }}
         </a>
         <nav class="primary-nav">
           <span class="menu-toggle">
-
             <span class="line-1 line"></span>
             <span class="line-2 line"></span>
             <span class="line-3 line"></span>
@@ -28,10 +37,14 @@
               <a href="javascript:void(0)" [routerLink]="['/']">Home</a>
             </li>
             <li class="list-items">
-              <a href="javascript:void(0)" [routerLink]="['/nft-market']">NFT Marketplace</a>
+              <a href="javascript:void(0)" [routerLink]="['/nft-market']"
+                >NFT Marketplace</a
+              >
             </li>
             <li class="list-items">
-              <a href="javascript:void(0)" [routerLink]="['/dashboard']">Account Dashboard</a>
+              <a href="javascript:void(0)" [routerLink]="['/dashboard']"
+                >Account Dashboard</a
+              >
             </li>
             <li class="list-items">
               <a href="javascript:void(0)" [routerLink]="['/team']">Founders</a>

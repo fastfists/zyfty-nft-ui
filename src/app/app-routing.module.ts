@@ -4,7 +4,7 @@ import { HomeComponent } from './views/home/home.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
 import { TeamComponent } from './views/team/team.component';
 import { AboutComponent } from './views/about/about.component';
-import { NftmarketComponent } from "./views/nftmarket/nftmarket.component";
+import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -19,14 +19,14 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    useHash: true,
-    scrollPositionRestoration: 'enabled',
-    anchorScrolling: 'enabled',
-    onSameUrlNavigation: "reload",
-    initialNavigation: 'enabledBlocking'
-}),
-    RouterModule.forChild(routes)
+      useHash: true,
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload',
+      initialNavigation: 'enabledBlocking',
+    }),
+    RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

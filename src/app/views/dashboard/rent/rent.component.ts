@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-rent',
   templateUrl: './rent.component.html',
 })
-export class RentComponent {
-
-}
+export class RentComponent {}

@@ -1,15 +1,17 @@
 .nft-link {
-    text-decoration: underline !important;
-    color: #FFFFFF;
-    font-family: "Poppins", sans-serif;
-    font-weight: medium;
-    font-size: 16.7pt;
+  text-decoration: underline !important;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: medium;
+  font-size: 16.7pt;
 }
 
 @media screen and (max-width: 991px) {
-  .nft-link a { font-size: 20px; }
+  .nft-link a {
+    font-size: 20px;
+  }
 
-  .site-header .header-menu{
+  .site-header .header-menu {
     display: block;
   }
   .nft-link {

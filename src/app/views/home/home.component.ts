@@ -7,7 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { errorMessage, successMassage } from 'src/app/common-service/toastr/toastr-message.service';
+import {
+  errorMessage,
+  successMassage,
+} from 'src/app/common-service/toastr/toastr-message.service';
 
 @Component({
   selector: 'app-home',
@@ -19,8 +22,10 @@ export class HomeComponent implements OnInit {
   reqSubmitted: boolean = false;
   emailForm!: UntypedFormGroup;
 
-  constructor(private formBuilder: UntypedFormBuilder,
-    private toastr: ToastrService) { }
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.emailForm = this.formBuilder.group({
@@ -40,6 +45,4 @@ export class HomeComponent implements OnInit {
   stopPropagation(event: any) {
     event.stopPropagation();
   }
-
-
 }

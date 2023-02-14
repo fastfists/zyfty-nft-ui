@@ -1,81 +1,153 @@
 <div id="nftModalData">
   <button type="button" class="closed" (click)="closeModal()">
-    <svg viewBox="0 0 24 24" class="sc-gsDKAQ hDhDYS sc-furwcr kqVGZL" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.8 11.8L4 4l7.8 7.8L4 19.6l7.8-7.8zm0 0l7.8 7.8-7.8-7.8L19.6 4l-7.8 7.8z" stroke="currentColor" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round"></path>
+    <svg
+      viewBox="0 0 24 24"
+      class="sc-gsDKAQ hDhDYS sc-furwcr kqVGZL"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.8 11.8L4 4l7.8 7.8L4 19.6l7.8-7.8zm0 0l7.8 7.8-7.8-7.8L19.6 4l-7.8 7.8z"
+        stroke="currentColor"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
     </svg>
   </button>
   <div class="modal-inner">
     <div class="media-gallery">
       <div class="column">
         <ul class="media-col" *ngIf="selectedNftDetails">
-          <li class="full-width media-col-item" *ngFor="let nftItem of selectedNftDetails.thumbnailImage  let i = index" >
-            <figure><img src="{{nftItem.nft_image}}" alt="" (click)="openImage(i)"></figure>
+          <li
+            class="full-width media-col-item"
+            *ngFor="
+              let nftItem of selectedNftDetails.thumbnailImage;
+              let i = index
+            "
+          >
+            <figure>
+              <img
+                src="{{ nftItem.nft_image }}"
+                alt=""
+                (click)="openImage(i)"
+              />
+            </figure>
           </li>
-          <li class="media-col-item" *ngFor="let nftItem of selectedNftDetails.displayImage  let i = index" >
-            <figure><img src="{{nftItem.nft_image}}" alt="" (click)="openImage(i + selectedNftDetails.thumbnailImage.length)"></figure>
+          <li
+            class="media-col-item"
+            *ngFor="
+              let nftItem of selectedNftDetails.displayImage;
+              let i = index
+            "
+          >
+            <figure>
+              <img
+                src="{{ nftItem.nft_image }}"
+                alt=""
+                (click)="
+                  openImage(i + selectedNftDetails.thumbnailImage.length)
+                "
+              />
+            </figure>
           </li>
         </ul>
       </div>
     </div>
     <div class="data-gallery">
       <div class="main-header">
-        <div class="logo"><img width="150" src="../../assets/images/logo.svg"></div>
+        <div class="logo">
+          <img width="150" src="../../assets/images/logo.svg" />
+        </div>
       </div>
       <div class="main-summary">
         <div class="primary-data">
-            <div class="address-detail">{{selectedNftDetails.address}}, {{selectedNftDetails.city}}, {{selectedNftDetails.state}} {{selectedNftDetails.zip}}</div>
-            <div class="sub-detail">
-              <span>{{selectedNftDetails.property_type}}</span>
-              <span>{{selectedNftDetails.bed_rooms}} bedrooms</span>
-              <span>{{selectedNftDetails.bath_rooms}} bathrooms</span>
-              <span>{{selectedNftDetails.living_area}} Sq Ft</span>
-              <span>{{tokensLeft}} Tokens Left</span>
-            </div>
-            <div class="contact-buttons">
-              <button class="purchase-button">View Documents</button>
-              <button *ngIf="!verified" title="Not Verified" class="offer-button-disabled" (click)="purchaseNft()">Buy</button>
-              <button *ngIf="verified" class="offer-button" (click)="purchaseNft()">Buy</button>
-            </div>
+          <div class="address-detail">
+            {{ selectedNftDetails.address }}, {{ selectedNftDetails.city }},
+            {{ selectedNftDetails.state }} {{ selectedNftDetails.zip }}
+          </div>
+          <div class="sub-detail">
+            <span>{{ selectedNftDetails.property_type }}</span>
+            <span>{{ selectedNftDetails.bed_rooms }} bedrooms</span>
+            <span>{{ selectedNftDetails.bath_rooms }} bathrooms</span>
+            <span>{{ selectedNftDetails.living_area }} Sq Ft</span>
+            <span>{{ tokensLeft }} Tokens Left</span>
+          </div>
+          <div class="contact-buttons">
+            <button class="purchase-button">View Documents</button>
+            <button
+              *ngIf="!verified"
+              title="Not Verified"
+              class="offer-button-disabled"
+              (click)="purchaseNft()"
+            >
+              Buy
+            </button>
+            <button
+              *ngIf="verified"
+              class="offer-button"
+              (click)="purchaseNft()"
+            >
+              Buy
+            </button>
+          </div>
           <div class="token-block">
             <span>Token Quantity</span>
-            <form id='tokenform' method='POST' action='#' class="numbo">
-              <input type='button' value='-' class='qtyminus' field='quantity' (click)="ctyUpdate(-1)" [disabled]="quntity <= 1" />
-              <input type='text' name='quantity' [(ngModel)]="quntity" class='qty' />
-              <input type='button' value='+' class='qtyplus' field='quantity' (click)="ctyUpdate(1)" />
+            <form id="tokenform" method="POST" action="#" class="numbo">
+              <input
+                type="button"
+                value="-"
+                class="qtyminus"
+                field="quantity"
+                (click)="ctyUpdate(-1)"
+                [disabled]="quntity <= 1"
+              />
+              <input
+                type="text"
+                name="quantity"
+                [(ngModel)]="quntity"
+                class="qty"
+              />
+              <input
+                type="button"
+                value="+"
+                class="qtyplus"
+                field="quantity"
+                (click)="ctyUpdate(1)"
+              />
             </form>
           </div>
-
         </div>
         <div class="another-data">
           <nav ngbNav #nav="ngbNav" class="nav-tabs">
             <ng-container ngbNavItem>
               <a ngbNavLink>Overview</a>
               <ng-template ngbNavContent>
-                <i>Note: Occupied under a 12 month lease with tenant paying
-                  $6,000/month.</i> <br><br/>
-                <div class="main-info-block">WATER VIEWS OF THE BAY AND DOWNTOWN! TWO
-                  BALCONIES AND A 2 CAR TANDEM GARAGE! <br><br/>
+                <i
+                  >Note: Occupied under a 12 month lease with tenant paying
+                  $6,000/month.</i
+                >
+                <br /><br />
+                <div class="main-info-block">
+                  WATER VIEWS OF THE BAY AND DOWNTOWN! TWO BALCONIES AND A 2 CAR
+                  TANDEM GARAGE! <br /><br />
 
-                  RARELY available to rent, recently remodeled!  <br><br/>
+                  RARELY available to rent, recently remodeled! <br /><br />
 
-                  Gorgeous home in one of San Diego's best beach
-                  communities! Large open floor plan with vaulted ceilings &
-                  mass amount of natural light <br><br/>
+                  Gorgeous home in one of San Diego's best beach communities!
+                  Large open floor plan with vaulted ceilings & mass amount of
+                  natural light <br /><br />
 
-                  Luxury vinyl plank throughout, updated fixtures and
-                  remodeled bathrooms remodeled kitchen with premium
-                  appliances, Central AC and Heat ..Laundry room in Unit! <br><br/>
+                  Luxury vinyl plank throughout, updated fixtures and remodeled
+                  bathrooms remodeled kitchen with premium appliances, Central
+                  AC and Heat ..Laundry room in Unit! <br /><br />
 
-                  Perfect for entertaining! All of this within walking distance to
-                  the Bay, beach, shops and dining! <br><br/>
-
+                  Perfect for entertaining! All of this within walking distance
+                  to the Bay, beach, shops and dining! <br /><br />
                 </div>
 
                 <p>loaded</p>
-                <google-map [zoom]="zoom"
-                  [center]="center"
-                >
+                <google-map [zoom]="zoom" [center]="center">
                   <map-marker [position]="center"></map-marker>
                 </google-map>
                 <p>end</p>
@@ -84,26 +156,38 @@
                 <!--    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
                 <!-- </agm-map> -->
 
-                <br>
-
+                <br />
               </ng-template>
             </ng-container>
             <ng-container ngbNavItem>
               <a ngbNavLink>Facts and Financial Summary</a>
               <ng-template ngbNavContent>
                 <ul class="fea-list">
-
                   <li class="sub-title">Current Value</li>
-                  <li><span>Underlying Asset Value:</span> <span>{{selectedNftDetails.underlyingValue}}</span></li>
-                  <li><span>Investment Value (sum of all tokens):</span> <span> {{selectedNftDetails.investmentValue}}</span></li>
+                  <li>
+                    <span>Underlying Asset Value:</span>
+                    <span>{{ selectedNftDetails.underlyingValue }}</span>
+                  </li>
+                  <li>
+                    <span>Investment Value (sum of all tokens):</span>
+                    <span> {{ selectedNftDetails.investmentValue }}</span>
+                  </li>
 
-                  <br>
+                  <br />
 
                   <li class="sub-title">Current 12 Month Net Return</li>
-                  <li><span>Net Rental/Operating Income:</span> <span>{{selectedNftDetails.netRental}}</span></li>
-                  <li><span>Cash on Cash:</span> <span> {{selectedNftDetails.onCash}}</span></li>
-                  <li><span>CAP Rate:</span> <span> {{selectedNftDetails.capRate}}</span></li>
-
+                  <li>
+                    <span>Net Rental/Operating Income:</span>
+                    <span>{{ selectedNftDetails.netRental }}</span>
+                  </li>
+                  <li>
+                    <span>Cash on Cash:</span>
+                    <span> {{ selectedNftDetails.onCash }}</span>
+                  </li>
+                  <li>
+                    <span>CAP Rate:</span>
+                    <span> {{ selectedNftDetails.capRate }}</span>
+                  </li>
                 </ul>
               </ng-template>
             </ng-container>
@@ -115,4 +199,3 @@
     </div>
   </div>
 </div>
-

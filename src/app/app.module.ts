@@ -12,9 +12,9 @@ import { AboutComponent } from './views/about/about.component';
 import { HeaderComponent } from './views/common/header/header.component';
 import { FooterComponent } from './views/common/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ToastrModule } from "ngx-toastr";
-import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LightboxModule } from 'ngx-lightbox';
 import { NftmarketComponent } from './views/nftmarket/nftmarket.component';
 import { NftDetailsComponent } from './views/nftmarket/modal/nft-details/nft-details.component';
@@ -28,8 +28,16 @@ import { EmailComponent } from './views/dashboard/email/email.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { TaxesComponent } from './views/dashboard/taxes/taxes.component';
 import { TransactionComponent } from './views/dashboard/transaction/transaction.component';
-import { iconoirBank,
-  iconoirDataTransferBoth, iconoirDownload, iconoirEyeEmpty, iconoirMail, iconoirProfileCircled, iconoirShieldLoading, iconoirMoneySquare } from "@ng-icons/iconoir";
+import {
+  iconoirBank,
+  iconoirDataTransferBoth,
+  iconoirDownload,
+  iconoirEyeEmpty,
+  iconoirMail,
+  iconoirProfileCircled,
+  iconoirShieldLoading,
+  iconoirMoneySquare,
+} from '@ng-icons/iconoir';
 import { NgIconsModule } from '@ng-icons/core';
 import { RentComponent } from './views/dashboard/rent/rent.component';
 import { KycComponent } from './views/kyc/kyc.component';
@@ -64,20 +72,29 @@ import { KycComponent } from './views/kyc/kyc.component';
     HttpClientModule,
     BrowserAnimationsModule,
     LightboxModule,
-    NgIconsModule.withIcons({ iconoirBank, iconoirMail, iconoirShieldLoading, iconoirEyeEmpty, iconoirProfileCircled, iconoirDataTransferBoth, iconoirDownload, iconoirMoneySquare }),
+    NgIconsModule.withIcons({
+      iconoirBank,
+      iconoirMail,
+      iconoirShieldLoading,
+      iconoirEyeEmpty,
+      iconoirProfileCircled,
+      iconoirDataTransferBoth,
+      iconoirDownload,
+      iconoirMoneySquare,
+    }),
     ToastrModule.forRoot({
-      iconClasses : {
+      iconClasses: {
         error: 'toast-error',
         info: 'toast-info',
         success: 'toast-success',
         warning: 'toast-warning',
-      }
+      },
     }),
     NgbModule,
-	NgbProgressbarModule
-    ],
+    NgbProgressbarModule,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,8 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'zyfty';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

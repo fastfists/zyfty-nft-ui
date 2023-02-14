@@ -6,15 +6,13 @@ import { WalletProvider } from '../../common-service/provider/provider.service';
   templateUrl: './dashboard.component.html',
 })
 @Injectable({
-  providedIn: 'root' // just before your class
+  providedIn: 'root', // just before your class
 })
 export class DashboardComponent implements OnInit {
-
-  page = "Account";
+  page = 'Account';
   connected = this.provider.connected;
 
-  constructor(private provider: WalletProvider) {
-  }
+  constructor(private provider: WalletProvider) {}
 
   switchPage(page: string) {
     this.page = page;
@@ -24,7 +22,5 @@ export class DashboardComponent implements OnInit {
     this.provider.connect();
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

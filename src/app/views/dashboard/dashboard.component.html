@@ -1,64 +1,76 @@
-<div class="h-[70vh] p-[80px] px-0 pb-0 flex">
-  <div class="flex flex-col text-left items-start bg-darkgreen drop-shadow-2xl text-white w-52">
+<div class="flex h-[70vh] p-[80px] px-0 pb-0">
+  <div
+    class="flex w-52 flex-col items-start bg-darkgreen text-left text-white drop-shadow-2xl"
+  >
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Account')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirProfileCircled"></ng-icon>
       Account
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('KYC')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirEyeEmpty"></ng-icon>
       KYC
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Escrow')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirShieldLoading"></ng-icon>
       Active Escrows
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Email')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirMail"></ng-icon>
       Link Email
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Taxes')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirBank"></ng-icon>
       Taxes
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Rent')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirMoneySquare"></ng-icon>
       Rent
     </button>
     <button
       [disabled]="!(connected | async)"
       (click)="switchPage('Transaction')"
-      class="flex items-center text-left px-4 py-2 w-100 hover:bg-darkpurple hover:text-white disabled:opacity-25">
+      class="w-100 flex items-center px-4 py-2 text-left hover:bg-darkpurple hover:text-white disabled:opacity-25"
+    >
       <ng-icon class="mr-2" name="iconoirDataTransferBoth"></ng-icon>
       Transactions
     </button>
   </div>
-  <div class="w-100 bg-darkgreen">
+  <div class="w-100 bg-white">
     <ng-container *ngIf="!(connected | async)">
-      <div class="grid content-center justify-center h-full">
-        <div class="text-2xl text-center flex flex-col justify-around border-4 border-darkgreen shadow-xl text-white w-72 h-52 m-auto">
+      <div class="grid h-full content-center justify-center">
+        <div
+          class="m-auto flex h-52 w-72 flex-col justify-around border-4 border-darkgreen bg-darkgreen text-center text-2xl text-white shadow-xl"
+        >
+          <div>Connect your metamask wallet to continue</div>
           <div>
-            Connect your metamask wallet to continue
-          </div>
-          <div>
-            <button (click)="connectWallet()" class="bg-darkpurple rounded-xl px-3 py-2 text-lg text-white hover:text-black">
+            <button
+              (click)="connectWallet()"
+              class="rounded-xl bg-darkpurple px-3 py-2 text-lg text-white hover:text-black"
+            >
               Connect Wallet
             </button>
           </div>
@@ -66,7 +78,7 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="(connected | async)">
+    <ng-container *ngIf="connected | async">
       <ng-container *ngIf="page === 'Account'">
         <app-account></app-account>
       </ng-container>
@@ -91,10 +103,8 @@
       </ng-container>
 
       <ng-container *ngIf="page === 'Rent'">
-        <app-rent>
-        </app-rent>
+        <app-rent> </app-rent>
       </ng-container>
-
     </ng-container>
   </div>
 </div>
