@@ -339,6 +339,7 @@ input[type="search"]:-webkit-search-results-decoration {
   display: block;
   width: 30px;
   height: 3px;
+  margin-top: 5px;
   margin-bottom: 4px;
   background-color: #ffffff;
   -webkit-transition: 0.7s all ease-in-out;

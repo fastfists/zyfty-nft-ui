@@ -11,14 +11,17 @@
 
       <div class="d-flex">
         <button
-          class="rounded-xl bg-darkgreen px-2 py-1 text-green-600 hover:text-green-900"
+          class="rounded-xl bg-darkgreen px-3 py-1 text-green-600 hover:text-green-900"
           *ngIf="!(isConnected$ | async)"
           (click)="connect()"
         >
-          Connect
+          <div class="flex items-center space-x-1">
+            <iconify-icon icon="arcicons:metamask" width="20px"></iconify-icon>
+            <p>Connect</p>
+          </div>
         </button>
         <button
-          class="rounded-xl bg-darkgreen px-2 py-1 text-green-600 hover:text-green-900"
+          class="rounded-xl bg-darkgreen px-2 py-1 font-medium text-green-600 hover:text-green-900"
           *ngIf="isConnected$ | async"
           href="javascript:void(0)"
         >

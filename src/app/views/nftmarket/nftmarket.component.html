@@ -2,9 +2,8 @@
   <div class="nft-search-block">
     <div class="container">
       <div class="nft-search-content">
-        <h2 class="title">
-          Purchase Residential Real Estate <br />
-          with Your Crypto from Your Wallet
+        <h2 class="title font-medium">
+          Invest in real world assets
         </h2>
         <div class="input-group">
           <input
@@ -22,7 +21,6 @@
           >
             <svg
               viewBox="0 0 32 32"
-              theme="[object Object]"
               class="Icon-c11n-8-69-2__sc-13llmml-0 fhGCBg sc-1bvnalc-0 kzKZEl"
               aria-hidden="true"
               focusable="false"
@@ -54,7 +52,7 @@
     <a
       *ngIf="provider.connected | async"
       [routerLink]="['/dashboard']"
-      class="rounded-xl bg-darkgreen px-3 py-2 text-lg text-white hover:text-black"
+      class="rounded-xl bg-darkgreen px-3 py-2 text-lg font-medium text-green-600 hover:text-green-900"
     >
       Verify Wallet
     </a>
@@ -62,7 +60,7 @@
     <a
       *ngIf="!(provider.connected | async)"
       (click)="provider.connect()"
-      class="rounded-xl bg-darkgreen px-3 py-2 text-lg text-white hover:text-black"
+      class="rounded-xl bg-darkgreen px-3 py-2 text-lg font-medium text-green-600 hover:text-green-900"
     >
       Connect Wallet
     </a>
@@ -82,7 +80,7 @@
           *ngFor="let nftItem of nftItems; let i = index"
           (click)="openModal(i)"
         >
-          <div class="list-item-inner">
+          <div class="list-item-inner flex flex-col">
             <div class="img-thumbnail1">
               <img src="{{ nftItem.thumbnailImage.nft_image }}" />
             </div>
@@ -93,7 +91,8 @@
               >
               <span>6.8% CAP</span>
             </div>
-            <div class="item-token">
+            <div class="flex-1"></div>
+            <div class="item-token bg-darkpurple text-lightestpurple hover:text-lighterpurple">
               <div *ngIf="chainNFT.length >= nftItem.id">
                 <button>
                   {{ chainNFT[nftItem.id - 1].tokensLeft }} Tokens at USDC

@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         "darkgreen": "#19322F",
         "darkpurple": "#210420",
+        "lighterpurple": "#795C78",
+        "lightestpurple": "#A689A5",
       },
     },
   },
