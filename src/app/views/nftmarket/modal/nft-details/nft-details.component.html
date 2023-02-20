@@ -74,21 +74,18 @@
             <span>{{ tokensLeft }} Tokens Left</span>
           </div>
           <div class="contact-buttons">
-            <button class="purchase-button">View Documents</button>
             <button
-              *ngIf="!verified"
-              title="Not Verified"
-              class="offer-button-disabled"
+              [disabled]="!verified"
+              class="text-md rounded-md bg-darkgreen px-3 py-2 text-white hover:text-black disabled:pointer-events-none disabled:opacity-50"
               (click)="purchaseNft()"
             >
               Buy
             </button>
+            <div class="p-1"></div>
             <button
-              *ngIf="verified"
-              class="offer-button"
-              (click)="purchaseNft()"
+              class="text-md rounded-md border border-2 border-darkgreen bg-darkgreen/20 px-4 py-2 text-darkgreen hover:text-green-900"
             >
-              Buy
+              View Documents
             </button>
           </div>
           <div class="token-block">

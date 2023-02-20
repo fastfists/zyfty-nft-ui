@@ -11,17 +11,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
   constructor(private router: Router, private provider: WalletProvider) {}
 
-  isLogin = false;
   isConnected$?: BehaviorSubject<boolean> = undefined;
   address$!: BehaviorSubject<any>;
 
   ngOnInit(): void {
-    let user = localStorage.getItem('user');
-    if (user) {
-      this.isLogin = true;
-    } else {
-      this.isLogin = false;
-    }
     this.address$ = this.provider.account;
     this.isConnected$ = this.provider.connected;
   }

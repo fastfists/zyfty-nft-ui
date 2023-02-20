@@ -20,7 +20,7 @@ export class NftmarketComponent implements OnInit {
 
   modalRef?: NgbModalRef = undefined;
   modalId?: number = undefined;
-
+  
   constructor(
     public provider: WalletProvider,
     public modalService: NgbModal,

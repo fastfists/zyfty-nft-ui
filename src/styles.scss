@@ -2,8 +2,9 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
-@import "./assets/css/main.css";
 @import "ngx-toastr/toastr";
+@import "./assets/css/main.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
