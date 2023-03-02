@@ -2,6 +2,7 @@ import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { providers } from 'ethers';
 import { BehaviorSubject } from 'rxjs';
 import { ethers } from 'ethers';
+import { I18NHtmlParser } from '@angular/compiler';
 
 export const MetaMaskWeb3 = new InjectionToken<providers.BaseProvider>(
   'Metamask Provider',
@@ -18,6 +19,20 @@ interface ProviderMessage {
   data: unknown;
 }
 
+interface AddEthereumChainParameter {
+  chainId: chain; // A 0x-prefixed hexadecimal string
+  chainName: string;
+  nativeCurrency: {
+    name: string;
+    symbol: string; // 2-6 characters long
+    decimals: 18;
+  };
+  rpcUrls: string[];
+  blockExplorerUrls?: string[];
+  iconUrls?: string[]; // Currently ignored.
+}
+
+
 interface ProviderRpcError extends Error {
   message: string;
   code: number;
@@ -33,10 +48,19 @@ export class WalletProvider {
   connected = new BehaviorSubject(false);
   ethereum: any = null;
 
-  acceptedChains: chain[] = [
-    '0x61', // BSC Testnet
-  ];
-
+  chainInformation: {[chainId: chain]: AddEthereumChainParameter } = {
+    "0x61": {
+      chainName: "Binance Smart Chain Testnet",
+      chainId: "0x61",
+      nativeCurrency: {
+        name: "Binance Coin",
+        symbol: "tBNB",
+        decimals: 18,
+      },
+      rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+      blockExplorerUrls: ["https://testnet.bscscan.com/"],
+    }
+  }
 
 
   provider: providers.Web3Provider | null = null;
@@ -101,23 +125,43 @@ export class WalletProvider {
     this.account.next(accounts[0]);
 
     this.provider!.getNetwork().then((network) => {
+      console.log("net", network);
+      console.log("hex", ethers.utils.hexlify([network.chainId]))
       // @ts-ignore
-      this.handleChainChange(ethers.utils.hexlify([ network ]));
+      this.handleChainChange(ethers.utils.hexlify([network.chainId]));
     });
 
     this.signer.next(this.provider!.getSigner());
     this.connected.next(true);
- }
+  }
 
   handleChainChange(chainId: chain) {
     this.chain.next(chainId);
-    if (this.acceptedChains.includes(chainId)) {
+    if (chainId in this.chainInformation) {
       return;
     }
-    console.log(this.acceptedChains, chainId);
-    this.ethereum.request({ method: 'wallet_switchEthereumChain', params: [
-      { chainId: this.acceptedChains[0] },
-    ]});
+    const newChainId: chain = "0x61";
+    const chosenChain = this.chainInformation[newChainId];
+    // // add
+    // this.ethereum.request({
+    //   method: 'wallet_addEthereumChain',
+    //   params: [chosenChain],
+    // });
+
+    // switch
+    this.ethereum.request({
+      method: 'wallet_switchEthereumChain', params: [
+        { chainId: newChainId },
+      ]
+    }).catch((error: ProviderRpcError) => {
+      if (error.code === 4902) {
+        // add
+        this.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [chosenChain],
+        });
+      }
+    });
   }
 
   handleDisconnect(error: ProviderRpcError) {
