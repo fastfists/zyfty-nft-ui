@@ -5,6 +5,7 @@ import { nftmarketService } from './nftmarket.service';
 import { EscrowService } from 'src/app/common-service/contracts/escrow.service';
 import { KYCService } from 'src/app/common-service/contracts/kyc.service';
 import { WalletProvider } from 'src/app/common-service/provider/provider.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nftmarket',
@@ -26,7 +27,8 @@ export class NftmarketComponent implements OnInit {
     public modalService: NgbModal,
     public nftmarketService: nftmarketService,
     private escrow: EscrowService,
-    private kyc: KYCService
+    private kyc: KYCService,
+    private toastr: ToastrService,
   ) {}
 
   openModal(nftId: number) {
@@ -42,6 +44,15 @@ export class NftmarketComponent implements OnInit {
       this.modalRef.componentInstance.setTokensLeft(
         this.chainNFT[nftId].tokensLeft
       );
+    }
+  }
+
+  connectWallet() {
+    const worked = this.provider.connect()
+    if (!worked) {
+      this.toastr.error('Please install MetaMask', '', {
+        positionClass: 'toast-bottom-left',
+      });
     }
   }
 

@@ -1,4 +1,4 @@
-import Veriff from '@veriff/js-sdk';
+import { Veriff } from '@veriff/js-sdk';
 import { createVeriffFrame } from '@veriff/incontext-sdk';
 import { Component, OnInit } from '@angular/core';
 import { WalletProvider } from 'src/app/common-service/provider/provider.service';
