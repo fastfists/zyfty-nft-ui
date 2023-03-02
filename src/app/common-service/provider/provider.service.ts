@@ -11,6 +11,8 @@ export const MetaMaskWeb3 = new InjectionToken<providers.BaseProvider>(
   }
 );
 
+type chain = `0x${string}`;
+
 interface ProviderMessage {
   type: string;
   data: unknown;
@@ -27,9 +29,15 @@ interface ProviderRpcError extends Error {
 })
 export class WalletProvider {
   account: BehaviorSubject<string> = new BehaviorSubject('');
-  chain: BehaviorSubject<number> = new BehaviorSubject(0);
+  chain: BehaviorSubject<string> = new BehaviorSubject('');
   connected = new BehaviorSubject(false);
   ethereum: any = null;
+
+  acceptedChains: chain[] = [
+    '0x61', // BSC Testnet
+  ];
+
+
 
   provider: providers.Web3Provider | null = null;
   signer: BehaviorSubject<providers.JsonRpcSigner | null> =
@@ -47,7 +55,7 @@ export class WalletProvider {
       this.ethereum.on('accountsChanged', (accs: Array<string>) =>
         this.handleAccountChange(accs)
       );
-      this.ethereum.on('chainChanged', (chainId: number) =>
+      this.ethereum.on('chainChanged', (chainId: chain) =>
         this.handleChainChange(chainId)
       );
     }
@@ -85,7 +93,6 @@ export class WalletProvider {
   }
 
   handleAccountChange(accounts: Array<string>) {
-    console.log('Changed', accounts);
     if (accounts.length < 0) {
       this.account.next('');
       this.connected.next(false);
@@ -94,16 +101,23 @@ export class WalletProvider {
     this.account.next(accounts[0]);
 
     this.provider!.getNetwork().then((network) => {
-      this.chain.next(network.chainId);
+      // @ts-ignore
+      this.handleChainChange(ethers.utils.hexlify([ network ]));
     });
 
     this.signer.next(this.provider!.getSigner());
     this.connected.next(true);
-  }
+ }
 
-  handleChainChange(chainId: number) {
-    console.log('Chain changed to', chainId);
+  handleChainChange(chainId: chain) {
     this.chain.next(chainId);
+    if (this.acceptedChains.includes(chainId)) {
+      return;
+    }
+    console.log(this.acceptedChains, chainId);
+    this.ethereum.request({ method: 'wallet_switchEthereumChain', params: [
+      { chainId: this.acceptedChains[0] },
+    ]});
   }
 
   handleDisconnect(error: ProviderRpcError) {
